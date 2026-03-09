@@ -5,8 +5,11 @@
 <title>AI Tools For Creators</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+<!-- Google AdSense script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
+     crossorigin="anonymous"></script>
 
+<style>
 body{
 font-family:Arial;
 background:#111;
@@ -14,23 +17,19 @@ color:white;
 text-align:center;
 padding:20px;
 }
-
 h1{
 margin-bottom:10px;
 }
-
 .container{
 max-width:800px;
 margin:auto;
 }
-
 .tool{
 background:#1e1e1e;
 padding:20px;
 margin:20px 0;
 border-radius:10px;
 }
-
 input,textarea,select{
 width:90%;
 padding:10px;
@@ -38,7 +37,6 @@ margin:10px;
 border-radius:5px;
 border:none;
 }
-
 button{
 padding:10px 20px;
 margin:5px;
@@ -48,24 +46,32 @@ background:#00c3ff;
 color:white;
 cursor:pointer;
 }
-
 button:hover{
 background:#0099cc;
 }
-
 .result{
 margin-top:10px;
 background:#000;
 padding:10px;
 border-radius:5px;
 }
-
 </style>
 </head>
 
 <body>
 
 <h1>AI Tools For Creators</h1>
+
+<!-- AdSense annonceblok #1 (øverst på siden) -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8036688230923764"
+     data-ad-slot="1234567890"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <select id="language">
 <option value="en">English</option>
@@ -78,7 +84,6 @@ border-radius:5px;
 <div class="container">
 
 <!-- Hashtag Generator -->
-
 <div class="tool">
 <h2>Hashtag Generator</h2>
 <input id="hashtagInput" placeholder="Enter keyword">
@@ -88,8 +93,18 @@ border-radius:5px;
 <div id="hashtagResult" class="result"></div>
 </div>
 
-<!-- YouTube Title -->
+<!-- AdSense annonceblok #2 (midt på siden) -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8036688230923764"
+     data-ad-slot="1234567891"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
+<!-- YouTube Title Generator -->
 <div class="tool">
 <h2>YouTube Title Generator</h2>
 <input id="ytInput" placeholder="Enter topic">
@@ -100,7 +115,6 @@ border-radius:5px;
 </div>
 
 <!-- TikTok Caption -->
-
 <div class="tool">
 <h2>TikTok Caption Generator</h2>
 <input id="ttInput" placeholder="Enter topic">
@@ -111,7 +125,6 @@ border-radius:5px;
 </div>
 
 <!-- Emoji Enhancer -->
-
 <div class="tool">
 <h2>Emoji Enhancer</h2>
 <textarea id="emojiInput" placeholder="Enter text"></textarea>
@@ -122,7 +135,6 @@ border-radius:5px;
 </div>
 
 <!-- Word Counter -->
-
 <div class="tool">
 <h2>Word Counter</h2>
 <textarea id="wordInput"></textarea>
@@ -131,8 +143,18 @@ border-radius:5px;
 <div id="wordResult" class="result"></div>
 </div>
 
-<!-- Image Converter -->
+<!-- AdSense annonceblok #3 (nederst på siden) -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8036688230923764"
+     data-ad-slot="1234567892"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
+<!-- Image Converter -->
 <div class="tool">
 <h2>Image Converter (PNG)</h2>
 <input type="file" id="imageInput">
@@ -145,27 +167,17 @@ border-radius:5px;
 </div>
 
 <script>
-
 function downloadText(id){
-
 let text=document.getElementById(id).innerText;
-
 let blob=new Blob([text],{type:"text/plain"});
-
 let a=document.createElement("a");
-
 a.href=URL.createObjectURL(blob);
-
 a.download="result.txt";
-
 a.click();
-
 }
 
 function generateHashtags(){
-
 let word=document.getElementById("hashtagInput").value;
-
 let tags=[
 "#"+word,
 "#"+word+"tips",
@@ -174,15 +186,11 @@ let tags=[
 "#"+word+"viral",
 "#"+word+"trend"
 ];
-
 document.getElementById("hashtagResult").innerText=tags.join(" ");
-
 }
 
 function generateYT(){
-
 let topic=document.getElementById("ytInput").value;
-
 let titles=[
 "10 Things You Must Know About "+topic,
 "The Truth About "+topic,
@@ -190,15 +198,11 @@ let titles=[
 "Beginner Guide To "+topic,
 "Why Everyone Is Talking About "+topic
 ];
-
 document.getElementById("ytResult").innerText=titles.join("\n");
-
 }
 
 function generateTT(){
-
 let topic=document.getElementById("ttInput").value;
-
 let captions=[
 topic+" but nobody talks about this 👀",
 "You NEED to see this "+topic+" trick 🔥",
@@ -206,77 +210,44 @@ topic+" changed everything 😳",
 "Trying viral "+topic+" trend 🚀",
 topic+" hack that actually works 💡"
 ];
-
 document.getElementById("ttResult").innerText=captions.join("\n");
-
 }
 
 function addEmoji(){
-
 let text=document.getElementById("emojiInput").value;
-
 let emojis=["🔥","🚀","😎","💡","✨"];
-
 let result=text+" "+emojis[Math.floor(Math.random()*emojis.length)];
-
 document.getElementById("emojiResult").innerText=result;
-
 }
 
 function countWords(){
-
 let text=document.getElementById("wordInput").value;
-
 let words=text.trim().split(/\s+/).length;
-
 let chars=text.length;
-
 document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;
-
 }
 
 function convertImage(){
-
 let file=document.getElementById("imageInput").files[0];
-
 let reader=new FileReader();
-
 reader.onload=function(e){
-
 let img=new Image();
-
 img.onload=function(){
-
 let canvas=document.createElement("canvas");
-
 canvas.width=img.width;
-
 canvas.height=img.height;
-
 let ctx=canvas.getContext("2d");
-
 ctx.drawImage(img,0,0);
-
 let url=canvas.toDataURL("image/png");
-
 let link=document.getElementById("downloadImage");
-
 link.href=url;
-
 link.download="converted.png";
-
 link.innerText="Download Image";
-
 };
-
 img.src=e.target.result;
-
 };
-
 reader.readAsDataURL(file);
-
 }
-
 </script>
 
 </body>
