@@ -34,9 +34,15 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
+<!-- AdSense-optimeret tekstblok -->
+<p id="introText">
+Welcome to AI Tools For Creators! Generate hashtags, catchy titles, TikTok captions, emojis, count words, and convert images easily. All tools are free to use and designed to help content creators save time and boost engagement.
+</p>
+
 <div class="container">
 
-<select id="language">
+<!-- Language selector -->
+<select id="language" onchange="updateLanguage()">
 <option value="en">English</option>
 <option value="da">Dansk</option>
 <option value="es">Español</option>
@@ -46,7 +52,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 
 <!-- Hashtag Generator -->
 <div class="tool">
-<h2>Hashtag Generator</h2>
+<h2 id="hashtagTitle">Hashtag Generator</h2>
 <input id="hashtagInput" placeholder="Enter keyword"><br>
 <button onclick="generateHashtags()">Generate</button>
 <button onclick="downloadText('hashtagResult')">Download</button>
@@ -64,7 +70,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 
 <!-- YouTube Title Generator -->
 <div class="tool">
-<h2>YouTube Title Generator</h2>
+<h2 id="ytTitle">YouTube Title Generator</h2>
 <input id="ytInput" placeholder="Enter topic"><br>
 <button onclick="generateYT()">Generate</button>
 <button onclick="downloadText('ytResult')">Download</button>
@@ -73,7 +79,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 
 <!-- TikTok Caption -->
 <div class="tool">
-<h2>TikTok Caption Generator</h2>
+<h2 id="ttTitle">TikTok Caption Generator</h2>
 <input id="ttInput" placeholder="Enter topic"><br>
 <button onclick="generateTT()">Generate</button>
 <button onclick="downloadText('ttResult')">Download</button>
@@ -82,7 +88,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 
 <!-- Emoji Enhancer -->
 <div class="tool">
-<h2>Emoji Enhancer</h2>
+<h2 id="emojiTitle">Emoji Enhancer</h2>
 <textarea id="emojiInput" placeholder="Enter text"></textarea><br>
 <button onclick="addEmoji()">Enhance</button>
 <button onclick="downloadText('emojiResult')">Download</button>
@@ -91,7 +97,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 
 <!-- Word Counter -->
 <div class="tool">
-<h2>Word Counter</h2>
+<h2 id="wordTitle">Word Counter</h2>
 <textarea id="wordInput"></textarea><br>
 <button onclick="countWords()">Count</button>
 <div id="wordResult" class="result"></div>
@@ -99,7 +105,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 
 <!-- Image Converter -->
 <div class="tool">
-<h2>Image Converter (PNG)</h2>
+<h2 id="imageTitle">Image Converter (PNG)</h2>
 <input type="file" id="imageInput"><br>
 <button onclick="convertImage()">Convert</button><br><br>
 <a id="downloadImage"></a>
@@ -123,6 +129,66 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 </footer>
 
 <script>
+// Multilingual content
+const langTexts = {
+'en': {
+  intro: "Welcome to AI Tools For Creators! Generate hashtags, catchy titles, TikTok captions, emojis, count words, and convert images easily. All tools are free to use and designed to help content creators save time and boost engagement.",
+  hashtagTitle: "Hashtag Generator",
+  ytTitle: "YouTube Title Generator",
+  ttTitle: "TikTok Caption Generator",
+  emojiTitle: "Emoji Enhancer",
+  wordTitle: "Word Counter",
+  imageTitle: "Image Converter (PNG)"
+},
+'da': {
+  intro: "Velkommen til AI-værktøjer for skabere! Generer hashtags, fængende titler, TikTok-tekster, emojis, tæl ord og konverter billeder nemt. Alle værktøjer er gratis og designet til at hjælpe indholdsskabere med at spare tid og øge engagement.",
+  hashtagTitle: "Hashtag-generator",
+  ytTitle: "YouTube-titelgenerator",
+  ttTitle: "TikTok-tekstgenerator",
+  emojiTitle: "Emoji-forstærker",
+  wordTitle: "Ordoptæller",
+  imageTitle: "Billedkonverter (PNG)"
+},
+'es': {
+  intro: "¡Bienvenido a Herramientas de IA para Creadores! Genera hashtags, títulos llamativos, captions de TikTok, emojis, cuenta palabras y convierte imágenes fácilmente. Todas las herramientas son gratuitas y diseñadas para ayudar a los creadores de contenido a ahorrar tiempo y aumentar el engagement.",
+  hashtagTitle: "Generador de Hashtags",
+  ytTitle: "Generador de Títulos de YouTube",
+  ttTitle: "Generador de Captions de TikTok",
+  emojiTitle: "Mejorador de Emojis",
+  wordTitle: "Contador de Palabras",
+  imageTitle: "Convertidor de Imágenes (PNG)"
+},
+'de': {
+  intro: "Willkommen bei AI Tools für Creator! Generiere Hashtags, auffällige Titel, TikTok-Untertitel, Emojis, zähle Wörter und konvertiere Bilder einfach. Alle Tools sind kostenlos und helfen Content-Erstellern, Zeit zu sparen und Engagement zu steigern.",
+  hashtagTitle: "Hashtag-Generator",
+  ytTitle: "YouTube-Titelgenerator",
+  ttTitle: "TikTok-Caption-Generator",
+  emojiTitle: "Emoji-Enhancer",
+  wordTitle: "Wortzähler",
+  imageTitle: "Bildkonverter (PNG)"
+},
+'fr': {
+  intro: "Bienvenue sur AI Tools For Creators ! Générez des hashtags, titres accrocheurs, captions TikTok, emojis, comptez les mots et convertissez des images facilement. Tous les outils sont gratuits et conçus pour aider les créateurs de contenu à gagner du temps et augmenter l'engagement.",
+  hashtagTitle: "Générateur de Hashtags",
+  ytTitle: "Générateur de Titres YouTube",
+  ttTitle: "Générateur de Captions TikTok",
+  emojiTitle: "Améliorateur d'Emojis",
+  wordTitle: "Compteur de Mots",
+  imageTitle: "Convertisseur d'Images (PNG)"
+}
+};
+
+function updateLanguage(){
+  const lang = document.getElementById('language').value;
+  document.getElementById('introText').innerText = langTexts[lang].intro;
+  document.getElementById('hashtagTitle').innerText = langTexts[lang].hashtagTitle;
+  document.getElementById('ytTitle').innerText = langTexts[lang].ytTitle;
+  document.getElementById('ttTitle').innerText = langTexts[lang].ttTitle;
+  document.getElementById('emojiTitle').innerText = langTexts[lang].emojiTitle;
+  document.getElementById('wordTitle').innerText = langTexts[lang].wordTitle;
+  document.getElementById('imageTitle').innerText = langTexts[lang].imageTitle;
+}
+
 // Download text
 function downloadText(id){
     let text=document.getElementById(id).innerText;
@@ -213,12 +279,59 @@ function convertImage(){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About - AI Tools For Creators</title>
-<style>body{background:#111;color:white;font-family:Arial;padding:20px;}a{color:#00c3ff;text-decoration:none;}</style>
+<style>
+body{background:#111;color:white;font-family:Arial;padding:20px;}
+a{color:#00c3ff;text-decoration:none;}
+</style>
 </head>
 <body>
-<h1>About AI Tools For Creators</h1>
-<p>This site helps content creators generate hashtags, titles, captions, emojis, and more with simple AI tools. Everything is free to use!</p>
+
+<h1 id="aboutTitle">About AI Tools For Creators</h1>
+<p id="aboutText">
+This site helps content creators generate hashtags, titles, captions, emojis, count words, and convert images easily. Everything is free to use!
+</p>
+
+<select id="language" onchange="updateLanguage()">
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
+
 <p><a href="index.html">Back to Home</a></p>
+
+<script>
+const langTexts = {
+'en': {
+  aboutTitle: "About AI Tools For Creators",
+  aboutText: "This site helps content creators generate hashtags, titles, captions, emojis, count words, and convert images easily. Everything is free to use!"
+},
+'da': {
+  aboutTitle: "Om AI-værktøjer for skabere",
+  aboutText: "Dette site hjælper indholdsskabere med at generere hashtags, titler, captions, emojis, tælle ord og konvertere billeder nemt. Alt er gratis at bruge!"
+},
+'es': {
+  aboutTitle: "Acerca de Herramientas de IA para Creadores",
+  aboutText: "Este sitio ayuda a los creadores de contenido a generar hashtags, títulos, captions, emojis, contar palabras y convertir imágenes fácilmente. ¡Todo es gratis!"
+},
+'de': {
+  aboutTitle: "Über AI Tools für Creator",
+  aboutText: "Diese Seite hilft Content-Erstellern, Hashtags, Titel, Captions, Emojis zu generieren, Wörter zu zählen und Bilder einfach zu konvertieren. Alles kostenlos!"
+},
+'fr': {
+  aboutTitle: "À propos de AI Tools For Creators",
+  aboutText: "Ce site aide les créateurs de contenu à générer des hashtags, titres, captions, emojis, compter les mots et convertir des images facilement. Tout est gratuit !"
+}
+};
+
+function updateLanguage(){
+  const lang = document.getElementById('language').value;
+  document.getElementById('aboutTitle').innerText = langTexts[lang].aboutTitle;
+  document.getElementById('aboutText').innerText = langTexts[lang].aboutText;
+}
+</script>
+
 </body>
 </html><!DOCTYPE html>
 <html lang="en">
@@ -226,12 +339,59 @@ function convertImage(){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy - AI Tools For Creators</title>
-<style>body{background:#111;color:white;font-family:Arial;padding:20px;}a{color:#00c3ff;text-decoration:none;}</style>
+<style>
+body{background:#111;color:white;font-family:Arial;padding:20px;}
+a{color:#00c3ff;text-decoration:none;}
+</style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<p>We do not collect personal data. Google AdSense may use cookies for anonymized ads analytics.</p>
+
+<h1 id="privacyTitle">Privacy Policy</h1>
+<p id="privacyText">
+We do not collect personal data. Google AdSense may use cookies for anonymized ads analytics.
+</p>
+
+<select id="language" onchange="updateLanguage()">
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
+
 <p><a href="index.html">Back to Home</a></p>
+
+<script>
+const langTexts = {
+'en': {
+  privacyTitle: "Privacy Policy",
+  privacyText: "We do not collect personal data. Google AdSense may use cookies for anonymized ads analytics."
+},
+'da': {
+  privacyTitle: "Privatlivspolitik",
+  privacyText: "Vi indsamler ikke personlige data. Google AdSense kan bruge cookies til anonymiseret annonceanalyse."
+},
+'es': {
+  privacyTitle: "Política de Privacidad",
+  privacyText: "No recopilamos datos personales. Google AdSense puede usar cookies para análisis de anuncios anonimizados."
+},
+'de': {
+  privacyTitle: "Datenschutzrichtlinie",
+  privacyText: "Wir sammeln keine persönlichen Daten. Google AdSense kann Cookies für anonymisierte Anzeigenanalysen verwenden."
+},
+'fr': {
+  privacyTitle: "Politique de confidentialité",
+  privacyText: "Nous ne collectons pas de données personnelles. Google AdSense peut utiliser des cookies pour des analyses d'annonces anonymisées."
+}
+};
+
+function updateLanguage(){
+  const lang = document.getElementById('language').value;
+  document.getElementById('privacyTitle').innerText = langTexts[lang].privacyTitle;
+  document.getElementById('privacyText').innerText = langTexts[lang].privacyText;
+}
+</script>
+
 </body>
 </html><!DOCTYPE html>
 <html lang="en">
@@ -239,11 +399,88 @@ function convertImage(){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guide - AI Tools For Creators</title>
-<style>body{background:#111;color:white;font-family:Arial;padding:20px;}a{color:#00c3ff;text-decoration:none;}</style>
+<style>
+body{background:#111;color:white;font-family:Arial;padding:20px;}
+a{color:#00c3ff;text-decoration:none;}
+</style>
 </head>
 <body>
-<h1>Guide</h1>
-<p>Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis.</p>
+
+<h1 id="guideTitle">Guide</h1>
+<p id="guideText">
+Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis.
+</p>
+
+<select id="language" onchange="updateLanguage()">
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
+
 <p><a href="index.html">Back to Home</a></p>
+
+<script>
+const langTexts = {
+'en': { guideTitle: "Guide", guideText: "Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis." },
+'da': { guideTitle: "Guide", guideText: "Brug værktøjerne til at forbedre dit indhold: generer hashtags, fængende titler, captions og forbedr opslag med emojis." },
+'es': { guideTitle: "Guía", guideText: "Usa las herramientas para mejorar tu contenido: genera hashtags, títulos llamativos, captions y mejora tus publicaciones con emojis." },
+'de': { guideTitle: "Anleitung", guideText: "Verwende die Tools, um deine Inhalte zu verbessern: Hashtags, auffällige Titel, Captions generieren und Beiträge mit Emojis aufwerten." },
+'fr': { guideTitle: "Guide", guideText: "Utilisez les outils pour améliorer votre contenu : générez des hashtags, titres accrocheurs, captions et améliorez vos posts avec des emojis." }
+};
+
+function updateLanguage(){
+  const lang = document.getElementById('language').value;
+  document.getElementById('guideTitle').innerText = langTexts[lang].guideTitle;
+  document.getElementById('guideText').innerText = langTexts[lang].guideText;
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide - AI Tools For Creators</title>
+<style>
+body{background:#111;color:white;font-family:Arial;padding:20px;}
+a{color:#00c3ff;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<h1 id="guideTitle">Guide</h1>
+<p id="guideText">
+Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis.
+</p>
+
+<select id="language" onchange="updateLanguage()">
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
+
+<p><a href="index.html">Back to Home</a></p>
+
+<script>
+const langTexts = {
+'en': { guideTitle: "Guide", guideText: "Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis." },
+'da': { guideTitle: "Guide", guideText: "Brug værktøjerne til at forbedre dit indhold: generer hashtags, fængende titler, captions og forbedr opslag med emojis." },
+'es': { guideTitle: "Guía", guideText: "Usa las herramientas para mejorar tu contenido: genera hashtags, títulos llamativos, captions y mejora tus publicaciones con emojis." },
+'de': { guideTitle: "Anleitung", guideText: "Verwende die Tools, um deine Inhalte zu verbessern: Hashtags, auffällige Titel, Captions generieren und Beiträge mit Emojis aufwerten." },
+'fr': { guideTitle: "Guide", guideText: "Utilisez les outils pour améliorer votre contenu : générez des hashtags, titres accrocheurs, captions et améliorez vos posts avec des emojis." }
+};
+
+function updateLanguage(){
+  const lang = document.getElementById('language').value;
+  document.getElementById('guideTitle').innerText = langTexts[lang].guideTitle;
+  document.getElementById('guideText').innerText = langTexts[lang].guideText;
+}
+</script>
+
 </body>
 </html>
