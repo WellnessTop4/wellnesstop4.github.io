@@ -209,42 +209,16 @@ function convertImage(){let file=document.getElementById("imageInput").files[0];
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Tools For Creators</title>
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
-crossorigin="anonymous"></script>
-
+<title>About - AI Tools For Creators</title>
 <style>
-body{font-family:Arial;background:#111;color:white;text-align:center;padding:20px;margin:0;}
-h1{margin-bottom:10px;}
-.container{max-width:800px;margin:auto;}
-.tool{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
-input,textarea,select{width:90%;padding:10px;margin:10px;border-radius:5px;border:none;}
-button{padding:10px 20px;margin:5px;border:none;border-radius:5px;background:#00c3ff;color:white;cursor:pointer;}
-button:hover{background:#0099cc;}
-.result{margin-top:10px;background:#000;padding:10px;border-radius:5px;}
-footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
+body{background:#111;color:white;font-family:Arial;padding:20px;margin:0;}
+a{color:#00c3ff;text-decoration:none;}
+select{padding:5px;margin:10px;}
 </style>
 </head>
 <body>
 
-<h1>AI Tools For Creators</h1>
-
-<!-- AdSense top -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1234567890"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-<p id="introText">
-Welcome to AI Tools For Creators! Generate hashtags, catchy titles, TikTok captions, emojis, count words, and convert images easily. All tools are free to use and designed to help content creators save time and boost engagement.
-</p>
-
-<div class="container">
+<h1 id="aboutTitle">About AI Tools For Creators</h1>
 
 <select id="language" onchange="updateLanguage()">
 <option value="en">English</option>
@@ -254,159 +228,27 @@ Welcome to AI Tools For Creators! Generate hashtags, catchy titles, TikTok capti
 <option value="fr">Français</option>
 </select>
 
-<!-- Hashtag Generator -->
-<div class="tool">
-<h2 id="hashtagTitle">Hashtag Generator</h2>
-<input id="hashtagInput" placeholder="Enter keyword"><br>
-<button id="hashtagButton" onclick="generateHashtags()">Generate</button>
-<button onclick="downloadText('hashtagResult')">Download</button>
-<div id="hashtagResult" class="result"></div>
-</div>
+<p id="aboutText">
+This site helps content creators generate hashtags, titles, captions, emojis, count words, and convert images easily. Everything is free to use!
+</p>
 
-<!-- YouTube Title Generator -->
-<div class="tool">
-<h2 id="ytTitle">YouTube Title Generator</h2>
-<input id="ytInput" placeholder="Enter topic"><br>
-<button id="ytButton" onclick="generateYT()">Generate</button>
-<button onclick="downloadText('ytResult')">Download</button>
-<div id="ytResult" class="result"></div>
-</div>
-
-<!-- TikTok Caption -->
-<div class="tool">
-<h2 id="ttTitle">TikTok Caption Generator</h2>
-<input id="ttInput" placeholder="Enter topic"><br>
-<button id="ttButton" onclick="generateTT()">Generate</button>
-<button onclick="downloadText('ttResult')">Download</button>
-<div id="ttResult" class="result"></div>
-</div>
-
-<!-- Emoji Enhancer -->
-<div class="tool">
-<h2 id="emojiTitle">Emoji Enhancer</h2>
-<textarea id="emojiInput" placeholder="Enter text"></textarea><br>
-<button id="emojiButton" onclick="addEmoji()">Enhance</button>
-<button onclick="downloadText('emojiResult')">Download</button>
-<div id="emojiResult" class="result"></div>
-</div>
-
-<!-- Word Counter -->
-<div class="tool">
-<h2 id="wordTitle">Word Counter</h2>
-<textarea id="wordInput"></textarea><br>
-<button onclick="countWords()">Count</button>
-<div id="wordResult" class="result"></div>
-</div>
-
-<!-- Image Converter -->
-<div class="tool">
-<h2 id="imageTitle">Image Converter (PNG)</h2>
-<input type="file" id="imageInput"><br>
-<button onclick="convertImage()">Convert</button><br><br>
-<a id="downloadImage"></a>
-</div>
-
-<!-- AdSense bottom -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1234567892"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-</div>
-
-<footer>
-<a href="about.html">About</a> | 
-<a href="privacy.html">Privacy Policy</a> | 
-<a href="guide.html">Guide</a>
-</footer>
+<p><a href="index.html">Back to Home</a></p>
 
 <script>
-// Multilingual text for all elements
 const langTexts = {
-'en': {
-intro: "Welcome to AI Tools For Creators! Generate hashtags, catchy titles, TikTok captions, emojis, count words, and convert images easily. All tools are free to use and designed to help content creators save time and boost engagement.",
-hashtagTitle: "Hashtag Generator", hashtagPlaceholder: "Enter keyword", hashtagButton: "Generate",
-ytTitle: "YouTube Title Generator", ytPlaceholder: "Enter topic", ytButton: "Generate",
-ttTitle: "TikTok Caption Generator", ttPlaceholder: "Enter topic", ttButton: "Generate",
-emojiTitle: "Emoji Enhancer", emojiPlaceholder: "Enter text", emojiButton: "Enhance",
-wordTitle: "Word Counter",
-imageTitle: "Image Converter (PNG)"
-},
-'da': {
-intro: "Velkommen til AI-værktøjer for skabere! Generer hashtags, fængende titler, TikTok-tekster, emojis, tæl ord og konverter billeder nemt. Alle værktøjer er gratis og designet til at hjælpe indholdsskabere med at spare tid og øge engagement.",
-hashtagTitle: "Hashtag-generator", hashtagPlaceholder: "Indtast søgeord", hashtagButton: "Generer",
-ytTitle: "YouTube-titelgenerator", ytPlaceholder: "Indtast emne", ytButton: "Generer",
-ttTitle: "TikTok-tekstgenerator", ttPlaceholder: "Indtast emne", ttButton: "Generer",
-emojiTitle: "Emoji-forstærker", emojiPlaceholder: "Indtast tekst", emojiButton: "Forstærk",
-wordTitle: "Ordoptæller",
-imageTitle: "Billedkonverter (PNG)"
-},
-'es': {
-intro: "¡Bienvenido a Herramientas de IA para Creadores! Genera hashtags, títulos llamativos, captions de TikTok, emojis, cuenta palabras y convierte imágenes fácilmente. Todas las herramientas son gratuitas y diseñadas para ayudar a los creadores de contenido a ahorrar tiempo y aumentar el engagement.",
-hashtagTitle: "Generador de Hashtags", hashtagPlaceholder: "Ingresa palabra clave", hashtagButton: "Generar",
-ytTitle: "Generador de Títulos de YouTube", ytPlaceholder: "Ingresa tema", ytButton: "Generar",
-ttTitle: "Generador de Captions de TikTok", ttPlaceholder: "Ingresa tema", ttButton: "Generar",
-emojiTitle: "Mejorador de Emojis", emojiPlaceholder: "Ingresa texto", emojiButton: "Mejorar",
-wordTitle: "Contador de Palabras",
-imageTitle: "Convertidor de Imágenes (PNG)"
-},
-'de': {
-intro: "Willkommen bei AI Tools für Creator! Generiere Hashtags, auffällige Titel, TikTok-Untertitel, Emojis, zähle Wörter und konvertiere Bilder einfach. Alle Tools sind kostenlos und helfen Content-Erstellern, Zeit zu sparen und Engagement zu steigern.",
-hashtagTitle: "Hashtag-Generator", hashtagPlaceholder: "Schlüsselwort eingeben", hashtagButton: "Generieren",
-ytTitle: "YouTube-Titelgenerator", ytPlaceholder: "Thema eingeben", ytButton: "Generieren",
-ttTitle: "TikTok-Caption-Generator", ttPlaceholder: "Thema eingeben", ttButton: "Generieren",
-emojiTitle: "Emoji-Enhancer", emojiPlaceholder: "Text eingeben", emojiButton: "Verbessern",
-wordTitle: "Wortzähler",
-imageTitle: "Bildkonverter (PNG)"
-},
-'fr': {
-intro: "Bienvenue sur AI Tools For Creators ! Générez des hashtags, titres accrocheurs, captions TikTok, emojis, comptez les mots et convertissez des images facilement. Tous les outils sont gratuits et conçus pour aider les créateurs de contenu à gagner du temps et augmenter l'engagement.",
-hashtagTitle: "Générateur de Hashtags", hashtagPlaceholder: "Entrez un mot-clé", hashtagButton: "Générer",
-ytTitle: "Générateur de Titres YouTube", ytPlaceholder: "Entrez un sujet", ytButton: "Générer",
-ttTitle: "Générateur de Captions TikTok", ttPlaceholder: "Entrez un sujet", ttButton: "Générer",
-emojiTitle: "Améliorateur d'Emojis", emojiPlaceholder: "Entrez du texte", emojiButton: "Améliorer",
-wordTitle: "Compteur de Mots",
-imageTitle: "Convertisseur d'Images (PNG)"
-}
+'en': {aboutTitle:"About AI Tools For Creators", aboutText:"This site helps content creators generate hashtags, titles, captions, emojis, count words, and convert images easily. Everything is free to use!"},
+'da': {aboutTitle:"Om AI-værktøjer for skabere", aboutText:"Denne side hjælper indholdsskabere med at generere hashtags, titler, captions, emojis, tælle ord og konvertere billeder nemt. Alt er gratis!"},
+'es': {aboutTitle:"Acerca de Herramientas de IA para Creadores", aboutText:"Este sitio ayuda a los creadores de contenido a generar hashtags, títulos, captions, emojis, contar palabras y convertir imágenes fácilmente. Todo es gratuito!"},
+'de': {aboutTitle:"Über AI Tools für Creator", aboutText:"Diese Seite hilft Content-Erstellern, Hashtags, Titel, Captions, Emojis zu generieren, Wörter zu zählen und Bilder einfach zu konvertieren. Alles kostenlos!"},
+'fr': {aboutTitle:"À propos de AI Tools For Creators", aboutText:"Ce site aide les créateurs de contenu à générer des hashtags, titres, captions, emojis, compter les mots et convertir des images facilement. Tout est gratuit!"}
 };
 
 function updateLanguage(){
   const lang = document.getElementById('language').value;
   const texts = langTexts[lang];
-  
-  // Overskrifter
-  document.getElementById('introText').innerText = texts.intro;
-  document.getElementById('hashtagTitle').innerText = texts.hashtagTitle;
-  document.getElementById('ytTitle').innerText = texts.ytTitle;
-  document.getElementById('ttTitle').innerText = texts.ttTitle;
-  document.getElementById('emojiTitle').innerText = texts.emojiTitle;
-  document.getElementById('wordTitle').innerText = texts.wordTitle;
-  document.getElementById('imageTitle').innerText = texts.imageTitle;
-
-  // Placeholders
-  document.getElementById('hashtagInput').placeholder = texts.hashtagPlaceholder;
-  document.getElementById('ytInput').placeholder = texts.ytPlaceholder;
-  document.getElementById('ttInput').placeholder = texts.ttPlaceholder;
-  document.getElementById('emojiInput').placeholder = texts.emojiPlaceholder;
-
-  // Knapper
-  document.getElementById('hashtagButton').innerText = texts.hashtagButton;
-  document.getElementById('ytButton').innerText = texts.ytButton;
-  document.getElementById('ttButton').innerText = texts.ttButton;
-  document.getElementById('emojiButton').innerText = texts.emojiButton;
+  document.getElementById('aboutTitle').innerText = texts.aboutTitle;
+  document.getElementById('aboutText').innerText = texts.aboutText;
 }
-
-// --- Værktøjsfunktioner ---
-function downloadText(id){let text=document.getElementById(id).innerText;let blob=new Blob([text],{type:"text/plain"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="result.txt";a.click();}
-function generateHashtags(){let word=document.getElementById("hashtagInput").value;let tags=["#"+word,"#"+word+"tips","#"+word+"creator","#"+word+"content","#"+word+"viral","#"+word+"trend"];document.getElementById("hashtagResult").innerText=tags.join(" ");}
-function generateYT(){let topic=document.getElementById("ytInput").value;let titles=["10 Things You Must Know About "+topic,"The Truth About "+topic,"How "+topic+" Can Change Your Life","Beginner Guide To "+topic,"Why Everyone Is Talking About "+topic];document.getElementById("ytResult").innerText=titles.join("\n");}
-function generateTT(){let topic=document.getElementById("ttInput").value;let captions=[topic+" but nobody talks about this 👀","You NEED to see this "+topic+" trick 🔥",topic+" changed everything 😳","Trying viral "+topic+" trend 🚀",topic+" hack that actually works 💡"];document.getElementById("ttResult").innerText=captions.join("\n");}
-function addEmoji(){let text=document.getElementById("emojiInput").value;let emojis=["🔥","🚀","😎","💡","✨"];let result=text+" "+emojis[Math.floor(Math.random()*emojis.length)];document.getElementById("emojiResult").innerText=result;}
-function countWords(){let text=document.getElementById("wordInput").value;let words=text.trim().split(/\s+/).length;let chars=text.length;document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;}
-function convertImage(){let file=document.getElementById("imageInput").files[0];let reader=new FileReader();reader.onload=function(e){let img=new Image();img.onload=function(){let canvas=document.createElement("canvas");canvas.width=img.width;canvas.height=img.height;let ctx=canvas.getContext("2d");ctx.drawImage(img,0,0);let url=canvas.toDataURL("image/png");let link=document.getElementById("downloadImage");link.href=url;link.download="converted.png";link.innerText="Download Image";};img.src=e.target.result;};reader.readAsDataURL(file);}
 </script>
 
 </body>
@@ -454,102 +296,6 @@ function updateLanguage(){
   const texts = langTexts[lang];
   document.getElementById('privacyTitle').innerText = texts.privacyTitle;
   document.getElementById('privacyText').innerText = texts.privacyText;
-}
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guide - AI Tools For Creators</title>
-<style>
-body{background:#111;color:white;font-family:Arial;padding:20px;margin:0;}
-a{color:#00c3ff;text-decoration:none;}
-select{padding:5px;margin:10px;}
-</style>
-</head>
-<body>
-
-<h1 id="guideTitle">Guide</h1>
-
-<select id="language" onchange="updateLanguage()">
-<option value="en">English</option>
-<option value="da">Dansk</option>
-<option value="es">Español</option>
-<option value="de">Deutsch</option>
-<option value="fr">Français</option>
-</select>
-
-<p id="guideText">
-Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis.
-</p>
-
-<p><a href="index.html">Back to Home</a></p>
-
-<script>
-const langTexts = {
-'en': {guideTitle:"Guide", guideText:"Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis."},
-'da': {guideTitle:"Guide", guideText:"Brug værktøjerne til at forbedre dit indhold: generer hashtags, fængende titler, captions og forbedr opslag med emojis."},
-'es': {guideTitle:"Guía", guideText:"Usa las herramientas para mejorar tu contenido: genera hashtags, títulos llamativos, captions y mejora publicaciones con emojis."},
-'de': {guideTitle:"Anleitung", guideText:"Verwenden Sie die Tools, um Ihre Inhalte zu verbessern: Generieren Sie Hashtags, auffällige Titel, Captions und verbessern Sie Beiträge mit Emojis."},
-'fr': {guideTitle:"Guide", guideText:"Utilisez les outils pour améliorer votre contenu : générez des hashtags, titres accrocheurs, captions et améliorez vos publications avec des emojis."}
-};
-
-function updateLanguage(){
-  const lang = document.getElementById('language').value;
-  const texts = langTexts[lang];
-  document.getElementById('guideTitle').innerText = texts.guideTitle;
-  document.getElementById('guideText').innerText = texts.guideText;
-}
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guide - AI Tools For Creators</title>
-<style>
-body{background:#111;color:white;font-family:Arial;padding:20px;margin:0;}
-a{color:#00c3ff;text-decoration:none;}
-select{padding:5px;margin:10px;}
-</style>
-</head>
-<body>
-
-<h1 id="guideTitle">Guide</h1>
-
-<select id="language" onchange="updateLanguage()">
-<option value="en">English</option>
-<option value="da">Dansk</option>
-<option value="es">Español</option>
-<option value="de">Deutsch</option>
-<option value="fr">Français</option>
-</select>
-
-<p id="guideText">
-Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis.
-</p>
-
-<p><a href="index.html">Back to Home</a></p>
-
-<script>
-const langTexts = {
-'en': {guideTitle:"Guide", guideText:"Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis."},
-'da': {guideTitle:"Guide", guideText:"Brug værktøjerne til at forbedre dit indhold: generer hashtags, fængende titler, captions og forbedr opslag med emojis."},
-'es': {guideTitle:"Guía", guideText:"Usa las herramientas para mejorar tu contenido: genera hashtags, títulos llamativos, captions y mejora publicaciones con emojis."},
-'de': {guideTitle:"Anleitung", guideText:"Verwenden Sie die Tools, um Ihre Inhalte zu verbessern: Generieren Sie Hashtags, auffällige Titel, Captions und verbessern Sie Beiträge mit Emojis."},
-'fr': {guideTitle:"Guide", guideText:"Utilisez les outils pour améliorer votre contenu : générez des hashtags, titres accrocheurs, captions et améliorez vos publications avec des emojis."}
-};
-
-function updateLanguage(){
-  const lang = document.getElementById('language').value;
-  const texts = langTexts[lang];
-  document.getElementById('guideTitle').innerText = texts.guideTitle;
-  document.getElementById('guideText').innerText = texts.guideText;
 }
 </script>
 
