@@ -5,18 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Tools For Creators</title>
 
-<!-- Google AdSense script -->
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
-     crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 
 <style>
-body{
-    font-family:Arial;
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
+body{font-family:Arial;background:#111;color:white;text-align:center;padding:20px;margin:0;}
 h1{margin-bottom:10px;}
 .container{max-width:800px;margin:auto;}
 .tool{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
@@ -24,15 +18,19 @@ input,textarea,select{width:90%;padding:10px;margin:10px;border-radius:5px;borde
 button{padding:10px 20px;margin:5px;border:none;border-radius:5px;background:#00c3ff;color:white;cursor:pointer;}
 button:hover{background:#0099cc;}
 .result{margin-top:10px;background:#000;padding:10px;border-radius:5px;}
-footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
+footer a{color:#00c3ff;margin:0 5px;text-decoration:none;cursor:pointer;}
+section{display:none;}
+section.active{display:block;}
+.nav{margin-bottom:20px;}
+.nav button{background:#222;color:white;margin:5px;padding:10px;border-radius:5px;border:none;cursor:pointer;}
+.nav button:hover{background:#00c3ff;}
 </style>
 </head>
-
 <body>
 
 <h1>AI Tools For Creators</h1>
 
-<!-- AdSense annonceblok #1 -->
+<!-- AdSense top -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
@@ -40,6 +38,18 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div class="nav">
+<button onclick="showSection('tools')">Tools</button>
+<button onclick="showSection('about')">About</button>
+<button onclick="showSection('privacy')">Privacy Policy</button>
+<button onclick="showSection('guide')">Guide</button>
+</div>
+
+<div class="container">
+
+<!-- Tools Section -->
+<section id="tools" class="active">
 
 <select id="language">
 <option value="en">English</option>
@@ -49,19 +59,14 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 <option value="fr">Français</option>
 </select>
 
-<div class="container">
-
-<!-- Hashtag Generator -->
 <div class="tool">
 <h2>Hashtag Generator</h2>
-<input id="hashtagInput" placeholder="Enter keyword">
-<br>
+<input id="hashtagInput" placeholder="Enter keyword"><br>
 <button onclick="generateHashtags()">Generate</button>
 <button onclick="downloadText('hashtagResult')">Download</button>
 <div id="hashtagResult" class="result"></div>
 </div>
 
-<!-- AdSense annonceblok #2 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
@@ -70,56 +75,44 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- YouTube Title Generator -->
 <div class="tool">
 <h2>YouTube Title Generator</h2>
-<input id="ytInput" placeholder="Enter topic">
-<br>
+<input id="ytInput" placeholder="Enter topic"><br>
 <button onclick="generateYT()">Generate</button>
 <button onclick="downloadText('ytResult')">Download</button>
 <div id="ytResult" class="result"></div>
 </div>
 
-<!-- TikTok Caption -->
 <div class="tool">
 <h2>TikTok Caption Generator</h2>
-<input id="ttInput" placeholder="Enter topic">
-<br>
+<input id="ttInput" placeholder="Enter topic"><br>
 <button onclick="generateTT()">Generate</button>
 <button onclick="downloadText('ttResult')">Download</button>
 <div id="ttResult" class="result"></div>
 </div>
 
-<!-- Emoji Enhancer -->
 <div class="tool">
 <h2>Emoji Enhancer</h2>
-<textarea id="emojiInput" placeholder="Enter text"></textarea>
-<br>
+<textarea id="emojiInput" placeholder="Enter text"></textarea><br>
 <button onclick="addEmoji()">Enhance</button>
 <button onclick="downloadText('emojiResult')">Download</button>
 <div id="emojiResult" class="result"></div>
 </div>
 
-<!-- Word Counter -->
 <div class="tool">
 <h2>Word Counter</h2>
-<textarea id="wordInput"></textarea>
-<br>
+<textarea id="wordInput"></textarea><br>
 <button onclick="countWords()">Count</button>
 <div id="wordResult" class="result"></div>
 </div>
 
-<!-- Image Converter -->
 <div class="tool">
 <h2>Image Converter (PNG)</h2>
-<input type="file" id="imageInput">
-<br>
-<button onclick="convertImage()">Convert</button>
-<br><br>
+<input type="file" id="imageInput"><br>
+<button onclick="convertImage()">Convert</button><br><br>
 <a id="downloadImage"></a>
 </div>
 
-<!-- AdSense annonceblok #3 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
@@ -128,17 +121,35 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
+</section>
+
+<!-- About Section -->
+<section id="about">
+<h2>About AI Tools For Creators</h2>
+<p>This site helps content creators generate hashtags, titles, captions, emojis, and more with simple AI tools. Everything is free to use!</p>
+</section>
+
+<!-- Privacy Section -->
+<section id="privacy">
+<h2>Privacy Policy</h2>
+<p>We do not collect personal data. Google AdSense may use cookies for anonymized ads analytics.</p>
+</section>
+
+<!-- Guide Section -->
+<section id="guide">
+<h2>Guide</h2>
+<p>Use the tools to boost your content: generate hashtags, catchy titles, captions, and enhance posts with emojis.</p>
+</section>
+
 </div>
 
-<footer>
-<p>
-<a href="about.html">About</a> | 
-<a href="privacy.html">Privacy Policy</a> | 
-<a href="guide.html">Guide</a>
-</p>
-</footer>
-
 <script>
+// Section navigation
+function showSection(id){
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
 // Download text
 function downloadText(id){
     let text=document.getElementById(id).innerText;
