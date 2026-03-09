@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI Tools For Creators</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools For Creators</title>
 
 <!-- Google AdSense script -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
@@ -11,50 +11,20 @@
 
 <style>
 body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-padding:20px;
+    font-family:Arial;
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
-h1{
-margin-bottom:10px;
-}
-.container{
-max-width:800px;
-margin:auto;
-}
-.tool{
-background:#1e1e1e;
-padding:20px;
-margin:20px 0;
-border-radius:10px;
-}
-input,textarea,select{
-width:90%;
-padding:10px;
-margin:10px;
-border-radius:5px;
-border:none;
-}
-button{
-padding:10px 20px;
-margin:5px;
-border:none;
-border-radius:5px;
-background:#00c3ff;
-color:white;
-cursor:pointer;
-}
-button:hover{
-background:#0099cc;
-}
-.result{
-margin-top:10px;
-background:#000;
-padding:10px;
-border-radius:5px;
-}
+h1{margin-bottom:10px;}
+.container{max-width:800px;margin:auto;}
+.tool{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
+input,textarea,select{width:90%;padding:10px;margin:10px;border-radius:5px;border:none;}
+button{padding:10px 20px;margin:5px;border:none;border-radius:5px;background:#00c3ff;color:white;cursor:pointer;}
+button:hover{background:#0099cc;}
+.result{margin-top:10px;background:#000;padding:10px;border-radius:5px;}
+footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 </style>
 </head>
 
@@ -62,16 +32,14 @@ border-radius:5px;
 
 <h1>AI Tools For Creators</h1>
 
-<!-- AdSense annonceblok #1 (øverst på siden) -->
+<!-- AdSense annonceblok #1 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
      data-ad-slot="1234567890"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <select id="language">
 <option value="en">English</option>
@@ -93,16 +61,14 @@ border-radius:5px;
 <div id="hashtagResult" class="result"></div>
 </div>
 
-<!-- AdSense annonceblok #2 (midt på siden) -->
+<!-- AdSense annonceblok #2 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
      data-ad-slot="1234567891"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <!-- YouTube Title Generator -->
 <div class="tool">
@@ -143,17 +109,6 @@ border-radius:5px;
 <div id="wordResult" class="result"></div>
 </div>
 
-<!-- AdSense annonceblok #3 (nederst på siden) -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1234567892"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 <!-- Image Converter -->
 <div class="tool">
 <h2>Image Converter (PNG)</h2>
@@ -164,89 +119,106 @@ border-radius:5px;
 <a id="downloadImage"></a>
 </div>
 
+<!-- AdSense annonceblok #3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8036688230923764"
+     data-ad-slot="1234567892"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
 </div>
 
+<footer>
+<p>
+<a href="about.html">About</a> | 
+<a href="privacy.html">Privacy Policy</a> | 
+<a href="guide.html">Guide</a>
+</p>
+</footer>
+
 <script>
+// Download text
 function downloadText(id){
-let text=document.getElementById(id).innerText;
-let blob=new Blob([text],{type:"text/plain"});
-let a=document.createElement("a");
-a.href=URL.createObjectURL(blob);
-a.download="result.txt";
-a.click();
+    let text=document.getElementById(id).innerText;
+    let blob=new Blob([text],{type:"text/plain"});
+    let a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="result.txt";
+    a.click();
 }
 
+// Hashtag Generator
 function generateHashtags(){
-let word=document.getElementById("hashtagInput").value;
-let tags=[
-"#"+word,
-"#"+word+"tips",
-"#"+word+"creator",
-"#"+word+"content",
-"#"+word+"viral",
-"#"+word+"trend"
-];
-document.getElementById("hashtagResult").innerText=tags.join(" ");
+    let word=document.getElementById("hashtagInput").value;
+    let tags=["#"+word,"#"+word+"tips","#"+word+"creator","#"+word+"content","#"+word+"viral","#"+word+"trend"];
+    document.getElementById("hashtagResult").innerText=tags.join(" ");
 }
 
+// YouTube Title Generator
 function generateYT(){
-let topic=document.getElementById("ytInput").value;
-let titles=[
-"10 Things You Must Know About "+topic,
-"The Truth About "+topic,
-"How "+topic+" Can Change Your Life",
-"Beginner Guide To "+topic,
-"Why Everyone Is Talking About "+topic
-];
-document.getElementById("ytResult").innerText=titles.join("\n");
+    let topic=document.getElementById("ytInput").value;
+    let titles=[
+        "10 Things You Must Know About "+topic,
+        "The Truth About "+topic,
+        "How "+topic+" Can Change Your Life",
+        "Beginner Guide To "+topic,
+        "Why Everyone Is Talking About "+topic
+    ];
+    document.getElementById("ytResult").innerText=titles.join("\n");
 }
 
+// TikTok Caption Generator
 function generateTT(){
-let topic=document.getElementById("ttInput").value;
-let captions=[
-topic+" but nobody talks about this 👀",
-"You NEED to see this "+topic+" trick 🔥",
-topic+" changed everything 😳",
-"Trying viral "+topic+" trend 🚀",
-topic+" hack that actually works 💡"
-];
-document.getElementById("ttResult").innerText=captions.join("\n");
+    let topic=document.getElementById("ttInput").value;
+    let captions=[
+        topic+" but nobody talks about this 👀",
+        "You NEED to see this "+topic+" trick 🔥",
+        topic+" changed everything 😳",
+        "Trying viral "+topic+" trend 🚀",
+        topic+" hack that actually works 💡"
+    ];
+    document.getElementById("ttResult").innerText=captions.join("\n");
 }
 
+// Emoji Enhancer
 function addEmoji(){
-let text=document.getElementById("emojiInput").value;
-let emojis=["🔥","🚀","😎","💡","✨"];
-let result=text+" "+emojis[Math.floor(Math.random()*emojis.length)];
-document.getElementById("emojiResult").innerText=result;
+    let text=document.getElementById("emojiInput").value;
+    let emojis=["🔥","🚀","😎","💡","✨"];
+    let result=text+" "+emojis[Math.floor(Math.random()*emojis.length)];
+    document.getElementById("emojiResult").innerText=result;
 }
 
+// Word Counter
 function countWords(){
-let text=document.getElementById("wordInput").value;
-let words=text.trim().split(/\s+/).length;
-let chars=text.length;
-document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;
+    let text=document.getElementById("wordInput").value;
+    let words=text.trim().split(/\s+/).length;
+    let chars=text.length;
+    document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;
 }
 
+// Image Converter
 function convertImage(){
-let file=document.getElementById("imageInput").files[0];
-let reader=new FileReader();
-reader.onload=function(e){
-let img=new Image();
-img.onload=function(){
-let canvas=document.createElement("canvas");
-canvas.width=img.width;
-canvas.height=img.height;
-let ctx=canvas.getContext("2d");
-ctx.drawImage(img,0,0);
-let url=canvas.toDataURL("image/png");
-let link=document.getElementById("downloadImage");
-link.href=url;
-link.download="converted.png";
-link.innerText="Download Image";
-};
-img.src=e.target.result;
-};
-reader.readAsDataURL(file);
+    let file=document.getElementById("imageInput").files[0];
+    let reader=new FileReader();
+    reader.onload=function(e){
+        let img=new Image();
+        img.onload=function(){
+            let canvas=document.createElement("canvas");
+            canvas.width=img.width;
+            canvas.height=img.height;
+            let ctx=canvas.getContext("2d");
+            ctx.drawImage(img,0,0);
+            let url=canvas.toDataURL("image/png");
+            let link=document.getElementById("downloadImage");
+            link.href=url;
+            link.download="converted.png";
+            link.innerText="Download Image";
+        };
+        img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
 }
 </script>
 
