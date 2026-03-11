@@ -1,326 +1,132 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Værktøjer For Skabere</title>
+<title>AI Tools For Creators</title>
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
 
 <style>
-/* --- Grundlæggende layout --- */
-body{
-    font-family: Arial, sans-serif;
-    background: #0f0f0f;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
-.container{
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-}
-h1,h2{
-    color: #00c3ff;
-    margin-bottom: 15px;
-}
-.tool, .section{
-    background: #1e1e1e;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-input,textarea,select,button{
-    width: 95%;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    border: none;
-    font-size: 1em;
-}
-button{
-    background: #00c3ff;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-}
-button:hover{
-    background: #0099cc;
-    color: #fff;
-}
-.result{
-    margin-top: 10px;
-    background: #000;
-    padding: 10px;
-    border-radius: 5px;
-    word-wrap: break-word;
-}
-.result li{
-    margin-bottom: 5px;
-    cursor: pointer;
-}
-footer{
-    text-align: center;
-    padding: 20px 0;
-}
-footer a{
-    color: #00c3ff;
-    margin: 0 5px;
-    text-decoration: none;
-}
-.ads-placeholder{
-    display: block;
-    margin: 20px 0;
-    text-align: center;
-}
-
-/* --- Responsivt --- */
-@media (max-width: 600px){
-    input,textarea,select,button{width: 100%;}
-}
+body{font-family:Arial;background:#111;color:white;text-align:center;padding:20px;margin:0;}
+h1{margin-bottom:10px;}
+.container{max-width:900px;margin:auto;}
+.tool{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
+input,textarea,select{width:90%;padding:10px;margin:5px;border-radius:5px;border:none;}
+button{padding:10px 20px;margin:5px;border:none;border-radius:5px;background:#00c3ff;color:white;cursor:pointer;}
+button:hover{background:#0099cc;}
+.result{margin-top:10px;background:#000;padding:10px;border-radius:5px;}
+footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 </style>
 </head>
-<body>
+<body data-page="index">
 
-<div class="container">
-<h1 id="pageTitle"></h1>
+<h1>AI Tools For Creators</h1>
 
-<select id="language" onchange="updateLanguage()">
-    <option value="da">Dansk</option>
-    <option value="en">English</option>
+<select onchange="changeLanguage(this.value)">
+<option value="en">English</option>
+<option value="da">Dansk</option>
 </select>
 
 <p id="introText"></p>
 
-<div class="ads-placeholder">
+<div class="container">
+
+<!-- AdSense top -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YOUR_AD_SLOT_TOP"
+     data-ad-slot="1234567890"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-</div>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- --- Tools --- -->
-<div class="tool">
-<h2 id="hashtagTitle"></h2>
-<input id="hashtagInput"><br>
-<button id="hashtagButton" onclick="generateHashtags()"></button>
-<button onclick="downloadText('hashtagResult')">Download</button>
-<ul id="hashtagResult" class="result"></ul>
-</div>
+<!-- 10 værktøjer -->
+<div class="tool"><h2 id="hashtagTitle"></h2><input id="hashtagInput"><br><button id="hashtagButton" onclick="generateHashtags()"></button><button onclick="downloadText('hashtagResult')">Download</button><div id="hashtagResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="ytTitle"></h2>
-<input id="ytInput"><br>
-<button id="ytButton" onclick="generateYT()"></button>
-<button onclick="downloadText('ytResult')">Download</button>
-<ul id="ytResult" class="result"></ul>
-</div>
+<div class="tool"><h2 id="ytTitle"></h2><input id="ytInput"><br><button id="ytButton" onclick="generateYT()"></button><button onclick="downloadText('ytResult')">Download</button><div id="ytResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="ttTitle"></h2>
-<input id="ttInput"><br>
-<button id="ttButton" onclick="generateTT()"></button>
-<button onclick="downloadText('ttResult')">Download</button>
-<ul id="ttResult" class="result"></ul>
-</div>
+<div class="tool"><h2 id="ttTitle"></h2><input id="ttInput"><br><button id="ttButton" onclick="generateTT()"></button><button onclick="downloadText('ttResult')">Download</button><div id="ttResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="emojiTitle"></h2>
-<textarea id="emojiInput"></textarea><br>
-<button id="emojiButton" onclick="addEmoji()"></button>
-<button onclick="downloadText('emojiResult')">Download</button>
-<div id="emojiResult" class="result"></div>
-</div>
+<div class="tool"><h2 id="emojiTitle"></h2><textarea id="emojiInput"></textarea><br><button id="emojiButton" onclick="addEmoji()"></button><button onclick="downloadText('emojiResult')">Download</button><div id="emojiResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="wordTitle"></h2>
-<textarea id="wordInput"></textarea><br>
-<button id="wordButton" onclick="countWords()"></button>
-<div id="wordResult" class="result"></div>
-</div>
+<div class="tool"><h2 id="wordTitle"></h2><textarea id="wordInput"></textarea><br><button onclick="countWords()">Count</button><div id="wordResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="imageTitle"></h2>
-<input type="file" id="imageInput"><br>
-<button id="imageButton" onclick="convertImage()"></button>
-<br><br>
-<a id="downloadImage"></a>
-</div>
+<div class="tool"><h2 id="imageTitle"></h2><input type="file" id="imageInput"><br><button onclick="convertImage()">Convert</button><br><br><a id="downloadImage"></a></div>
 
-<div class="tool">
-<h2 id="passwordTitle"></h2>
-<button id="passwordButton" onclick="generatePassword()"></button>
-<div id="passwordResult" class="result"></div>
-</div>
+<div class="tool"><h2>Password Generator</h2><button onclick="generatePassword()">Generate Password</button><div id="passwordResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="colorTitle"></h2>
-<button id="colorButton" onclick="generateColor()"></button>
-<div id="colorResult" class="result"></div>
-</div>
+<div class="tool"><h2>Random Color Generator</h2><button onclick="generateColor()">Generate Color</button><div id="colorResult" class="result"></div></div>
 
-<div class="tool">
-<h2 id="qrTitle"></h2>
-<input id="qrInput"><br>
-<button id="qrButton" onclick="generateQR()"></button>
-<br><br>
-<canvas id="qrCanvas"></canvas>
-</div>
+<div class="tool"><h2>QR Code Generator</h2><input id="qrInput"><br><button onclick="generateQR()">Generate QR Code</button><br><canvas id="qrCanvas"></canvas></div>
 
-<div class="tool">
-<h2 id="caseTitle"></h2>
-<textarea id="caseInput"></textarea><br>
-<button onclick="convertCase('upper')">UPPERCASE</button>
-<button onclick="convertCase('lower')">lowercase</button>
-<button onclick="convertCase('title')">Title Case</button>
-<div id="caseResult" class="result"></div>
-</div>
+<div class="tool"><h2>Text Case Converter</h2><textarea id="caseInput"></textarea><br><button onclick="convertCase('upper')">UPPERCASE</button><button onclick="convertCase('lower')">lowercase</button><button onclick="convertCase('title')">Title Case</button><div id="caseResult" class="result"></div></div>
 
-<div class="ads-placeholder">
+<!-- AdSense bottom -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YOUR_AD_SLOT_MID"
+     data-ad-slot="1234567892"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- --- Info Sections --- -->
-<div class="section" id="aboutTitle">
-<h2>About</h2>
-<p id="aboutText"></p>
-</div>
-
-<div class="section" id="guideTitle">
-<h2>Guide</h2>
-<p id="guideText"></p>
-</div>
-
-<div class="section" id="privacyTitle">
-<h2>Privacy Policy</h2>
-<p id="privacyText"></p>
-</div>
-
-<div class="ads-placeholder">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YOUR_AD_SLOT_BOTTOM"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
 </div>
 
 <footer>
-<a href="#pageTitle">Home</a> | 
-<a href="#aboutTitle">About</a> | 
-<a href="#guideTitle">Guide</a> | 
-<a href="#privacyTitle">Privacy Policy</a>
+<a href="#about" onclick="showSection('about')">About</a> | 
+<a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a> | 
+<a href="#guide" onclick="showSection('guide')">Guide</a> | 
+<a href="#home" onclick="showSection('home')">Home</a>
 </footer>
-</div>
 
+<!-- QR lib -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <script>
 // --- Sprogtekster ---
 const langTexts = {
-'da':{
-pageTitle:"AI Værktøjer For Skabere",
-intro:"Velkommen! Alle værktøjer er gratis at bruge.",
-hashtagTitle:"Hashtag-generator",hashtagPlaceholder:"Indtast søgeord",hashtagButton:"Generer",
-ytTitle:"YouTube-titelgenerator",ytPlaceholder:"Indtast emne",ytButton:"Generer",
-ttTitle:"TikTok-tekstgenerator",ttPlaceholder:"Indtast emne",ttButton:"Generer",
-emojiTitle:"Emoji-forstærker",emojiPlaceholder:"Indtast tekst",emojiButton:"Forstærk",
-wordTitle:"Ordoptæller",wordPlaceholder:"Indtast tekst",wordButton:"Tæl",
-imageTitle:"Billedkonverter (PNG)",imageButton:"Konverter",
-passwordTitle:"Adgangskode-generator",passwordButton:"Generer Adgangskode",
-colorTitle:"Tilfældig farve-generator",colorButton:"Generer Farve",
-qrTitle:"QR-kode-generator",qrPlaceholder:"Indtast tekst eller URL",qrButton:"Generer QR-kode",
-caseTitle:"Tekstformateringskonverter",casePlaceholder:"Indtast tekst",
-aboutText:"Dette værktøj hjælper skabere med at spare tid og øge engagement.",
-guideText:"Vælg et værktøj, indtast tekst eller billeder, og generer resultater hurtigt.",
-privacyText:"Vi gemmer ingen personlige data. Al behandling sker lokalt på din enhed."
-},
-'en':{
-pageTitle:"AI Tools For Creators",
-intro:"Welcome! All tools are free.",
-hashtagTitle:"Hashtag Generator",hashtagPlaceholder:"Enter keyword",hashtagButton:"Generate",
-ytTitle:"YouTube Title Generator",ytPlaceholder:"Enter topic",ytButton:"Generate",
-ttTitle:"TikTok Caption Generator",ttPlaceholder:"Enter topic",ttButton:"Generate",
-emojiTitle:"Emoji Enhancer",emojiPlaceholder:"Enter text",emojiButton:"Enhance",
-wordTitle:"Word Counter",wordPlaceholder:"Enter text",wordButton:"Count",
-imageTitle:"Image Converter (PNG)",imageButton:"Convert",
-passwordTitle:"Password Generator",passwordButton:"Generate Password",
-colorTitle:"Random Color Generator",colorButton:"Generate Color",
-qrTitle:"QR Code Generator",qrPlaceholder:"Enter text or URL",qrButton:"Generate QR Code",
-caseTitle:"Text Case Converter",casePlaceholder:"Enter text",
-aboutText:"This tool helps creators save time and boost engagement.",
-guideText:"Select a tool, enter text or images, and generate results quickly.",
-privacyText:"We do not store personal data. All processing happens locally on your device."
-}
+'en': {intro:"Welcome to AI Tools For Creators! Generate hashtags, titles, TikTok captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.",about:"This website provides content creators with free tools to generate hashtags, titles, captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.",privacy:"We do not collect personal data. Google AdSense may use cookies for anonymized ad analytics. No other personal information is tracked.",guide:"Use the tools on the homepage to boost your content: generate hashtags, catchy titles, captions, enhance posts with emojis, count words, convert images, create secure passwords, generate QR codes, pick random colors, or convert text case. All tools are free."},
+'da': {intro:"Velkommen til AI-værktøjer for skabere! Generer hashtags, titler, TikTok-tekster, emojis, tæl ord, konverter billeder, generer adgangskoder, QR-koder, tilfældige farver og ændr tekstformater.",about:"Dette websted giver skabere gratis værktøjer til at generere hashtags, titler, TikTok-tekster, emojis, tælle ord, konvertere billeder, generere adgangskoder, QR-koder, tilfældige farver og ændre tekstformater.",privacy:"Vi gemmer ingen personlige data. Google AdSense kan bruge cookies til anonymiseret annonceanalyse. Ingen anden personlig information spores.",guide:"Brug værktøjerne på forsiden til at forbedre dit indhold: generer hashtags, titler, captions, forstærk opslag med emojis, tæl ord, konverter billeder, lav sikre adgangskoder, generer QR-koder, vælg tilfældige farver eller ændr tekstformat. Alle værktøjer er gratis."}
 };
 
-// --- Opdater sprog ---
+// --- Skift sprog ---
+function changeLanguage(lang){localStorage.setItem('lang',lang);updateLanguage();}
 function updateLanguage(){
-  const lang=document.getElementById('language').value;
-  const t=langTexts[lang];
-  document.getElementById('pageTitle').innerText=t.pageTitle;
-  document.getElementById('introText').innerText=t.intro;
-  document.getElementById('hashtagTitle').innerText=t.hashtagTitle;
-  document.getElementById('hashtagInput').placeholder=t.hashtagPlaceholder;
-  document.getElementById('hashtagButton').innerText=t.hashtagButton;
-  document.getElementById('ytTitle').innerText=t.ytTitle;
-  document.getElementById('ytInput').placeholder=t.ytPlaceholder;
-  document.getElementById('ytButton').innerText=t.ytButton;
-  document.getElementById('ttTitle').innerText=t.ttTitle;
-  document.getElementById('ttInput').placeholder=t.ttPlaceholder;
-  document.getElementById('ttButton').innerText=t.ttButton;
-  document.getElementById('emojiTitle').innerText=t.emojiTitle;
-  document.getElementById('emojiInput').placeholder=t.emojiPlaceholder;
-  document.getElementById('emojiButton').innerText=t.emojiButton;
-  document.getElementById('wordTitle').innerText=t.wordTitle;
-  document.getElementById('wordInput').placeholder=t.wordPlaceholder;
-  document.getElementById('imageTitle').innerText=t.imageTitle;
-  document.getElementById('imageButton').innerText=t.imageButton;
-  document.getElementById('passwordTitle').innerText=t.passwordTitle;
-  document.getElementById('passwordButton').innerText=t.passwordButton;
-  document.getElementById('colorTitle').innerText=t.colorTitle;
-  document.getElementById('colorButton').innerText=t.colorButton;
-  document.getElementById('qrTitle').innerText=t.qrTitle;
-  document.getElementById('qrInput').placeholder=t.qrPlaceholder;
-  document.getElementById('qrButton').innerText=t.qrButton;
-  document.getElementById('caseTitle').innerText=t.caseTitle;
-  document.getElementById('caseInput').placeholder=t.casePlaceholder;
-  document.getElementById('aboutText').innerText=t.aboutText;
-  document.getElementById('guideText').innerText=t.guideText;
-  document.getElementById('privacyText').innerText=t.privacyText;
+  const lang = localStorage.getItem('lang')||'en';
+  const t = langTexts[lang];
+  document.getElementById('introText').innerText = t.intro;
+  document.getElementById('hashtagTitle').innerText = lang=='da'?"Hashtag-generator":"Hashtag Generator";
+  document.getElementById('ytTitle').innerText = lang=='da'?"YouTube-titelgenerator":"YouTube Title Generator";
+  document.getElementById('ttTitle').innerText = lang=='da'?"TikTok-tekstgenerator":"TikTok Caption Generator";
+  document.getElementById('emojiTitle').innerText = lang=='da'?"Emoji-forstærker":"Emoji Enhancer";
+  document.getElementById('wordTitle').innerText = lang=='da'?"Ordoptæller":"Word Counter";
+  document.getElementById('imageTitle').innerText = lang=='da'?"Billedkonverter (PNG)":"Image Converter (PNG)";
 }
+updateLanguage();
 
-// --- Tool functions ---
-function downloadText(id){
-  let tEl=document.getElementById(id);
-  let t=tEl.innerText||Array.from(tEl.querySelectorAll('li')).map(li=>li.innerText).join("\n");
-  if(!t) return;
-  let b=new Blob([t],{type:"text/plain;charset=utf-8"});
-  let a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="result.txt"; a.click();
+// --- Tools ---
+function downloadText(id){let text=document.getElementById(id).innerText;let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:"text/plain"}));a.download="result.txt";a.click();}
+function generateHashtags(){let w=document.getElementById("hashtagInput").value;document.getElementById("hashtagResult").innerText=["#"+w,"#"+w+"tips","#"+w+"creator","#"+w+"content","#"+w+"viral","#"+w+"trend"].join(" ");}
+function generateYT(){let t=document.getElementById("ytInput").value;document.getElementById("ytResult").innerText=["10 Things You Must Know About "+t,"The Truth About "+t,"How "+t+" Can Change Your Life","Beginner Guide To "+t,"Why Everyone Is Talking About "+t].join("\n");}
+function generateTT(){let t=document.getElementById("ttInput").value;document.getElementById("ttResult").innerText=[t+" but nobody talks about this 👀","You NEED to see this "+t+" trick 🔥",t+" changed everything 😳","Trying viral "+t+" trend 🚀",t+" hack that actually works 💡"].join("\n");}
+function addEmoji(){let t=document.getElementById("emojiInput").value;let e=["🔥","🚀","😎","💡","✨"];document.getElementById("emojiResult").innerText=t+" "+e[Math.floor(Math.random()*e.length)];}
+function countWords(){let t=document.getElementById("wordInput").value;document.getElementById("wordResult").innerText="Words: "+t.trim().split(/\s+/).length+" | Characters: "+t.length;}
+function convertImage(){let f=document.getElementById("imageInput").files[0];let r=new FileReader();r.onload=function(e){let img=new Image();img.onload=function(){let c=document.createElement("canvas");c.width=img.width;c.height=img.height;let ctx=c.getContext("2d");ctx.drawImage(img,0,0);let url=c.toDataURL("image/png");let link=document.getElementById("downloadImage");link.href=url;link.download="converted.png";link.innerText="Download Image";};img.src=e.target.result;};r.readAsDataURL(f);}
+function generatePassword(){let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";let p="";for(let i=0;i<16;i++){p+=chars.charAt(Math.floor(Math.random()*chars.length));}document.getElementById("passwordResult").innerText=p;}
+function generateColor(){document.getElementById("colorResult").innerText="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0");}
+function generateQR(){QRCode.toCanvas(document.getElementById("qrCanvas"),document.getElementById("qrInput").value,{width:200});}
+function convertCase(type){let t=document.getElementById("caseInput").value;let r="";if(type==="upper") r=t.toUpperCase(); else if(type==="lower") r=t.toLowerCase(); else if(type==="title") r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());document.getElementById("caseResult").innerText=r;}
+
+// --- Sektioner ---
+function showSection(section){
+  if(section=="home"){document.querySelector('.container').style.display='block';document.getElementById('introText').style.display='block';}
+  else{document.querySelector('.container').style.display='none';document.getElementById('introText').style.display='none';}
+  if(section=="about"){alert(langTexts[localStorage.getItem('lang')||'en'].about);}
+  if(section=="privacy"){alert(langTexts[localStorage.getItem('lang')||'en'].privacy);}
+  if(section=="guide"){alert(langTexts[localStorage.getItem('lang')||'en'].guide);}
 }
-
-function generateHashtags(){let w=document.getElementById("hashtagInput").value.trim(); if(!w)return; let list=document.getElementById("hashtagResult"); list.innerHTML=""; ["#"+w,"#"+w+"tips","#"+w+"creator","#"+w+"content","#"+w+"viral","#"+w+"trend"].forEach(t=>{let li=document.createElement("li"); li.innerText=t; li.onclick=()=>navigator.clipboard.writeText(t); list.appendChild(li);});}
-function generateYT(){let t=document.getElementById("ytInput").value.trim(); if(!t)return; let list=document.getElementById("ytResult"); list.innerHTML=""; ["10 ting du skal vide om "+t,"Sandheden om "+t,"Hvordan "+t+" kan ændre dit liv","Begynder guide til "+t,"Hvorfor alle taler om "+t].forEach(title=>{let li=document.createElement("li"); li.innerText=title; li.onclick=()=>navigator.clipboard.writeText(title); list.appendChild(li);});}
-function generateTT(){let t=document.getElementById("ttInput").value.trim(); if(!t)return; let list=document.getElementById("ttResult"); list.innerHTML=""; [t+" men ingen taler om dette 👀","Du SKAL se denne "+t+" trick 🔥",t+" ændrede alt 😳","Prøver viral "+t+" trend 🚀",t+" hack som faktisk virker 💡"].forEach(c=>{let li=document.createElement("li"); li.innerText=c; li.onclick=()=>navigator.clipboard.writeText(c); list.appendChild(li);});}
-function addEmoji(){let t=document.getElementById("emojiInput").value.trim(); if(!t)return; let e=["🔥","🚀","😎","💡","✨"]; document.getElementById("emojiResult").innerText=t+" "+e[Math.floor(Math.random()*e.length)];}
-function countWords(){let t=document.getElementById("wordInput").value.trim(); if(!t)return document.getElementById("wordResult").innerText="Words: 0 | Characters: 0"; let words=t.split(/\s+/).length; let chars=t.length; document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;}
-function convertImage(){let f=document.getElementById("imageInput").files[0]; if(!f)return; let r=new FileReader(); r.onload=function(e){let img=new Image(); img.onload=function(){let c=document.createElement("canvas"); c.width=img.width; c.height=img.height; c.getContext("2d").drawImage(img,0,0); let url=c.toDataURL("image/png"); let link=document.getElementById("downloadImage"); link.href=url; link.download="converted.png"; link.innerText="Download Image";}; img.src=e.target.result;}; r.readAsDataURL(f);}
-function generatePassword(){let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+"; let pass=""; for(let i=0;i<16;i++){pass+=chars.charAt(Math.floor(Math.random()*chars.length));} document.getElementById("passwordResult").innerText=pass;}
-function generateColor(){let color="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0"); document.getElementById("colorResult").innerText=color;}
-function generateQR(){let t=document.getElementById("qrInput").value.trim(); if(!t)return; QRCode.toCanvas(document.getElementById("qrCanvas"), t, {width:200});}
-function convertCase(type){let t=document.getElementById("caseInput").value.trim(); if(!t)return document.getElementById("caseResult").innerText=""; let r=""; if(type==="upper"){r=t.toUpperCase();}else if(type==="lower"){r=t.toLowerCase();}else if(type==="title"){r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());} document.getElementById("caseResult").innerText=r;}
-
-window.onload=updateLanguage;
 </script>
 
 </body>
