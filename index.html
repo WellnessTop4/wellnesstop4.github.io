@@ -9,23 +9,23 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
 
 <style>
-body{font-family:Arial;background:#111;color:white;text-align:center;padding:20px;margin:0;}
-h1{margin-bottom:10px;}
+body{font-family:Arial,sans-serif;background:#111;color:white;text-align:center;padding:20px;margin:0;}
+h1,h2{margin-bottom:10px;}
 .container{max-width:900px;margin:auto;}
-.tool{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
+.tool,section{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
 input,textarea,select{width:90%;padding:10px;margin:10px;border-radius:5px;border:none;}
 button{padding:10px 20px;margin:5px;border:none;border-radius:5px;background:#00c3ff;color:white;cursor:pointer;}
 button:hover{background:#0099cc;}
 .result{margin-top:10px;background:#000;padding:10px;border-radius:5px;white-space:pre-wrap;}
-footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
+footer a{color:#00c3ff;margin:0 5px;text-decoration:none;cursor:pointer;}
 section{display:none;margin-top:20px;}
 </style>
 </head>
 <body>
 
-<h1>AI Tools For Creators</h1>
+<h1 id="mainTitle">AI Tools For Creators</h1>
 
-<!-- AdSense top -->
+<!-- AdSense Top -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
@@ -45,7 +45,7 @@ section{display:none;margin-top:20px;}
 
 <p id="introText"></p>
 
-<div class="container">
+<div class="container" id="toolsContainer">
 
 <!-- Hashtag Generator -->
 <div class="tool">
@@ -131,7 +131,7 @@ section{display:none;margin-top:20px;}
 <div id="caseResult" class="result"></div>
 </div>
 
-<!-- AdSense bottom -->
+<!-- AdSense Bottom -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
@@ -142,35 +142,79 @@ section{display:none;margin-top:20px;}
 
 </div>
 
-<footer>
-<a href="#" onclick="showSection('about')">About</a> | 
-<a href="#" onclick="showSection('privacy')">Privacy Policy</a> | 
-<a href="#" onclick="showSection('guide')">Guide</a>
-</footer>
-
 <!-- Sections -->
 <section id="about">
-<h2>About</h2>
-<p>This website provides content creators with free tools to generate hashtags, titles, captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.</p>
+<h2 id="aboutTitle">About</h2>
+<p id="aboutText"></p>
 </section>
 <section id="privacy">
-<h2>Privacy Policy</h2>
-<p>We do not collect personal data. Google AdSense may use cookies for anonymized ad analytics. No other personal information is tracked.</p>
+<h2 id="privacyTitle">Privacy Policy</h2>
+<p id="privacyText"></p>
 </section>
 <section id="guide">
-<h2>Guide</h2>
-<p>Use the tools on this page to boost your content: generate hashtags, catchy titles, captions, enhance posts with emojis, count words, convert images, create secure passwords, generate QR codes, pick random colors, or convert text case. All tools are free and require no API keys.</p>
+<h2 id="guideTitle">Guide</h2>
+<p id="guideText"></p>
 </section>
+
+<footer>
+<a onclick="showSection('about')">About</a> | 
+<a onclick="showSection('privacy')">Privacy Policy</a> | 
+<a onclick="showSection('guide')">Guide</a>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
 // --- Multilingual texts ---
 const langTexts = {
-'en': {intro:"Welcome to AI Tools For Creators! Generate hashtags, titles, TikTok captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and text case conversion.",hashtagTitle:"Hashtag Generator",hashtagPlaceholder:"Enter keyword",hashtagButton:"Generate",ytTitle:"YouTube Title Generator",ytPlaceholder:"Enter topic",ytButton:"Generate",ttTitle:"TikTok Caption Generator",ttPlaceholder:"Enter topic",ttButton:"Generate",emojiTitle:"Emoji Enhancer",emojiPlaceholder:"Enter text",emojiButton:"Enhance",wordTitle:"Word Counter",imageTitle:"Image Converter (PNG)"},
-'da': {intro:"Velkommen til AI-værktøjer for skabere! Generer hashtags, titler, TikTok-tekster, emojis, tæl ord, konverter billeder, generer adgangskoder, QR-koder, tilfældige farver og tekstformater.",hashtagTitle:"Hashtag-generator",hashtagPlaceholder:"Indtast søgeord",hashtagButton:"Generer",ytTitle:"YouTube-titelgenerator",ytPlaceholder:"Indtast emne",ytButton:"Generer",ttTitle:"TikTok-tekstgenerator",ttPlaceholder:"Indtast emne",ttButton:"Generer",emojiTitle:"Emoji-forstærker",emojiPlaceholder:"Indtast tekst",emojiButton:"Forstærk",wordTitle:"Ordoptæller",imageTitle:"Billedkonverter (PNG)"},
-'es': {intro:"¡Bienvenido a Herramientas de IA para Creadores! Genera hashtags, títulos llamativos, captions de TikTok, emojis, cuenta palabras, convierte imágenes, genera contraseñas, códigos QR, colores aleatorios y cambia mayúsculas.",hashtagTitle:"Generador de Hashtags",hashtagPlaceholder:"Ingresa palabra clave",hashtagButton:"Generar",ytTitle:"Generador de Títulos de YouTube",ytPlaceholder:"Ingresa tema",ytButton:"Generar",ttTitle:"Generador de Captions de TikTok",ttPlaceholder:"Ingresa tema",ttButton:"Generar",emojiTitle:"Mejorador de Emojis",emojiPlaceholder:"Ingresa texto",emojiButton:"Mejorar",wordTitle:"Contador de Palabras",imageTitle:"Convertidor de Imágenes (PNG)"},
-'de': {intro:"Willkommen bei AI Tools für Creator! Generiere Hashtags, auffällige Titel, TikTok-Untertitel, Emojis, zähle Wörter, konvertiere Bilder, erstelle Passwörter, QR-Codes, Zufallsfarben und Textformatierung.",hashtagTitle:"Hashtag-Generator",hashtagPlaceholder:"Schlüsselwort eingeben",hashtagButton:"Generieren",ytTitle:"YouTube-Titelgenerator",ytPlaceholder:"Thema eingeben",ytButton:"Generieren",ttTitle:"TikTok-Caption-Generator",ttPlaceholder:"Thema eingeben",ttButton:"Generieren",emojiTitle:"Emoji-Enhancer",emojiPlaceholder:"Text eingeben",emojiButton:"Verbessern",wordTitle:"Wortzähler",imageTitle:"Bildkonverter (PNG)"},
-'fr': {intro:"Bienvenue sur AI Tools For Creators ! Générez des hashtags, titres accrocheurs, captions TikTok, emojis, comptez les mots, convertissez des images, générez des mots de passe, codes QR, couleurs aléatoires et modifiez la casse.",hashtagTitle:"Générateur de Hashtags",hashtagPlaceholder:"Entrez un mot-clé",hashtagButton:"Générer",ytTitle:"Générateur de Titres YouTube",ytPlaceholder:"Entrez un sujet",ytButton:"Générer",ttTitle:"Générateur de Captions TikTok",ttPlaceholder:"Entrez un sujet",ttButton:"Générer",emojiTitle:"Améliorateur d'Emojis",emojiPlaceholder:"Entrez du texte",emojiButton:"Améliorer",wordTitle:"Compteur de Mots",imageTitle:"Convertisseur d'Images (PNG)"}
+'en': {intro:"Welcome to AI Tools For Creators! Generate hashtags, titles, TikTok captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and text case conversion.",
+hashtagTitle:"Hashtag Generator",hashtagPlaceholder:"Enter keyword",hashtagButton:"Generate",
+ytTitle:"YouTube Title Generator",ytPlaceholder:"Enter topic",ytButton:"Generate",
+ttTitle:"TikTok Caption Generator",ttPlaceholder:"Enter topic",ttButton:"Generate",
+emojiTitle:"Emoji Enhancer",emojiPlaceholder:"Enter text",emojiButton:"Enhance",
+wordTitle:"Word Counter",imageTitle:"Image Converter (PNG)",
+aboutText:"This website provides content creators with free tools to generate hashtags, titles, captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.",
+privacyText:"We do not collect personal data. Google AdSense may use cookies for anonymized ad analytics. No other personal information is tracked.",
+guideText:"Use the tools to boost your content: generate hashtags, titles, captions, emojis, count words, convert images, create passwords, QR codes, pick colors, convert text case."},
+
+'da': {intro:"Velkommen til AI-værktøjer for skabere! Generer hashtags, titler, TikTok-tekster, emojis, tæl ord, konverter billeder, generer adgangskoder, QR-koder, tilfældige farver og tekstformater.",
+hashtagTitle:"Hashtag-generator",hashtagPlaceholder:"Indtast søgeord",hashtagButton:"Generer",
+ytTitle:"YouTube-titelgenerator",ytPlaceholder:"Indtast emne",ytButton:"Generer",
+ttTitle:"TikTok-tekstgenerator",ttPlaceholder:"Indtast emne",ttButton:"Generer",
+emojiTitle:"Emoji-forstærker",emojiPlaceholder:"Indtast tekst",emojiButton:"Forstærk",
+wordTitle:"Ordoptæller",imageTitle:"Billedkonverter (PNG)",
+aboutText:"Denne side giver skabere gratis værktøjer til hashtags, titler, captions, emojis, ordoptælling, billedkonvertering, adgangskoder, QR-koder, farver og tekstformater.",
+privacyText:"Vi indsamler ikke personlige data. Google AdSense kan bruge cookies til anonymiseret analyse. Ingen anden personlig information spores.",
+guideText:"Brug værktøjerne til at booste dit indhold: generer hashtags, titler, captions, emojis, tæl ord, konverter billeder, opret adgangskoder, QR-koder, vælg farver, konverter tekst."},
+
+'es': {intro:"¡Bienvenido a Herramientas de IA para Creadores! Genera hashtags, títulos llamativos, captions de TikTok, emojis, cuenta palabras, convierte imágenes, genera contraseñas, códigos QR, colores aleatorios y cambia mayúsculas.",
+hashtagTitle:"Generador de Hashtags",hashtagPlaceholder:"Ingresa palabra clave",hashtagButton:"Generar",
+ytTitle:"Generador de Títulos de YouTube",ytPlaceholder:"Ingresa tema",ytButton:"Generar",
+ttTitle:"Generador de Captions de TikTok",ttPlaceholder:"Ingresa tema",ttButton:"Generar",
+emojiTitle:"Mejorador de Emojis",emojiPlaceholder:"Ingresa texto",emojiButton:"Mejorar",
+wordTitle:"Contador de Palabras",imageTitle:"Convertidor de Imágenes (PNG)",
+aboutText:"Esta web ofrece herramientas gratuitas para generar hashtags, títulos, captions, emojis, contar palabras, convertir imágenes, generar contraseñas, códigos QR, colores y cambiar mayúsculas.",
+privacyText:"No recopilamos datos personales. Google AdSense puede usar cookies para análisis anónimos. No se rastrea otra información personal.",
+guideText:"Usa las herramientas para mejorar tu contenido: genera hashtags, títulos, captions, emojis, cuenta palabras, convierte imágenes, crea contraseñas, códigos QR, colores, cambia mayúsculas."},
+
+'de': {intro:"Willkommen bei AI Tools für Creator! Generiere Hashtags, auffällige Titel, TikTok-Untertitel, Emojis, zähle Wörter, konvertiere Bilder, erstelle Passwörter, QR-Codes, Zufallsfarben und Textformatierung.",
+hashtagTitle:"Hashtag-Generator",hashtagPlaceholder:"Schlüsselwort eingeben",hashtagButton:"Generieren",
+ytTitle:"YouTube-Titelgenerator",ytPlaceholder:"Thema eingeben",ytButton:"Generieren",
+ttTitle:"TikTok-Caption-Generator",ttPlaceholder:"Thema eingeben",ttButton:"Generieren",
+emojiTitle:"Emoji-Enhancer",emojiPlaceholder:"Text eingeben",emojiButton:"Verbessern",
+wordTitle:"Wortzähler",imageTitle:"Bildkonverter (PNG)",
+aboutText:"Diese Seite bietet Creator kostenlose Tools für Hashtags, Titel, Captions, Emojis, Wörter zählen, Bilder konvertieren, Passwörter, QR-Codes, Farben und Textformatierung.",
+privacyText:"Wir sammeln keine persönlichen Daten. Google AdSense kann Cookies für anonymisierte Analysen verwenden. Keine weiteren Daten werden verfolgt.",
+guideText:"Verwende die Tools, um Inhalte zu verbessern: Hashtags, Titel, Captions, Emojis, Wörter zählen, Bilder konvertieren, Passwörter, QR-Codes, Farben, Textformatierung."},
+
+'fr': {intro:"Bienvenue sur AI Tools For Creators ! Générez des hashtags, titres accrocheurs, captions TikTok, emojis, comptez les mots, convertissez des images, générez des mots de passe, codes QR, couleurs aléatoires et modifiez la casse.",
+hashtagTitle:"Générateur de Hashtags",hashtagPlaceholder:"Entrez un mot-clé",hashtagButton:"Générer",
+ytTitle:"Générateur de Titres YouTube",ytPlaceholder:"Entrez un sujet",ytButton:"Générer",
+ttTitle:"Générateur de Captions TikTok",ttPlaceholder:"Entrez un sujet",ttButton:"Générer",
+emojiTitle:"Améliorateur d'Emojis",emojiPlaceholder:"Entrez du texte",emojiButton:"Améliorer",
+wordTitle:"Compteur de Mots",imageTitle:"Convertisseur d'Images (PNG)",
+aboutText:"Ce site fournit aux créateurs des outils gratuits pour hashtags, titres, captions, emojis, compter les mots, convertir des images, générer des mots de passe, QR codes, couleurs et changer la casse.",
+privacyText:"Nous ne collectons pas de données personnelles. Google AdSense peut utiliser des cookies pour des analyses anonymes. Aucune autre information personnelle n'est suivie.",
+guideText:"Utilisez les outils pour améliorer votre contenu : hashtags, titres, captions, emojis, compte mots, conversion d'images, mots de passe, QR codes, couleurs, modification de casse."}
 };
 
 function updateLanguage(){
@@ -191,6 +235,11 @@ function updateLanguage(){
   document.getElementById('ytButton').innerText=texts.ytButton;
   document.getElementById('ttButton').innerText=texts.ttButton;
   document.getElementById('emojiButton').innerText=texts.emojiButton;
+
+  // Sections
+  document.getElementById('aboutText').innerText=texts.aboutText;
+  document.getElementById('privacyText').innerText=texts.privacyText;
+  document.getElementById('guideText').innerText=texts.guideText;
 }
 
 // --- Tools ---
@@ -209,10 +258,12 @@ function convertCase(type){let t=document.getElementById("caseInput").value;let 
 // --- Show sections ---
 function showSection(id){
   document.querySelectorAll('section').forEach(s=>s.style.display='none');
-  if(id) document.getElementById(id).style.display='block';
+  document.getElementById('toolsContainer').style.display = id ? 'none':'block';
+  if(id){document.getElementById(id).style.display='block';}
+  window.scrollTo({top:0,behavior:'smooth'});
 }
+
 updateLanguage();
 </script>
-
 </body>
 </html>
