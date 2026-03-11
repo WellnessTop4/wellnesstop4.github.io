@@ -7,6 +7,7 @@
 
 <title>AI Tools For Creators</title>
 
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
 crossorigin="anonymous"></script>
 
@@ -17,18 +18,19 @@ font-family:Arial;
 background:#000;
 color:white;
 margin:0;
-padding:0;
 text-align:center;
 }
 
 header{
 background:#111;
-padding:30px;
+padding:25px;
 border-bottom:1px solid #333;
 }
 
-h1{
-margin:0;
+nav a{
+color:#00c3ff;
+margin:0 10px;
+text-decoration:none;
 }
 
 .container{
@@ -38,66 +40,50 @@ padding:20px;
 }
 
 .tool{
-
 background:#111;
-border-radius:10px;
-padding:20px;
 margin:20px 0;
-box-shadow:0 0 10px rgba(0,0,0,0.5);
-
+padding:20px;
+border-radius:10px;
 }
 
 input,textarea{
-
 width:90%;
 padding:10px;
 margin:10px;
-border:none;
 border-radius:5px;
-
+border:none;
 }
 
 button{
-
 padding:10px 20px;
-margin:5px;
 background:#00c3ff;
 border:none;
 color:white;
 border-radius:5px;
 cursor:pointer;
-
 }
 
 button:hover{
-
-background:#0088aa;
-
+background:#0099cc;
 }
 
 .result{
-
+margin-top:10px;
 background:#000;
 padding:10px;
-margin-top:10px;
 border-radius:5px;
-
 }
 
 footer{
-
 margin-top:40px;
 padding:20px;
 background:#111;
-
 }
 
 footer a{
-
 color:#00c3ff;
+margin:0 5px;
 text-decoration:none;
-margin:0 10px;
-
 }
 
 </style>
@@ -108,9 +94,26 @@ margin:0 10px;
 
 <header>
 
-<h1>AI Tools For Creators</h1>
+<h1 id="title">AI Tools For Creators</h1>
 
-<p>Free creator tools to generate hashtags, captions, titles, passwords and more.</p>
+<nav>
+<a href="index.html">Home</a>
+<a href="guide.html">Guide</a>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy</a>
+</nav>
+
+<br>
+
+<select id="language" onchange="updateLanguage()">
+
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+
+</select>
 
 </header>
 
@@ -128,13 +131,17 @@ data-full-width-responsive="true"></ins>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-<!-- Hashtags -->
+<p id="intro">
+
+Free tools for creators: hashtags, captions, passwords, QR codes, colors and more.
+
+</p>
+
+<!-- Hashtag Tool -->
 
 <div class="tool">
 
-<h2>Hashtag Generator</h2>
-
-<p>Generate social media hashtags for posts.</p>
+<h2 id="hashTitle">Hashtag Generator</h2>
 
 <input id="hashtagInput" placeholder="Enter keyword">
 
@@ -151,9 +158,7 @@ data-full-width-responsive="true"></ins>
 
 <div class="tool">
 
-<h2>YouTube Title Generator</h2>
-
-<p>Create catchy titles for YouTube videos.</p>
+<h2 id="ytTitle">YouTube Title Generator</h2>
 
 <input id="ytInput" placeholder="Enter topic">
 
@@ -170,9 +175,7 @@ data-full-width-responsive="true"></ins>
 
 <div class="tool">
 
-<h2>TikTok Caption Generator</h2>
-
-<p>Create captions for TikTok posts.</p>
+<h2 id="ttTitle">TikTok Caption Generator</h2>
 
 <input id="ttInput" placeholder="Enter topic">
 
@@ -191,32 +194,11 @@ data-full-width-responsive="true"></ins>
 
 <h2>Emoji Enhancer</h2>
 
-<p>Add emojis to your text.</p>
-
 <textarea id="emojiInput"></textarea>
-
-<br>
 
 <button onclick="addEmoji()">Enhance</button>
 
 <div id="emojiResult" class="result"></div>
-
-</div>
-
-
-<!-- Word Counter -->
-
-<div class="tool">
-
-<h2>Word Counter</h2>
-
-<p>Count words and characters.</p>
-
-<textarea id="wordInput"></textarea>
-
-<button onclick="countWords()">Count</button>
-
-<div id="wordResult" class="result"></div>
 
 </div>
 
@@ -226,8 +208,6 @@ data-full-width-responsive="true"></ins>
 <div class="tool">
 
 <h2>Password Generator</h2>
-
-<p>Create a secure password.</p>
 
 <button onclick="generatePassword()">Generate</button>
 
@@ -241,8 +221,6 @@ data-full-width-responsive="true"></ins>
 <div class="tool">
 
 <h2>Random Color Generator</h2>
-
-<p>Generate a random HEX color.</p>
 
 <button onclick="generateColor()">Generate</button>
 
@@ -269,24 +247,26 @@ data-full-width-responsive="true"></ins>
 </div>
 
 
-<!-- Text Case -->
+<!-- QR Code -->
 
 <div class="tool">
 
-<h2>Text Case Converter</h2>
+<h2>QR Code Generator</h2>
 
-<textarea id="caseInput"></textarea>
+<input id="qrInput" placeholder="Enter URL or text">
 
 <br>
 
-<button onclick="convertCase('upper')">UPPERCASE</button>
-<button onclick="convertCase('lower')">lowercase</button>
+<button onclick="generateQR()">Generate</button>
 
-<div id="caseResult" class="result"></div>
+<br><br>
+
+<canvas id="qrCanvas"></canvas>
 
 </div>
 
-<!-- Ad bottom -->
+
+<!-- Bottom Ad -->
 
 <ins class="adsbygoogle"
 style="display:block"
@@ -301,15 +281,15 @@ data-full-width-responsive="true"></ins>
 
 </div>
 
-
 <footer>
 
-<a href="about.html">About</a>
-<a href="privacy.html">Privacy</a>
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy</a> |
 <a href="guide.html">Guide</a>
 
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <script>
 
@@ -318,54 +298,45 @@ function generateHashtags(){
 let word=document.getElementById("hashtagInput").value;
 
 let tags=[
-
 "#"+word,
 "#"+word+"tips",
 "#"+word+"creator",
 "#"+word+"viral",
 "#"+word+"trend"
-
 ];
 
 document.getElementById("hashtagResult").innerText=tags.join(" ");
 
 }
 
-
 function generateYT(){
 
 let topic=document.getElementById("ytInput").value;
 
 let titles=[
-
 "10 Things You Must Know About "+topic,
+"The Truth About "+topic,
 "Why Everyone Talks About "+topic,
-"Beginner Guide To "+topic,
-"The Truth About "+topic
-
+"Beginner Guide To "+topic
 ];
 
 document.getElementById("ytResult").innerText=titles.join("\n");
 
 }
 
-
 function generateTT(){
 
 let topic=document.getElementById("ttInput").value;
 
 let captions=[
-
 topic+" but nobody talks about this 🔥",
-"Trying the "+topic+" trend 😎",
+"You NEED to see this "+topic+" trick 🚀",
 topic+" hack that works 💡"
-
 ];
 
 document.getElementById("ttResult").innerText=captions.join("\n");
 
 }
-
 
 function addEmoji(){
 
@@ -376,20 +347,6 @@ let emojis=["🔥","🚀","😎","✨"];
 document.getElementById("emojiResult").innerText=text+" "+emojis[Math.floor(Math.random()*emojis.length)];
 
 }
-
-
-function countWords(){
-
-let text=document.getElementById("wordInput").value;
-
-let words=text.trim().split(/\s+/).length;
-
-let chars=text.length;
-
-document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;
-
-}
-
 
 function generatePassword(){
 
@@ -407,7 +364,6 @@ document.getElementById("passwordResult").innerText=pass;
 
 }
 
-
 function generateColor(){
 
 let color="#"+Math.floor(Math.random()*16777215).toString(16);
@@ -415,7 +371,6 @@ let color="#"+Math.floor(Math.random()*16777215).toString(16);
 document.getElementById("colorResult").innerText=color;
 
 }
-
 
 function generateNumber(){
 
@@ -429,38 +384,235 @@ document.getElementById("numberResult").innerText=num;
 
 }
 
+function generateQR(){
 
-function convertCase(type){
+let text=document.getElementById("qrInput").value;
 
-let text=document.getElementById("caseInput").value;
-
-if(type==="upper")
-
-document.getElementById("caseResult").innerText=text.toUpperCase();
-
-else
-
-document.getElementById("caseResult").innerText=text.toLowerCase();
+QRCode.toCanvas(document.getElementById("qrCanvas"),text,{width:200});
 
 }
 
 </script>
 
 </body>
+</html><div class="tool">
 
-</html><h1>Guide</h1>
+<h2>Random Name Generator</h2>
 
-<p><b>Hashtag Generator</b><br>
-Creates hashtags for social media posts.</p>
+<button onclick="generateName()">Generate</button>
 
-<p><b>YouTube Title Generator</b><br>
-Helps creators write engaging titles.</p>
+<div id="nameResult" class="result"></div>
 
-<p><b>TikTok Caption Generator</b><br>
-Creates captions for TikTok posts.</p>
+</div><script>
 
-<p><b>Password Generator</b><br>
-Generates secure passwords.</p>
+function generateName(){
 
-<p><b>Random Color Generator</b><br>
-Useful for design and branding.</p>
+let names=["Nova","Shadow","Blaze","Storm","Phoenix","Vortex","Hunter","Raven","Titan","Ghost"];
+
+let name=names[Math.floor(Math.random()*names.length)];
+
+document.getElementById("nameResult").innerText=name;
+
+}
+
+</script><div class="tool">
+
+<h2>Username Generator</h2>
+
+<input id="userInput" placeholder="Enter word">
+
+<button onclick="generateUser()">Generate</button>
+
+<div id="userResult" class="result"></div>
+
+</div><script>
+
+function generateUser(){
+
+let w=document.getElementById("userInput").value;
+
+let users=[
+
+w+"_official",
+w+"_tv",
+"real_"+w,
+w+"123",
+"the_"+w
+
+];
+
+document.getElementById("userResult").innerText=users.join("\n");
+
+}
+
+</script><div class="tool">
+
+<h2>Text Reverser</h2>
+
+<textarea id="reverseInput"></textarea>
+
+<button onclick="reverseText()">Reverse</button>
+
+<div id="reverseResult" class="result"></div>
+
+</div><script>
+
+function reverseText(){
+
+let text=document.getElementById("reverseInput").value;
+
+let reversed=text.split("").reverse().join("");
+
+document.getElementById("reverseResult").innerText=reversed;
+
+}
+
+</script><div class="tool">
+
+<h2>Random Quote</h2>
+
+<button onclick="quote()">Generate</button>
+
+<div id="quoteResult" class="result"></div>
+
+</div><script>
+
+function quote(){
+
+let quotes=[
+
+"Success is built daily.",
+"Never stop creating.",
+"Small steps become big results.",
+"Focus beats talent.",
+"Consistency wins."
+
+];
+
+document.getElementById("quoteResult").innerText=quotes[Math.floor(Math.random()*quotes.length)];
+
+}
+
+</script><div class="tool">
+
+<h2>Word Scrambler</h2>
+
+<input id="scrambleInput">
+
+<button onclick="scramble()">Scramble</button>
+
+<div id="scrambleResult" class="result"></div>
+
+</div><script>
+
+function scramble(){
+
+let text=document.getElementById("scrambleInput").value.split("");
+
+for(let i=text.length-1;i>0;i--){
+
+let j=Math.floor(Math.random()*(i+1));
+
+[text[i],text[j]]=[text[j],text[i]];
+
+}
+
+document.getElementById("scrambleResult").innerText=text.join("");
+
+}
+
+</script><div class="tool">
+
+<h2>Random Country</h2>
+
+<button onclick="country()">Generate</button>
+
+<div id="countryResult" class="result"></div>
+
+</div><script>
+
+function country(){
+
+let countries=["USA","Japan","Denmark","Brazil","Germany","France","Canada"];
+
+document.getElementById("countryResult").innerText=countries[Math.floor(Math.random()*countries.length)];
+
+}
+
+</script><div class="tool">
+
+<h2>Dice Roller</h2>
+
+<button onclick="dice()">Roll</button>
+
+<div id="diceResult" class="result"></div>
+
+</div><script>
+
+function dice(){
+
+let roll=Math.floor(Math.random()*6)+1;
+
+document.getElementById("diceResult").innerText=roll;
+
+}
+
+</script><div class="tool">
+
+<h2>Random Emoji</h2>
+
+<button onclick="emojiRandom()">Generate</button>
+
+<div id="emojiRandomResult" class="result"></div>
+
+</div><script>
+
+function emojiRandom(){
+
+let emojis=["🔥","🚀","😎","😂","💡","✨","🎵","🎮"];
+
+document.getElementById("emojiRandomResult").innerText=emojis[Math.floor(Math.random()*emojis.length)];
+
+}
+
+</script><div class="tool">
+
+<h2>URL Encoder</h2>
+
+<input id="urlInput">
+
+<button onclick="encodeURL()">Encode</button>
+
+<div id="urlResult" class="result"></div>
+
+</div><script>
+
+function encodeURL(){
+
+let text=document.getElementById("urlInput").value;
+
+document.getElementById("urlResult").innerText=encodeURIComponent(text);
+
+}
+
+</script><div class="tool">
+
+<h2>URL Decoder</h2>
+
+<input id="decodeInput">
+
+<button onclick="decodeURL()">Decode</button>
+
+<div id="decodeResult" class="result"></div>
+
+</div><script>
+
+function decodeURL(){
+
+let text=document.getElementById("decodeInput").value;
+
+document.getElementById("decodeResult").innerText=decodeURIComponent(text);
+
+}
+
+</script>
