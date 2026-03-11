@@ -609,7 +609,48 @@ document.getElementById("urlResult").innerText=encodeURIComponent(text);
 
 function decodeURL(){
 
-let text=document.getElementById("decodeInput").value;
+let text=document.getElementById("decodeInput").value;<script>
+
+const translations = {
+
+en:{
+intro:"Free tools for creators: hashtags, captions, passwords, QR codes and more.",
+hashtag:"Hashtag Generator",
+yt:"YouTube Title Generator",
+tt:"TikTok Caption Generator"
+},
+
+da:{
+intro:"Gratis værktøjer til creators: hashtags, captions, passwords, QR-koder og mere.",
+hashtag:"Hashtag Generator",
+yt:"YouTube Titel Generator",
+tt:"TikTok Caption Generator"
+},
+
+es:{
+intro:"Herramientas gratis para creadores.",
+hashtag:"Generador de Hashtags",
+yt:"Generador de títulos YouTube",
+tt:"Generador de captions TikTok"
+}
+
+};
+
+function updateLanguage(){
+
+let lang=document.getElementById("language").value;
+
+document.getElementById("intro").innerText=translations[lang].intro;
+
+document.getElementById("hashTitle").innerText=translations[lang].hashtag;
+
+document.getElementById("ytTitle").innerText=translations[lang].yt;
+
+document.getElementById("ttTitle").innerText=translations[lang].tt;
+
+}
+
+</script>
 
 document.getElementById("decodeResult").innerText=decodeURIComponent(text);
 
