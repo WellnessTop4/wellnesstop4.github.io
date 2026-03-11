@@ -371,4 +371,95 @@ updateLanguage()
 </script>
 
 </body>
-</html>
+</html><!-- EXTRA SEO + COPY + 100 HASHTAGS -->
+<script>
+
+/* SEO title auto update */
+function updateSEO(){
+let lang=document.getElementById("language").value
+
+let titles={
+en:"Free AI Tools For Creators | Hashtags Titles Captions",
+da:"Gratis AI værktøjer til creators | Hashtags Titler",
+es:"Herramientas AI gratis para creadores",
+de:"Kostenlose AI Tools für Creator",
+fr:"Outils AI gratuits pour créateurs"
+}
+
+document.title=titles[lang]||titles.en
+}
+
+setInterval(updateSEO,2000)
+
+
+/* COPY BUTTON FOR RESULTS */
+
+function addCopyButtons(){
+
+let results=document.querySelectorAll(".result")
+
+results.forEach(r=>{
+
+if(r.parentElement.querySelector(".copybtn")) return
+
+let btn=document.createElement("button")
+btn.innerText="Copy"
+btn.className="copybtn"
+
+btn.onclick=function(){
+
+navigator.clipboard.writeText(r.innerText)
+
+btn.innerText="Copied"
+
+setTimeout(()=>btn.innerText="Copy",2000)
+
+}
+
+r.parentElement.insertBefore(btn,r)
+
+})
+
+}
+
+setInterval(addCopyButtons,1500)
+
+
+
+/* 100 HASHTAG GENERATOR */
+
+function generateHashtags(){
+
+let word=document.getElementById("hashtagInput").value
+
+if(!word) return
+
+let tags=[]
+
+for(let i=0;i<100;i++){
+
+let extras=["tips","viral","creator","content","trend","video","daily","growth","pro","idea"]
+
+let e=extras[Math.floor(Math.random()*extras.length)]
+
+tags.push("#"+word+e+i)
+
+}
+
+document.getElementById("hashtagResult").innerText=tags.join(" ")
+
+}
+
+
+/* BETTER RANDOM COLOR */
+
+function generateColor(){
+
+let color="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0")
+
+document.getElementById("colorResult").innerHTML=
+color+"<br><div style='width:100%;height:40px;background:"+color+"'></div>"
+
+}
+
+</script>
