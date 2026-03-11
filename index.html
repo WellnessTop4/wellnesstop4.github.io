@@ -462,4 +462,103 @@ color+"<br><div style='width:100%;height:40px;background:"+color+"'></div>"
 
 }
 
-</script>
+</script><!-- ADVANCED DOWNLOAD + COPY FUNCTIONS -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+/* COPY RESULT */
+
+function copyResult(id){
+
+let text=document.getElementById(id).innerText
+
+navigator.clipboard.writeText(text)
+
+alert("Copied")
+
+}
+
+
+/* DOWNLOAD TXT */
+
+function downloadTXT(id){
+
+let text=document.getElementById(id).innerText
+
+let blob=new Blob([text],{type:"text/plain"})
+
+let a=document.createElement("a")
+
+a.href=URL.createObjectURL(blob)
+
+a.download="ai-result.txt"
+
+a.click()
+
+}
+
+
+/* DOWNLOAD PDF */
+
+function downloadPDF(id){
+
+let text=document.getElementById(id).innerText
+
+const { jsPDF } = window.jspdf
+
+let pdf=new jsPDF()
+
+pdf.text(text,10,10)
+
+pdf.save("ai-result.pdf")
+
+}
+
+
+/* DOWNLOAD CSV (hashtags) */
+
+function downloadCSV(id){
+
+let text=document.getElementById(id).innerText
+
+let csv=text.replace(/ /g,"\n")
+
+let blob=new Blob([csv],{type:"text/csv"})
+
+let a=document.createElement("a")
+
+a.href=URL.createObjectURL(blob)
+
+a.download="hashtags.csv"
+
+a.click()
+
+}
+
+
+/* DOWNLOAD QR IMAGE */
+
+function downloadQR(){
+
+let canvas=document.getElementById("qrCanvas")
+
+let link=document.createElement("a")
+
+link.download="qr-code.png"
+
+link.href=canvas.toDataURL()
+
+link.click()
+
+}
+
+</script><button onclick="copyResult('hashtagResult')">Copy</button>
+<button onclick="downloadTXT('hashtagResult')">TXT</button>
+<button onclick="downloadCSV('hashtagResult')">CSV</button>
+<button onclick="downloadPDF('hashtagResult')">PDF</button><button onclick="copyResult('ytResult')">Copy</button>
+<button onclick="downloadTXT('ytResult')">TXT</button>
+<button onclick="downloadPDF('ytResult')">PDF</button><button onclick="copyResult('ttResult')">Copy</button>
+<button onclick="downloadTXT('ttResult')">TXT</button>
+<button onclick="downloadPDF('ttResult')">PDF</button><button onclick="downloadQR()">Download QR</button>
