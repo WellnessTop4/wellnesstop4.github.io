@@ -23,8 +23,7 @@ text-align:center;
 
 header{
 background:#111;
-padding:25px;
-border-bottom:1px solid #333;
+padding:20px;
 }
 
 nav a{
@@ -34,7 +33,7 @@ text-decoration:none;
 }
 
 .container{
-max-width:1000px;
+max-width:900px;
 margin:auto;
 padding:20px;
 }
@@ -50,8 +49,8 @@ input,textarea{
 width:90%;
 padding:10px;
 margin:10px;
-border-radius:5px;
 border:none;
+border-radius:5px;
 }
 
 button{
@@ -63,10 +62,6 @@ border-radius:5px;
 cursor:pointer;
 }
 
-button:hover{
-background:#0099cc;
-}
-
 .result{
 margin-top:10px;
 background:#000;
@@ -75,9 +70,8 @@ border-radius:5px;
 }
 
 footer{
-margin-top:40px;
-padding:20px;
 background:#111;
+padding:20px;
 }
 
 footer a{
@@ -106,36 +100,18 @@ text-decoration:none;
 <br>
 
 <select id="language" onchange="updateLanguage()">
-
 <option value="en">English</option>
 <option value="da">Dansk</option>
 <option value="es">Español</option>
 <option value="de">Deutsch</option>
 <option value="fr">Français</option>
-
 </select>
 
 </header>
 
 <div class="container">
 
-<!-- Ad -->
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-8036688230923764"
-data-ad-slot="1234567890"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<p id="intro">
-
-Free tools for creators: hashtags, captions, passwords, QR codes, colors and more.
-
-</p>
+<p id="intro">Free creator tools to generate hashtags, titles, captions and more.</p>
 
 <!-- Hashtag Tool -->
 
@@ -154,7 +130,7 @@ Free tools for creators: hashtags, captions, passwords, QR codes, colors and mor
 </div>
 
 
-<!-- YouTube Titles -->
+<!-- YouTube Tool -->
 
 <div class="tool">
 
@@ -171,7 +147,7 @@ Free tools for creators: hashtags, captions, passwords, QR codes, colors and mor
 </div>
 
 
-<!-- TikTok -->
+<!-- TikTok Tool -->
 
 <div class="tool">
 
@@ -184,21 +160,6 @@ Free tools for creators: hashtags, captions, passwords, QR codes, colors and mor
 <button onclick="generateTT()">Generate</button>
 
 <div id="ttResult" class="result"></div>
-
-</div>
-
-
-<!-- Emoji -->
-
-<div class="tool">
-
-<h2>Emoji Enhancer</h2>
-
-<textarea id="emojiInput"></textarea>
-
-<button onclick="addEmoji()">Enhance</button>
-
-<div id="emojiResult" class="result"></div>
 
 </div>
 
@@ -265,20 +226,6 @@ Free tools for creators: hashtags, captions, passwords, QR codes, colors and mor
 
 </div>
 
-
-<!-- Bottom Ad -->
-
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-8036688230923764"
-data-ad-slot="1234567892"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 </div>
 
 <footer>
@@ -293,16 +240,71 @@ data-full-width-responsive="true"></ins>
 
 <script>
 
+/* ---------- LANGUAGE SYSTEM ---------- */
+
+const lang = {
+
+en:{
+intro:"Free creator tools to generate hashtags, titles, captions and more.",
+hash:"Hashtag Generator",
+yt:"YouTube Title Generator",
+tt:"TikTok Caption Generator"
+},
+
+da:{
+intro:"Gratis værktøjer til creators: hashtags, titler, captions og mere.",
+hash:"Hashtag Generator",
+yt:"YouTube Titel Generator",
+tt:"TikTok Caption Generator"
+},
+
+es:{
+intro:"Herramientas gratis para creadores.",
+hash:"Generador de Hashtags",
+yt:"Generador de Títulos YouTube",
+tt:"Generador de captions TikTok"
+},
+
+de:{
+intro:"Kostenlose Tools für Creator.",
+hash:"Hashtag Generator",
+yt:"YouTube Titel Generator",
+tt:"TikTok Caption Generator"
+},
+
+fr:{
+intro:"Outils gratuits pour créateurs.",
+hash:"Générateur de hashtags",
+yt:"Générateur de titres YouTube",
+tt:"Générateur de captions TikTok"
+}
+
+};
+
+function updateLanguage(){
+
+let l=document.getElementById("language").value;
+
+document.getElementById("intro").innerText=lang[l].intro;
+document.getElementById("hashTitle").innerText=lang[l].hash;
+document.getElementById("ytTitle").innerText=lang[l].yt;
+document.getElementById("ttTitle").innerText=lang[l].tt;
+
+}
+
+
+/* ---------- TOOLS ---------- */
+
 function generateHashtags(){
 
-let word=document.getElementById("hashtagInput").value;
+let w=document.getElementById("hashtagInput").value;
 
 let tags=[
-"#"+word,
-"#"+word+"tips",
-"#"+word+"creator",
-"#"+word+"viral",
-"#"+word+"trend"
+"#"+w,
+"#"+w+"tips",
+"#"+w+"creator",
+"#"+w+"viral",
+"#"+w+"trend"
 ];
 
 document.getElementById("hashtagResult").innerText=tags.join(" ");
@@ -311,13 +313,13 @@ document.getElementById("hashtagResult").innerText=tags.join(" ");
 
 function generateYT(){
 
-let topic=document.getElementById("ytInput").value;
+let t=document.getElementById("ytInput").value;
 
 let titles=[
-"10 Things You Must Know About "+topic,
-"The Truth About "+topic,
-"Why Everyone Talks About "+topic,
-"Beginner Guide To "+topic
+"10 Things You Must Know About "+t,
+"The Truth About "+t,
+"Why Everyone Talks About "+t,
+"Beginner Guide To "+t
 ];
 
 document.getElementById("ytResult").innerText=titles.join("\n");
@@ -326,25 +328,15 @@ document.getElementById("ytResult").innerText=titles.join("\n");
 
 function generateTT(){
 
-let topic=document.getElementById("ttInput").value;
+let t=document.getElementById("ttInput").value;
 
 let captions=[
-topic+" but nobody talks about this 🔥",
-"You NEED to see this "+topic+" trick 🚀",
-topic+" hack that works 💡"
+t+" but nobody talks about this 🔥",
+"You NEED to see this "+t+" trick 🚀",
+t+" hack that works 💡"
 ];
 
 document.getElementById("ttResult").innerText=captions.join("\n");
-
-}
-
-function addEmoji(){
-
-let text=document.getElementById("emojiInput").value;
-
-let emojis=["🔥","🚀","😎","✨"];
-
-document.getElementById("emojiResult").innerText=text+" "+emojis[Math.floor(Math.random()*emojis.length)];
 
 }
 
@@ -395,265 +387,4 @@ QRCode.toCanvas(document.getElementById("qrCanvas"),text,{width:200});
 </script>
 
 </body>
-</html><div class="tool">
-
-<h2>Random Name Generator</h2>
-
-<button onclick="generateName()">Generate</button>
-
-<div id="nameResult" class="result"></div>
-
-</div><script>
-
-function generateName(){
-
-let names=["Nova","Shadow","Blaze","Storm","Phoenix","Vortex","Hunter","Raven","Titan","Ghost"];
-
-let name=names[Math.floor(Math.random()*names.length)];
-
-document.getElementById("nameResult").innerText=name;
-
-}
-
-</script><div class="tool">
-
-<h2>Username Generator</h2>
-
-<input id="userInput" placeholder="Enter word">
-
-<button onclick="generateUser()">Generate</button>
-
-<div id="userResult" class="result"></div>
-
-</div><script>
-
-function generateUser(){
-
-let w=document.getElementById("userInput").value;
-
-let users=[
-
-w+"_official",
-w+"_tv",
-"real_"+w,
-w+"123",
-"the_"+w
-
-];
-
-document.getElementById("userResult").innerText=users.join("\n");
-
-}
-
-</script><div class="tool">
-
-<h2>Text Reverser</h2>
-
-<textarea id="reverseInput"></textarea>
-
-<button onclick="reverseText()">Reverse</button>
-
-<div id="reverseResult" class="result"></div>
-
-</div><script>
-
-function reverseText(){
-
-let text=document.getElementById("reverseInput").value;
-
-let reversed=text.split("").reverse().join("");
-
-document.getElementById("reverseResult").innerText=reversed;
-
-}
-
-</script><div class="tool">
-
-<h2>Random Quote</h2>
-
-<button onclick="quote()">Generate</button>
-
-<div id="quoteResult" class="result"></div>
-
-</div><script>
-
-function quote(){
-
-let quotes=[
-
-"Success is built daily.",
-"Never stop creating.",
-"Small steps become big results.",
-"Focus beats talent.",
-"Consistency wins."
-
-];
-
-document.getElementById("quoteResult").innerText=quotes[Math.floor(Math.random()*quotes.length)];
-
-}
-
-</script><div class="tool">
-
-<h2>Word Scrambler</h2>
-
-<input id="scrambleInput">
-
-<button onclick="scramble()">Scramble</button>
-
-<div id="scrambleResult" class="result"></div>
-
-</div><script>
-
-function scramble(){
-
-let text=document.getElementById("scrambleInput").value.split("");
-
-for(let i=text.length-1;i>0;i--){
-
-let j=Math.floor(Math.random()*(i+1));
-
-[text[i],text[j]]=[text[j],text[i]];
-
-}
-
-document.getElementById("scrambleResult").innerText=text.join("");
-
-}
-
-</script><div class="tool">
-
-<h2>Random Country</h2>
-
-<button onclick="country()">Generate</button>
-
-<div id="countryResult" class="result"></div>
-
-</div><script>
-
-function country(){
-
-let countries=["USA","Japan","Denmark","Brazil","Germany","France","Canada"];
-
-document.getElementById("countryResult").innerText=countries[Math.floor(Math.random()*countries.length)];
-
-}
-
-</script><div class="tool">
-
-<h2>Dice Roller</h2>
-
-<button onclick="dice()">Roll</button>
-
-<div id="diceResult" class="result"></div>
-
-</div><script>
-
-function dice(){
-
-let roll=Math.floor(Math.random()*6)+1;
-
-document.getElementById("diceResult").innerText=roll;
-
-}
-
-</script><div class="tool">
-
-<h2>Random Emoji</h2>
-
-<button onclick="emojiRandom()">Generate</button>
-
-<div id="emojiRandomResult" class="result"></div>
-
-</div><script>
-
-function emojiRandom(){
-
-let emojis=["🔥","🚀","😎","😂","💡","✨","🎵","🎮"];
-
-document.getElementById("emojiRandomResult").innerText=emojis[Math.floor(Math.random()*emojis.length)];
-
-}
-
-</script><div class="tool">
-
-<h2>URL Encoder</h2>
-
-<input id="urlInput">
-
-<button onclick="encodeURL()">Encode</button>
-
-<div id="urlResult" class="result"></div>
-
-</div><script>
-
-function encodeURL(){
-
-let text=document.getElementById("urlInput").value;
-
-document.getElementById("urlResult").innerText=encodeURIComponent(text);
-
-}
-
-</script><div class="tool">
-
-<h2>URL Decoder</h2>
-
-<input id="decodeInput">
-
-<button onclick="decodeURL()">Decode</button>
-
-<div id="decodeResult" class="result"></div>
-
-</div><script>
-
-function decodeURL(){
-
-let text=document.getElementById("decodeInput").value;<script>
-
-const translations = {
-
-en:{
-intro:"Free tools for creators: hashtags, captions, passwords, QR codes and more.",
-hashtag:"Hashtag Generator",
-yt:"YouTube Title Generator",
-tt:"TikTok Caption Generator"
-},
-
-da:{
-intro:"Gratis værktøjer til creators: hashtags, captions, passwords, QR-koder og mere.",
-hashtag:"Hashtag Generator",
-yt:"YouTube Titel Generator",
-tt:"TikTok Caption Generator"
-},
-
-es:{
-intro:"Herramientas gratis para creadores.",
-hashtag:"Generador de Hashtags",
-yt:"Generador de títulos YouTube",
-tt:"Generador de captions TikTok"
-}
-
-};
-
-function updateLanguage(){
-
-let lang=document.getElementById("language").value;
-
-document.getElementById("intro").innerText=translations[lang].intro;
-
-document.getElementById("hashTitle").innerText=translations[lang].hashtag;
-
-document.getElementById("ytTitle").innerText=translations[lang].yt;
-
-document.getElementById("ttTitle").innerText=translations[lang].tt;
-
-}
-
-</script>
-
-document.getElementById("decodeResult").innerText=decodeURIComponent(text);
-
-}
-
-</script>
+</html>
