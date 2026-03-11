@@ -9,22 +9,88 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
 
 <style>
-body{font-family:Arial,sans-serif;background:#111;color:white;margin:0;padding:20px;}
-h1,h2{margin-bottom:10px;}
-.container{max-width:900px;margin:auto;}
-.tool, .section{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
-input,textarea,select,button{width:90%;padding:10px;margin:5px 0;border-radius:5px;border:none;}
-button{background:#00c3ff;color:white;cursor:pointer;}
-button:hover{background:#0099cc;}
-.result{margin-top:10px;background:#000;padding:10px;border-radius:5px;word-wrap:break-word;}
-.result li{margin-bottom:5px; cursor: pointer;}
-footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
-.ads-placeholder{display:block;margin:20px 0;text-align:center;}
+/* --- Grundlæggende layout --- */
+body{
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+h1,h2{
+    color: #00c3ff;
+    margin-bottom: 15px;
+}
+.tool, .section{
+    background: #1e1e1e;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+input,textarea,select,button{
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+button{
+    background: #00c3ff;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover{
+    background: #0099cc;
+    color: #fff;
+}
+.result{
+    margin-top: 10px;
+    background: #000;
+    padding: 10px;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+.result li{
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+footer{
+    text-align: center;
+    padding: 20px 0;
+}
+footer a{
+    color: #00c3ff;
+    margin: 0 5px;
+    text-decoration: none;
+}
+.ads-placeholder{
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* --- Responsivt --- */
+@media (max-width: 600px){
+    input,textarea,select,button{width: 100%;}
+}
 </style>
 </head>
 <body>
 
-<h1 id="pageTitle">AI Værktøjer For Skabere</h1>
+<div class="container">
+<h1 id="pageTitle"></h1>
+
+<select id="language" onchange="updateLanguage()">
+    <option value="da">Dansk</option>
+    <option value="en">English</option>
+</select>
 
 <p id="introText"></p>
 
@@ -38,17 +104,7 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 </div>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<select id="language" onchange="updateLanguage()">
-<option value="da">Dansk</option>
-<option value="en">English</option>
-<option value="es">Español</option>
-<option value="de">Deutsch</option>
-<option value="fr">Français</option>
-</select>
-
-<div class="container">
-
-<!-- Tools Section -->
+<!-- --- Tools --- -->
 <div class="tool">
 <h2 id="hashtagTitle"></h2>
 <input id="hashtagInput"><br>
@@ -134,19 +190,17 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
      data-full-width-responsive="true"></ins>
 </div>
 
-<!-- About Section -->
+<!-- --- Info Sections --- -->
 <div class="section" id="aboutTitle">
 <h2>About</h2>
 <p id="aboutText"></p>
 </div>
 
-<!-- Guide Section -->
 <div class="section" id="guideTitle">
 <h2>Guide</h2>
 <p id="guideText"></p>
 </div>
 
-<!-- Privacy Section -->
 <div class="section" id="privacyTitle">
 <h2>Privacy Policy</h2>
 <p id="privacyText"></p>
@@ -167,14 +221,16 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 <a href="#guideTitle">Guide</a> | 
 <a href="#privacyTitle">Privacy Policy</a>
 </footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <script>
-// --- Language text ---
+// --- Sprogtekster ---
 const langTexts = {
 'da':{
-intro:"Velkommen til AI-værktøjer for skabere! Alle værktøjer er gratis.",
+pageTitle:"AI Værktøjer For Skabere",
+intro:"Velkommen! Alle værktøjer er gratis at bruge.",
 hashtagTitle:"Hashtag-generator",hashtagPlaceholder:"Indtast søgeord",hashtagButton:"Generer",
 ytTitle:"YouTube-titelgenerator",ytPlaceholder:"Indtast emne",ytButton:"Generer",
 ttTitle:"TikTok-tekstgenerator",ttPlaceholder:"Indtast emne",ttButton:"Generer",
@@ -186,11 +242,12 @@ colorTitle:"Tilfældig farve-generator",colorButton:"Generer Farve",
 qrTitle:"QR-kode-generator",qrPlaceholder:"Indtast tekst eller URL",qrButton:"Generer QR-kode",
 caseTitle:"Tekstformateringskonverter",casePlaceholder:"Indtast tekst",
 aboutText:"Dette værktøj hjælper skabere med at spare tid og øge engagement.",
-guideText:"Vælg værktøjer, indtast tekst eller billeder og generer resultater hurtigt.",
+guideText:"Vælg et værktøj, indtast tekst eller billeder, og generer resultater hurtigt.",
 privacyText:"Vi gemmer ingen personlige data. Al behandling sker lokalt på din enhed."
 },
 'en':{
-intro:"Welcome to AI Tools For Creators! All tools are free.",
+pageTitle:"AI Tools For Creators",
+intro:"Welcome! All tools are free.",
 hashtagTitle:"Hashtag Generator",hashtagPlaceholder:"Enter keyword",hashtagButton:"Generate",
 ytTitle:"YouTube Title Generator",ytPlaceholder:"Enter topic",ytButton:"Generate",
 ttTitle:"TikTok Caption Generator",ttPlaceholder:"Enter topic",ttButton:"Generate",
@@ -207,10 +264,11 @@ privacyText:"We do not store personal data. All processing happens locally on yo
 }
 };
 
-// --- Update Language ---
+// --- Opdater sprog ---
 function updateLanguage(){
   const lang=document.getElementById('language').value;
   const t=langTexts[lang];
+  document.getElementById('pageTitle').innerText=t.pageTitle;
   document.getElementById('introText').innerText=t.intro;
   document.getElementById('hashtagTitle').innerText=t.hashtagTitle;
   document.getElementById('hashtagInput').placeholder=t.hashtagPlaceholder;
@@ -242,28 +300,7 @@ function updateLanguage(){
   document.getElementById('privacyText').innerText=t.privacyText;
 }
 
-// --- Copy tooltip ---
-function copyToClipboardWithTooltip(el){
-    const text=el.innerText;
-    if(!text) return;
-    navigator.clipboard.writeText(text).then(()=>{
-        let tooltip=document.createElement("span");
-        tooltip.innerText="kopieret!";
-        tooltip.style.position="absolute";
-        tooltip.style.background="#00c3ff";
-        tooltip.style.color="#000";
-        tooltip.style.padding="2px 6px";
-        tooltip.style.borderRadius="4px";
-        tooltip.style.fontSize="12px";
-        tooltip.style.top=(el.getBoundingClientRect().top-25+window.scrollY)+"px";
-        tooltip.style.left=(el.getBoundingClientRect().left)+"px";
-        tooltip.style.zIndex=9999;
-        document.body.appendChild(tooltip);
-        setTimeout(()=>tooltip.remove(),1200);
-    });
-}
-
-// --- Tool Functions ---
+// --- Tool functions ---
 function downloadText(id){
   let tEl=document.getElementById(id);
   let t=tEl.innerText||Array.from(tEl.querySelectorAll('li')).map(li=>li.innerText).join("\n");
@@ -271,31 +308,17 @@ function downloadText(id){
   let b=new Blob([t],{type:"text/plain;charset=utf-8"});
   let a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="result.txt"; a.click();
 }
-function generateHashtags(){
-  let w=document.getElementById("hashtagInput").value.trim(); if(!w) return;
-  let tags=["#"+w,"#"+w+"tips","#"+w+"creator","#"+w+"content","#"+w+"viral","#"+w+"trend"];
-  let list=document.getElementById("hashtagResult"); list.innerHTML="";
-  tags.forEach(t=>{let li=document.createElement("li"); li.innerText=t; li.onclick=()=>copyToClipboardWithTooltip(li); list.appendChild(li);});
-}
-function generateYT(){
-  let t=document.getElementById("ytInput").value.trim(); if(!t) return;
-  let titles=["10 ting du skal vide om "+t,"Sandheden om "+t,"Hvordan "+t+" kan ændre dit liv","Begynder guide til "+t,"Hvorfor alle taler om "+t];
-  let list=document.getElementById("ytResult"); list.innerHTML="";
-  titles.forEach(title=>{let li=document.createElement("li"); li.innerText=title; li.onclick=()=>copyToClipboardWithTooltip(li); list.appendChild(li);});
-}
-function generateTT(){
-  let t=document.getElementById("ttInput").value.trim(); if(!t) return;
-  let captions=[t+" men ingen taler om dette 👀","Du SKAL se denne "+t+" trick 🔥",t+" ændrede alt 😳","Prøver viral "+t+" trend 🚀",t+" hack som faktisk virker 💡"];
-  let list=document.getElementById("ttResult"); list.innerHTML="";
-  captions.forEach(c=>{let li=document.createElement("li"); li.innerText=c; li.onclick=()=>copyToClipboardWithTooltip(li); list.appendChild(li);});
-}
-function addEmoji(){let t=document.getElementById("emojiInput").value.trim(); if(!t) return; let e=["🔥","🚀","😎","💡","✨"]; document.getElementById("emojiResult").innerText=t+" "+e[Math.floor(Math.random()*e.length)];}
-function countWords(){let t=document.getElementById("wordInput").value.trim(); if(!t) return document.getElementById("wordResult").innerText="Words: 0 | Characters: 0"; let words=t.split(/\s+/).length; let chars=t.length; document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;}
-function convertImage(){let f=document.getElementById("imageInput").files[0]; if(!f) return; let r=new FileReader(); r.onload=function(e){let img=new Image(); img.onload=function(){let c=document.createElement("canvas"); c.width=img.width; c.height=img.height; c.getContext("2d").drawImage(img,0,0); let url=c.toDataURL("image/png"); let link=document.getElementById("downloadImage"); link.href=url; link.download="converted.png"; link.innerText="Download Image";}; img.src=e.target.result;}; r.readAsDataURL(f);}
+
+function generateHashtags(){let w=document.getElementById("hashtagInput").value.trim(); if(!w)return; let list=document.getElementById("hashtagResult"); list.innerHTML=""; ["#"+w,"#"+w+"tips","#"+w+"creator","#"+w+"content","#"+w+"viral","#"+w+"trend"].forEach(t=>{let li=document.createElement("li"); li.innerText=t; li.onclick=()=>navigator.clipboard.writeText(t); list.appendChild(li);});}
+function generateYT(){let t=document.getElementById("ytInput").value.trim(); if(!t)return; let list=document.getElementById("ytResult"); list.innerHTML=""; ["10 ting du skal vide om "+t,"Sandheden om "+t,"Hvordan "+t+" kan ændre dit liv","Begynder guide til "+t,"Hvorfor alle taler om "+t].forEach(title=>{let li=document.createElement("li"); li.innerText=title; li.onclick=()=>navigator.clipboard.writeText(title); list.appendChild(li);});}
+function generateTT(){let t=document.getElementById("ttInput").value.trim(); if(!t)return; let list=document.getElementById("ttResult"); list.innerHTML=""; [t+" men ingen taler om dette 👀","Du SKAL se denne "+t+" trick 🔥",t+" ændrede alt 😳","Prøver viral "+t+" trend 🚀",t+" hack som faktisk virker 💡"].forEach(c=>{let li=document.createElement("li"); li.innerText=c; li.onclick=()=>navigator.clipboard.writeText(c); list.appendChild(li);});}
+function addEmoji(){let t=document.getElementById("emojiInput").value.trim(); if(!t)return; let e=["🔥","🚀","😎","💡","✨"]; document.getElementById("emojiResult").innerText=t+" "+e[Math.floor(Math.random()*e.length)];}
+function countWords(){let t=document.getElementById("wordInput").value.trim(); if(!t)return document.getElementById("wordResult").innerText="Words: 0 | Characters: 0"; let words=t.split(/\s+/).length; let chars=t.length; document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;}
+function convertImage(){let f=document.getElementById("imageInput").files[0]; if(!f)return; let r=new FileReader(); r.onload=function(e){let img=new Image(); img.onload=function(){let c=document.createElement("canvas"); c.width=img.width; c.height=img.height; c.getContext("2d").drawImage(img,0,0); let url=c.toDataURL("image/png"); let link=document.getElementById("downloadImage"); link.href=url; link.download="converted.png"; link.innerText="Download Image";}; img.src=e.target.result;}; r.readAsDataURL(f);}
 function generatePassword(){let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+"; let pass=""; for(let i=0;i<16;i++){pass+=chars.charAt(Math.floor(Math.random()*chars.length));} document.getElementById("passwordResult").innerText=pass;}
 function generateColor(){let color="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0"); document.getElementById("colorResult").innerText=color;}
-function generateQR(){let t=document.getElementById("qrInput").value.trim(); if(!t) return; QRCode.toCanvas(document.getElementById("qrCanvas"), t, {width:200});}
-function convertCase(type){let t=document.getElementById("caseInput").value.trim(); if(!t) return document.getElementById("caseResult").innerText=""; let r=""; if(type==="upper"){r=t.toUpperCase();}else if(type==="lower"){r=t.toLowerCase();}else if(type==="title"){r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());} document.getElementById("caseResult").innerText=r;}
+function generateQR(){let t=document.getElementById("qrInput").value.trim(); if(!t)return; QRCode.toCanvas(document.getElementById("qrCanvas"), t, {width:200});}
+function convertCase(type){let t=document.getElementById("caseInput").value.trim(); if(!t)return document.getElementById("caseResult").innerText=""; let r=""; if(type==="upper"){r=t.toUpperCase();}else if(type==="lower"){r=t.toLowerCase();}else if(type==="title"){r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());} document.getElementById("caseResult").innerText=r;}
 
 window.onload=updateLanguage;
 </script>
