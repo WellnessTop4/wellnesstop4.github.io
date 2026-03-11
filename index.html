@@ -13,25 +13,17 @@ body{font-family:Arial;background:#111;color:white;text-align:center;padding:20p
 h1{margin-bottom:10px;}
 .container{max-width:900px;margin:auto;}
 .tool{background:#1e1e1e;padding:20px;margin:20px 0;border-radius:10px;}
-input,textarea,select{width:90%;padding:10px;margin:5px;border-radius:5px;border:none;}
+input,textarea,select{width:90%;padding:10px;margin:10px;border-radius:5px;border:none;}
 button{padding:10px 20px;margin:5px;border:none;border-radius:5px;background:#00c3ff;color:white;cursor:pointer;}
 button:hover{background:#0099cc;}
-.result{margin-top:10px;background:#000;padding:10px;border-radius:5px;}
+.result{margin-top:10px;background:#000;padding:10px;border-radius:5px;white-space:pre-wrap;}
 footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
+section{display:none;margin-top:20px;}
 </style>
 </head>
-<body data-page="index">
+<body>
 
 <h1>AI Tools For Creators</h1>
-
-<select onchange="changeLanguage(this.value)">
-<option value="en">English</option>
-<option value="da">Dansk</option>
-</select>
-
-<p id="introText"></p>
-
-<div class="container">
 
 <!-- AdSense top -->
 <ins class="adsbygoogle"
@@ -42,26 +34,102 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- 10 værktøjer -->
-<div class="tool"><h2 id="hashtagTitle"></h2><input id="hashtagInput"><br><button id="hashtagButton" onclick="generateHashtags()"></button><button onclick="downloadText('hashtagResult')">Download</button><div id="hashtagResult" class="result"></div></div>
+<!-- Language Selector -->
+<select id="language" onchange="updateLanguage()">
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
 
-<div class="tool"><h2 id="ytTitle"></h2><input id="ytInput"><br><button id="ytButton" onclick="generateYT()"></button><button onclick="downloadText('ytResult')">Download</button><div id="ytResult" class="result"></div></div>
+<p id="introText"></p>
 
-<div class="tool"><h2 id="ttTitle"></h2><input id="ttInput"><br><button id="ttButton" onclick="generateTT()"></button><button onclick="downloadText('ttResult')">Download</button><div id="ttResult" class="result"></div></div>
+<div class="container">
 
-<div class="tool"><h2 id="emojiTitle"></h2><textarea id="emojiInput"></textarea><br><button id="emojiButton" onclick="addEmoji()"></button><button onclick="downloadText('emojiResult')">Download</button><div id="emojiResult" class="result"></div></div>
+<!-- Hashtag Generator -->
+<div class="tool">
+<h2 id="hashtagTitle"></h2>
+<input id="hashtagInput"><br>
+<button id="hashtagButton" onclick="generateHashtags()"></button>
+<button onclick="downloadText('hashtagResult')">Download</button>
+<div id="hashtagResult" class="result"></div>
+</div>
 
-<div class="tool"><h2 id="wordTitle"></h2><textarea id="wordInput"></textarea><br><button onclick="countWords()">Count</button><div id="wordResult" class="result"></div></div>
+<!-- YouTube Title Generator -->
+<div class="tool">
+<h2 id="ytTitle"></h2>
+<input id="ytInput"><br>
+<button id="ytButton" onclick="generateYT()"></button>
+<button onclick="downloadText('ytResult')">Download</button>
+<div id="ytResult" class="result"></div>
+</div>
 
-<div class="tool"><h2 id="imageTitle"></h2><input type="file" id="imageInput"><br><button onclick="convertImage()">Convert</button><br><br><a id="downloadImage"></a></div>
+<!-- TikTok Caption Generator -->
+<div class="tool">
+<h2 id="ttTitle"></h2>
+<input id="ttInput"><br>
+<button id="ttButton" onclick="generateTT()"></button>
+<button onclick="downloadText('ttResult')">Download</button>
+<div id="ttResult" class="result"></div>
+</div>
 
-<div class="tool"><h2>Password Generator</h2><button onclick="generatePassword()">Generate Password</button><div id="passwordResult" class="result"></div></div>
+<!-- Emoji Enhancer -->
+<div class="tool">
+<h2 id="emojiTitle"></h2>
+<textarea id="emojiInput"></textarea><br>
+<button id="emojiButton" onclick="addEmoji()"></button>
+<button onclick="downloadText('emojiResult')">Download</button>
+<div id="emojiResult" class="result"></div>
+</div>
 
-<div class="tool"><h2>Random Color Generator</h2><button onclick="generateColor()">Generate Color</button><div id="colorResult" class="result"></div></div>
+<!-- Word Counter -->
+<div class="tool">
+<h2 id="wordTitle"></h2>
+<textarea id="wordInput"></textarea><br>
+<button onclick="countWords()"></button>
+<div id="wordResult" class="result"></div>
+</div>
 
-<div class="tool"><h2>QR Code Generator</h2><input id="qrInput"><br><button onclick="generateQR()">Generate QR Code</button><br><canvas id="qrCanvas"></canvas></div>
+<!-- Image Converter -->
+<div class="tool">
+<h2 id="imageTitle"></h2>
+<input type="file" id="imageInput"><br>
+<button onclick="convertImage()"></button><br><br>
+<a id="downloadImage"></a>
+</div>
 
-<div class="tool"><h2>Text Case Converter</h2><textarea id="caseInput"></textarea><br><button onclick="convertCase('upper')">UPPERCASE</button><button onclick="convertCase('lower')">lowercase</button><button onclick="convertCase('title')">Title Case</button><div id="caseResult" class="result"></div></div>
+<!-- Password Generator -->
+<div class="tool">
+<h2 id="passwordTitle">Password Generator</h2>
+<button onclick="generatePassword()">Generate Password</button>
+<div id="passwordResult" class="result"></div>
+</div>
+
+<!-- Random Color Generator -->
+<div class="tool">
+<h2 id="colorTitle">Random Color Generator</h2>
+<button onclick="generateColor()">Generate Color</button>
+<div id="colorResult" class="result"></div>
+</div>
+
+<!-- QR Code Generator -->
+<div class="tool">
+<h2 id="qrTitle">QR Code Generator</h2>
+<input id="qrInput"><br>
+<button onclick="generateQR()">Generate QR Code</button>
+<br><canvas id="qrCanvas"></canvas>
+</div>
+
+<!-- Text Case Converter -->
+<div class="tool">
+<h2 id="caseTitle">Text Case Converter</h2>
+<textarea id="caseInput"></textarea><br>
+<button onclick="convertCase('upper')">UPPERCASE</button>
+<button onclick="convertCase('lower')">lowercase</button>
+<button onclick="convertCase('title')">Title Case</button>
+<div id="caseResult" class="result"></div>
+</div>
 
 <!-- AdSense bottom -->
 <ins class="adsbygoogle"
@@ -75,58 +143,75 @@ footer a{color:#00c3ff;margin:0 5px;text-decoration:none;}
 </div>
 
 <footer>
-<a href="#about" onclick="showSection('about')">About</a> | 
-<a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a> | 
-<a href="#guide" onclick="showSection('guide')">Guide</a> | 
-<a href="#home" onclick="showSection('home')">Home</a>
+<a href="#" onclick="showSection('about')">About</a> | 
+<a href="#" onclick="showSection('privacy')">Privacy Policy</a> | 
+<a href="#" onclick="showSection('guide')">Guide</a>
 </footer>
 
-<!-- QR lib -->
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<!-- Sections -->
+<section id="about">
+<h2>About</h2>
+<p>This website provides content creators with free tools to generate hashtags, titles, captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.</p>
+</section>
+<section id="privacy">
+<h2>Privacy Policy</h2>
+<p>We do not collect personal data. Google AdSense may use cookies for anonymized ad analytics. No other personal information is tracked.</p>
+</section>
+<section id="guide">
+<h2>Guide</h2>
+<p>Use the tools on this page to boost your content: generate hashtags, catchy titles, captions, enhance posts with emojis, count words, convert images, create secure passwords, generate QR codes, pick random colors, or convert text case. All tools are free and require no API keys.</p>
+</section>
 
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
-// --- Sprogtekster ---
+// --- Multilingual texts ---
 const langTexts = {
-'en': {intro:"Welcome to AI Tools For Creators! Generate hashtags, titles, TikTok captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.",about:"This website provides content creators with free tools to generate hashtags, titles, captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and change text case.",privacy:"We do not collect personal data. Google AdSense may use cookies for anonymized ad analytics. No other personal information is tracked.",guide:"Use the tools on the homepage to boost your content: generate hashtags, catchy titles, captions, enhance posts with emojis, count words, convert images, create secure passwords, generate QR codes, pick random colors, or convert text case. All tools are free."},
-'da': {intro:"Velkommen til AI-værktøjer for skabere! Generer hashtags, titler, TikTok-tekster, emojis, tæl ord, konverter billeder, generer adgangskoder, QR-koder, tilfældige farver og ændr tekstformater.",about:"Dette websted giver skabere gratis værktøjer til at generere hashtags, titler, TikTok-tekster, emojis, tælle ord, konvertere billeder, generere adgangskoder, QR-koder, tilfældige farver og ændre tekstformater.",privacy:"Vi gemmer ingen personlige data. Google AdSense kan bruge cookies til anonymiseret annonceanalyse. Ingen anden personlig information spores.",guide:"Brug værktøjerne på forsiden til at forbedre dit indhold: generer hashtags, titler, captions, forstærk opslag med emojis, tæl ord, konverter billeder, lav sikre adgangskoder, generer QR-koder, vælg tilfældige farver eller ændr tekstformat. Alle værktøjer er gratis."}
+'en': {intro:"Welcome to AI Tools For Creators! Generate hashtags, titles, TikTok captions, emojis, count words, convert images, generate passwords, QR codes, random colors, and text case conversion.",hashtagTitle:"Hashtag Generator",hashtagPlaceholder:"Enter keyword",hashtagButton:"Generate",ytTitle:"YouTube Title Generator",ytPlaceholder:"Enter topic",ytButton:"Generate",ttTitle:"TikTok Caption Generator",ttPlaceholder:"Enter topic",ttButton:"Generate",emojiTitle:"Emoji Enhancer",emojiPlaceholder:"Enter text",emojiButton:"Enhance",wordTitle:"Word Counter",imageTitle:"Image Converter (PNG)"},
+'da': {intro:"Velkommen til AI-værktøjer for skabere! Generer hashtags, titler, TikTok-tekster, emojis, tæl ord, konverter billeder, generer adgangskoder, QR-koder, tilfældige farver og tekstformater.",hashtagTitle:"Hashtag-generator",hashtagPlaceholder:"Indtast søgeord",hashtagButton:"Generer",ytTitle:"YouTube-titelgenerator",ytPlaceholder:"Indtast emne",ytButton:"Generer",ttTitle:"TikTok-tekstgenerator",ttPlaceholder:"Indtast emne",ttButton:"Generer",emojiTitle:"Emoji-forstærker",emojiPlaceholder:"Indtast tekst",emojiButton:"Forstærk",wordTitle:"Ordoptæller",imageTitle:"Billedkonverter (PNG)"},
+'es': {intro:"¡Bienvenido a Herramientas de IA para Creadores! Genera hashtags, títulos llamativos, captions de TikTok, emojis, cuenta palabras, convierte imágenes, genera contraseñas, códigos QR, colores aleatorios y cambia mayúsculas.",hashtagTitle:"Generador de Hashtags",hashtagPlaceholder:"Ingresa palabra clave",hashtagButton:"Generar",ytTitle:"Generador de Títulos de YouTube",ytPlaceholder:"Ingresa tema",ytButton:"Generar",ttTitle:"Generador de Captions de TikTok",ttPlaceholder:"Ingresa tema",ttButton:"Generar",emojiTitle:"Mejorador de Emojis",emojiPlaceholder:"Ingresa texto",emojiButton:"Mejorar",wordTitle:"Contador de Palabras",imageTitle:"Convertidor de Imágenes (PNG)"},
+'de': {intro:"Willkommen bei AI Tools für Creator! Generiere Hashtags, auffällige Titel, TikTok-Untertitel, Emojis, zähle Wörter, konvertiere Bilder, erstelle Passwörter, QR-Codes, Zufallsfarben und Textformatierung.",hashtagTitle:"Hashtag-Generator",hashtagPlaceholder:"Schlüsselwort eingeben",hashtagButton:"Generieren",ytTitle:"YouTube-Titelgenerator",ytPlaceholder:"Thema eingeben",ytButton:"Generieren",ttTitle:"TikTok-Caption-Generator",ttPlaceholder:"Thema eingeben",ttButton:"Generieren",emojiTitle:"Emoji-Enhancer",emojiPlaceholder:"Text eingeben",emojiButton:"Verbessern",wordTitle:"Wortzähler",imageTitle:"Bildkonverter (PNG)"},
+'fr': {intro:"Bienvenue sur AI Tools For Creators ! Générez des hashtags, titres accrocheurs, captions TikTok, emojis, comptez les mots, convertissez des images, générez des mots de passe, codes QR, couleurs aléatoires et modifiez la casse.",hashtagTitle:"Générateur de Hashtags",hashtagPlaceholder:"Entrez un mot-clé",hashtagButton:"Générer",ytTitle:"Générateur de Titres YouTube",ytPlaceholder:"Entrez un sujet",ytButton:"Générer",ttTitle:"Générateur de Captions TikTok",ttPlaceholder:"Entrez un sujet",ttButton:"Générer",emojiTitle:"Améliorateur d'Emojis",emojiPlaceholder:"Entrez du texte",emojiButton:"Améliorer",wordTitle:"Compteur de Mots",imageTitle:"Convertisseur d'Images (PNG)"}
 };
 
-// --- Skift sprog ---
-function changeLanguage(lang){localStorage.setItem('lang',lang);updateLanguage();}
 function updateLanguage(){
-  const lang = localStorage.getItem('lang')||'en';
-  const t = langTexts[lang];
-  document.getElementById('introText').innerText = t.intro;
-  document.getElementById('hashtagTitle').innerText = lang=='da'?"Hashtag-generator":"Hashtag Generator";
-  document.getElementById('ytTitle').innerText = lang=='da'?"YouTube-titelgenerator":"YouTube Title Generator";
-  document.getElementById('ttTitle').innerText = lang=='da'?"TikTok-tekstgenerator":"TikTok Caption Generator";
-  document.getElementById('emojiTitle').innerText = lang=='da'?"Emoji-forstærker":"Emoji Enhancer";
-  document.getElementById('wordTitle').innerText = lang=='da'?"Ordoptæller":"Word Counter";
-  document.getElementById('imageTitle').innerText = lang=='da'?"Billedkonverter (PNG)":"Image Converter (PNG)";
+  const lang=document.getElementById('language').value;
+  const texts=langTexts[lang];
+  document.getElementById('introText').innerText=texts.intro;
+  document.getElementById('hashtagTitle').innerText=texts.hashtagTitle;
+  document.getElementById('ytTitle').innerText=texts.ytTitle;
+  document.getElementById('ttTitle').innerText=texts.ttTitle;
+  document.getElementById('emojiTitle').innerText=texts.emojiTitle;
+  document.getElementById('wordTitle').innerText=texts.wordTitle;
+  document.getElementById('imageTitle').innerText=texts.imageTitle;
+  document.getElementById('hashtagInput').placeholder=texts.hashtagPlaceholder;
+  document.getElementById('ytInput').placeholder=texts.ytPlaceholder;
+  document.getElementById('ttInput').placeholder=texts.ttPlaceholder;
+  document.getElementById('emojiInput').placeholder=texts.emojiPlaceholder;
+  document.getElementById('hashtagButton').innerText=texts.hashtagButton;
+  document.getElementById('ytButton').innerText=texts.ytButton;
+  document.getElementById('ttButton').innerText=texts.ttButton;
+  document.getElementById('emojiButton').innerText=texts.emojiButton;
 }
-updateLanguage();
 
 // --- Tools ---
-function downloadText(id){let text=document.getElementById(id).innerText;let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:"text/plain"}));a.download="result.txt";a.click();}
-function generateHashtags(){let w=document.getElementById("hashtagInput").value;document.getElementById("hashtagResult").innerText=["#"+w,"#"+w+"tips","#"+w+"creator","#"+w+"content","#"+w+"viral","#"+w+"trend"].join(" ");}
-function generateYT(){let t=document.getElementById("ytInput").value;document.getElementById("ytResult").innerText=["10 Things You Must Know About "+t,"The Truth About "+t,"How "+t+" Can Change Your Life","Beginner Guide To "+t,"Why Everyone Is Talking About "+t].join("\n");}
-function generateTT(){let t=document.getElementById("ttInput").value;document.getElementById("ttResult").innerText=[t+" but nobody talks about this 👀","You NEED to see this "+t+" trick 🔥",t+" changed everything 😳","Trying viral "+t+" trend 🚀",t+" hack that actually works 💡"].join("\n");}
+function downloadText(id){let text=document.getElementById(id).innerText;let blob=new Blob([text],{type:"text/plain"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="result.txt";a.click();}
+function generateHashtags(){let w=document.getElementById("hashtagInput").value;let tags=["#"+w,"#"+w+"tips","#"+w+"creator","#"+w+"content","#"+w+"viral","#"+w+"trend"];document.getElementById("hashtagResult").innerText=tags.join(" ");}
+function generateYT(){let t=document.getElementById("ytInput").value;let titles=["10 Things You Must Know About "+t,"The Truth About "+t,"How "+t+" Can Change Your Life","Beginner Guide To "+t,"Why Everyone Is Talking About "+t];document.getElementById("ytResult").innerText=titles.join("\n");}
+function generateTT(){let t=document.getElementById("ttInput").value;let captions=[t+" but nobody talks about this 👀","You NEED to see this "+t+" trick 🔥",t+" changed everything 😳","Trying viral "+t+" trend 🚀",t+" hack that actually works 💡"];document.getElementById("ttResult").innerText=captions.join("\n");}
 function addEmoji(){let t=document.getElementById("emojiInput").value;let e=["🔥","🚀","😎","💡","✨"];document.getElementById("emojiResult").innerText=t+" "+e[Math.floor(Math.random()*e.length)];}
 function countWords(){let t=document.getElementById("wordInput").value;document.getElementById("wordResult").innerText="Words: "+t.trim().split(/\s+/).length+" | Characters: "+t.length;}
 function convertImage(){let f=document.getElementById("imageInput").files[0];let r=new FileReader();r.onload=function(e){let img=new Image();img.onload=function(){let c=document.createElement("canvas");c.width=img.width;c.height=img.height;let ctx=c.getContext("2d");ctx.drawImage(img,0,0);let url=c.toDataURL("image/png");let link=document.getElementById("downloadImage");link.href=url;link.download="converted.png";link.innerText="Download Image";};img.src=e.target.result;};r.readAsDataURL(f);}
 function generatePassword(){let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";let p="";for(let i=0;i<16;i++){p+=chars.charAt(Math.floor(Math.random()*chars.length));}document.getElementById("passwordResult").innerText=p;}
 function generateColor(){document.getElementById("colorResult").innerText="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0");}
 function generateQR(){QRCode.toCanvas(document.getElementById("qrCanvas"),document.getElementById("qrInput").value,{width:200});}
-function convertCase(type){let t=document.getElementById("caseInput").value;let r="";if(type==="upper") r=t.toUpperCase(); else if(type==="lower") r=t.toLowerCase(); else if(type==="title") r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());document.getElementById("caseResult").innerText=r;}
+function convertCase(type){let t=document.getElementById("caseInput").value;let r="";if(type==="upper") r=t.toUpperCase();else if(type==="lower") r=t.toLowerCase();else if(type==="title") r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());document.getElementById("caseResult").innerText=r;}
 
-// --- Sektioner ---
-function showSection(section){
-  if(section=="home"){document.querySelector('.container').style.display='block';document.getElementById('introText').style.display='block';}
-  else{document.querySelector('.container').style.display='none';document.getElementById('introText').style.display='none';}
-  if(section=="about"){alert(langTexts[localStorage.getItem('lang')||'en'].about);}
-  if(section=="privacy"){alert(langTexts[localStorage.getItem('lang')||'en'].privacy);}
-  if(section=="guide"){alert(langTexts[localStorage.getItem('lang')||'en'].guide);}
+// --- Show sections ---
+function showSection(id){
+  document.querySelectorAll('section').forEach(s=>s.style.display='none');
+  if(id) document.getElementById(id).style.display='block';
 }
+updateLanguage();
 </script>
 
 </body>
