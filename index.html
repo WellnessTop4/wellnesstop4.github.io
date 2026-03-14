@@ -138,14 +138,15 @@
 
         <!-- Logo Generator -->
         <div class="tool">
-            <h2 id="logoTitle">Logo Generator</h2>
+            <h2 id="logoTitle"></h2>
             <input id="logoTextInput" placeholder="Enter text for logo">
             <input type="file" id="logoImageInput" accept="image/*">
-            <button id="logoButton" onclick="generateLogo()">Generate Logo</button>
+            <button id="logoButton" onclick="generateLogo()"></button>
             <canvas id="logoCanvas" style="display:none;"></canvas>
             <div id="logoResult" class="result"></div>
             <button onclick="downloadLogo()">Download Logo as PNG</button>
         </div>
+
     </div>
 </section>
 
@@ -244,10 +245,4 @@ const langTexts = {
 // --- Update language
 function updateLanguage() {
     let l = document.getElementById("language").value;
-    let t = langTexts[l];
-
-    // Update text content for tools
-    introText.innerText = t.intro;
-    hashtagTitle.innerText = t.hashtagTitle;
-    hashtagButton.innerText = t.hashtagButton;
-    ytTitle.inner
+    let t = lang
