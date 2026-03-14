@@ -1,44 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools For Creators</title>
-    <style>
-        body { font-family: Arial, sans-serif; background:#0f172a; color:white; margin:0; padding:0; }
-        header { text-align:center; padding:20px; }
-        h1 { margin:0; }
-        select { padding:10px; border-radius:6px; border:none; background:#1e293b; color:white; margin-top:10px; }
-        nav { display:flex; justify-content:center; gap:15px; background:#1e293b; padding:10px; flex-wrap:wrap; }
-        nav a { color:#06b6d4; text-decoration:none; cursor:pointer; font-weight:bold; }
-        nav a:hover { text-decoration:underline; }
-        .container { max-width:1200px; margin:auto; padding:20px; }
-        .tools-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; }
-        .tool { background:#1e293b; padding:25px; border-radius:12px; }
-        input, textarea { width:100%; padding:12px; margin:10px 0; border-radius:6px; border:none; background:#0f172a; color:white; }
-        button { padding:10px 18px; margin:6px 0; border:none; border-radius:6px; background:#06b6d4; color:white; cursor:pointer; font-weight:bold; width:100%; }
-        button:hover { background:#0891b2; }
-        .result { background:#020617; padding:12px; border-radius:6px; margin-top:10px; white-space:pre-wrap; }
-        canvas { display:none; }
-        section { display:none; }
-        section.active { display:block; }
-        footer { text-align:center; padding:20px; background:#1e293b; margin-top:20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools For Creators</title>
+
+<!-- Google AdSense Top -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+.tool {
+    background: #1e293b;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+.tool:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+input, textarea, select {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: none;
+    background: #0f172a;
+    color: white;
+}
+button {
+    padding: 10px 18px;
+    margin: 6px;
+    border: none;
+    border-radius: 6px;
+    background: #06b6d4;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    background: #0891b2;
+}
+.result {
+    background: #020617;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+    white-space: pre-wrap;
+}
+footer {
+    margin-top: 40px;
+}
+footer a {
+    color: #06b6d4;
+    margin: 0 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+section { display: none; }
+
+/* Logo Generator CSS */
+#logoResult img { max-width: 100%; margin-top: 10px; }
+#logoCanvas { display: none; }
+</style>
 </head>
 <body>
 
-<header>
-    <h1>AI Tools For Creators</h1>
-    <select id="language" onchange="updateLanguage()">
-        <option value="en">English</option>
-        <option value="da">Dansk</option>
-        <option value="es">Español</option>
-        <option value="de">Deutsch</option>
-        <option value="fr">Français</option>
-    </select>
-</header>
+<h1>AI Tools For Creators</h1>
 
-<!-- Google AdSense Top -->
+<!-- Top AdSense -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
@@ -47,131 +91,335 @@
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 
-<nav>
-    <a onclick="showSection('home')">Home</a>
-    <a onclick="showSection('about')">About</a>
-    <a onclick="showSection('privacy')">Privacy</a>
-    <a onclick="showSection('guide')">Guide</a>
-</nav>
+<!-- Language Selector -->
+<select id="language" onchange="updateLanguage()">
+<option value="en">English</option>
+<option value="da">Dansk</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
 
-<section id="home" class="active">
-    <div class="container">
-        <p id="introText"></p>
-        <div class="tools-grid">
+<!-- Sections -->
+<section id="home" style="display:block">
+<p id="introText"></p>
+<div class="container">
 
-            <!-- Hashtag Generator -->
-            <div class="tool">
-                <h2 id="hashtagTitle"></h2>
-                <input id="hashtagInput" placeholder="">
-                <button id="hashtagButton" onclick="generateHashtags()"></button>
-                <div id="hashtagResult" class="result"></div>
-                <button onclick="copyResult('hashtagResult')">Copy</button>
-                <button onclick="downloadTXT('hashtagResult')">TXT</button>
-                <button onclick="downloadCSV('hashtagResult')">CSV</button>
-                <button onclick="downloadPDF('hashtagResult')">PDF</button>
-            </div>
+<!-- Hashtag Generator -->
+<div class="tool">
+<h2 id="hashtagTitle"></h2>
+<input id="hashtagInput" placeholder="">
+<button id="hashtagButton" onclick="generateHashtags()"></button>
+<div id="hashtagResult" class="result"></div>
+<button onclick="copyResult('hashtagResult')">Copy</button>
+<button onclick="downloadTXT('hashtagResult')">TXT</button>
+<button onclick="downloadCSV('hashtagResult')">CSV</button>
+<button onclick="downloadPDF('hashtagResult')">PDF</button>
+</div>
 
-            <!-- YouTube Title Generator -->
-            <div class="tool">
-                <h2 id="ytTitle"></h2>
-                <input id="ytInput" placeholder="">
-                <button id="ytButton" onclick="generateYT()"></button>
-                <div id="ytResult" class="result"></div>
-                <button onclick="copyResult('ytResult')">Copy</button>
-                <button onclick="downloadTXT('ytResult')">TXT</button>
-                <button onclick="downloadPDF('ytResult')">PDF</button>
-            </div>
+<!-- YouTube Title Generator -->
+<div class="tool">
+<h2 id="ytTitle"></h2>
+<input id="ytInput" placeholder="">
+<button id="ytButton" onclick="generateYT()"></button>
+<div id="ytResult" class="result"></div>
+<button onclick="copyResult('ytResult')">Copy</button>
+<button onclick="downloadTXT('ytResult')">TXT</button>
+<button onclick="downloadPDF('ytResult')">PDF</button>
+</div>
 
-            <!-- TikTok Caption Generator -->
-            <div class="tool">
-                <h2 id="ttTitle"></h2>
-                <input id="ttInput" placeholder="">
-                <button id="ttButton" onclick="generateTT()"></button>
-                <div id="ttResult" class="result"></div>
-                <button onclick="copyResult('ttResult')">Copy</button>
-                <button onclick="downloadTXT('ttResult')">TXT</button>
-                <button onclick="downloadPDF('ttResult')">PDF</button>
-            </div>
+<!-- TikTok Caption Generator -->
+<div class="tool">
+<h2 id="ttTitle"></h2>
+<input id="ttInput" placeholder="">
+<button id="ttButton" onclick="generateTT()"></button>
+<div id="ttResult" class="result"></div>
+<button onclick="copyResult('ttResult')">Copy</button>
+<button onclick="downloadTXT('ttResult')">TXT</button>
+<button onclick="downloadPDF('ttResult')">PDF</button>
+</div>
 
-            <!-- Emoji Enhancer -->
-            <div class="tool">
-                <h2 id="emojiTitle"></h2>
-                <textarea id="emojiInput" placeholder=""></textarea>
-                <button id="emojiButton" onclick="addEmoji()"></button>
-                <div id="emojiResult" class="result"></div>
-                <button onclick="copyResult('emojiResult')">Copy</button>
-                <button onclick="downloadTXT('emojiResult')">TXT</button>
-                <button onclick="downloadPDF('emojiResult')">PDF</button>
-            </div>
+<!-- Emoji Enhancer -->
+<div class="tool">
+<h2 id="emojiTitle"></h2>
+<textarea id="emojiInput" placeholder=""></textarea>
+<button id="emojiButton" onclick="addEmoji()"></button>
+<div id="emojiResult" class="result"></div>
+<button onclick="copyResult('emojiResult')">Copy</button>
+<button onclick="downloadTXT('emojiResult')">TXT</button>
+<button onclick="downloadPDF('emojiResult')">PDF</button>
+</div>
 
-            <!-- Word Counter -->
-            <div class="tool">
-                <h2 id="wordTitle"></h2>
-                <textarea id="wordInput"></textarea>
-                <button onclick="countWords()">Count</button>
-                <div id="wordResult" class="result"></div>
-                <button onclick="copyResult('wordResult')">Copy</button>
-                <button onclick="downloadTXT('wordResult')">TXT</button>
-                <button onclick="downloadPDF('wordResult')">PDF</button>
-            </div>
+<!-- Word Counter -->
+<div class="tool">
+<h2 id="wordTitle"></h2>
+<textarea id="wordInput"></textarea>
+<button onclick="countWords()"></button>
+<div id="wordResult" class="result"></div>
+<button onclick="copyResult('wordResult')">Copy</button>
+<button onclick="downloadTXT('wordResult')">TXT</button>
+<button onclick="downloadPDF('wordResult')">PDF</button>
+</div>
 
-            <!-- Image Converter -->
-            <div class="tool">
-                <h2 id="imageTitle"></h2>
-                <input type="file" id="imageInput">
-                <button onclick="convertImage()">Convert PNG</button>
-                <button onclick="convertImagePDF()">Convert PDF</button>
-                <br><br>
-                <a id="downloadImage"></a>
-            </div>
+<!-- Image Converter -->
+<div class="tool">
+<h2 id="imageTitle"></h2>
+<input type="file" id="imageInput">
+<button onclick="convertImage()">Convert PNG</button>
+<button onclick="convertImagePDF()">Convert PDF</button>
+<br><br>
+<a id="downloadImage"></a>
+</div>
 
-            <!-- Password Generator -->
-            <div class="tool">
-                <h2>Password Generator</h2>
-                <button onclick="generatePassword()">Generate</button>
-                <div id="passwordResult" class="result"></div>
-                <button onclick="copyResult('passwordResult')">Copy</button>
-                <button onclick="downloadTXT('passwordResult')">TXT</button>
-                <button onclick="downloadPDF('passwordResult')">PDF</button>
-            </div>
+<!-- Password Generator -->
+<div class="tool">
+<h2 id="passwordTitle"></h2>
+<button onclick="generatePassword()"></button>
+<div id="passwordResult" class="result"></div>
+<button onclick="copyResult('passwordResult')">Copy</button>
+<button onclick="downloadTXT('passwordResult')">TXT</button>
+<button onclick="downloadPDF('passwordResult')">PDF</button>
+</div>
 
-            <!-- Random Color Generator -->
-            <div class="tool">
-                <h2>Random Color Generator</h2>
-                <button onclick="generateColor()">Generate</button>
-                <div id="colorResult" class="result"></div>
-                <button onclick="copyResult('colorResult')">Copy</button>
-                <button onclick="downloadTXT('colorResult')">TXT</button>
-                <button onclick="downloadPDF('colorResult')">PDF</button>
-            </div>
+<!-- Random Color Generator -->
+<div class="tool">
+<h2 id="colorTitle"></h2>
+<button onclick="generateColor()"></button>
+<div id="colorResult" class="result"></div>
+<button onclick="copyResult('colorResult')">Copy</button>
+<button onclick="downloadTXT('colorResult')">TXT</button>
+<button onclick="downloadPDF('colorResult')">PDF</button>
+</div>
 
-            <!-- QR Code Generator -->
-            <div class="tool">
-                <h2>QR Code Generator</h2>
-                <input id="qrInput" placeholder="">
-                <button onclick="generateQR()">Generate</button>
-                <button onclick="downloadQR()">Download QR</button>
-                <br>
-                <canvas id="qrCanvas"></canvas>
-            </div>
+<!-- QR Code Generator -->
+<div class="tool">
+<h2 id="qrTitle"></h2>
+<input id="qrInput" placeholder="">
+<button onclick="generateQR()"></button>
+<button onclick="downloadQR()">Download QR</button>
+<br>
+<canvas id="qrCanvas"></canvas>
+</div>
 
-            <!-- Text Case Converter -->
-            <div class="tool">
-                <h2>Text Case Converter</h2>
-                <textarea id="caseInput"></textarea>
-                <button onclick="convertCase('upper')">UPPER</button>
-                <button onclick="convertCase('lower')">lower</button>
-                <button onclick="convertCase('title')">Title</button>
-                <div id="caseResult" class="result"></div>
-                <button onclick="copyResult('caseResult')">Copy</button>
-                <button onclick="downloadTXT('caseResult')">TXT</button>
-                <button onclick="downloadPDF('caseResult')">PDF</button>
-            </div>
+<!-- Text Case Converter -->
+<div class="tool">
+<h2 id="caseTitle"></h2>
+<textarea id="caseInput"></textarea>
+<button onclick="convertCase('upper')">UPPER</button>
+<button onclick="convertCase('lower')">lower</button>
+<button onclick="convertCase('title')">Title</button>
+<div id="caseResult" class="result"></div>
+<button onclick="copyResult('caseResult')">Copy</button>
+<button onclick="downloadTXT('caseResult')">TXT</button>
+<button onclick="downloadPDF('caseResult')">PDF</button>
+</div>
 
-            <!-- Logo Generator -->
-            <div class="tool">
-                <h2>Logo Generator</h2>
-                <input id="logoTextInput" placeholder="Enter text for logo">
-                <input type="file" id="logoImageInput" accept="image/*">
-                <button onclick="generateLogo()">Generate Logo</button>
-                <canvas id="logoCanvas" style="display:none;"></canvas
+<!-- Logo Generator -->
+<div class="tool">
+<h2 id="logoTitle"></h2>
+<input id="logoTextInput" placeholder="Enter text">
+<input type="file" id="logoImageInput" accept="image/*">
+<button onclick="generateLogo()"></button>
+<canvas id="logoCanvas"></canvas>
+<div id="logoResult" class="result"></div>
+<button onclick="downloadLogo()">Download Logo</button>
+</div>
+
+</div> <!-- container -->
+</section>
+
+<section id="about"><h2 id="aboutTitle"></h2><p id="aboutText"></p></section>
+<section id="privacy"><h2 id="privacyTitle"></h2><p id="privacyText"></p></section>
+<section id="guide"><h2 id="guideTitle"></h2><p id="guideText"></p></section>
+
+<!-- Bottom AdSense -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8036688230923764"
+     data-ad-slot="1234567892"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+<footer>
+<a onclick="showSection('home')">Home</a> |
+<a onclick="showSection('about')">About</a> |
+<a onclick="showSection('privacy')">Privacy</a> |
+<a onclick="showSection('guide')">Guide</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+// --- Language Texts ---
+const langTexts = {
+  en: {
+    intro: "Free tools for content creators.",
+    hashtagTitle: "Hashtag Generator", hashtagButton: "Generate",
+    ytTitle: "YouTube Title Generator", ytButton: "Generate",
+    ttTitle: "TikTok Caption Generator", ttButton: "Generate",
+    emojiTitle: "Emoji Enhancer", emojiButton: "Enhance",
+    wordTitle: "Word Counter", imageTitle: "Image Converter (PNG)",
+    passwordTitle: "Password Generator", colorTitle: "Random Color Generator",
+    qrTitle: "QR Code Generator", caseTitle: "Text Case Converter",
+    logoTitle: "Logo Generator",
+    aboutTitle: "About", about: "This site offers free creator tools.",
+    privacyTitle: "Privacy", privacy: "We do not collect personal data.",
+    guideTitle: "Guide", guide: "Use the tools to create better content.",
+    yt: ["10 Things About {t}","Why {t} Is Trending","Beginner Guide To {t}"],
+    tt: ["{t} hack 🔥","Trying {t} trend 🚀","{t} changed everything 😳"],
+    word: "Words: {w} | Characters: {c}"
+  },
+  da: {
+    intro: "Gratis værktøjer til content creators.",
+    hashtagTitle: "Hashtag generator", hashtagButton: "Generer",
+    ytTitle: "YouTube titel generator", ytButton: "Generer",
+    ttTitle: "TikTok tekst generator", ttButton: "Generer",
+    emojiTitle: "Emoji forstærker", emojiButton: "Forstærk",
+    wordTitle: "Ord tæller", imageTitle: "Billed konverter",
+    passwordTitle: "Password Generator", colorTitle: "Farve Generator",
+    qrTitle: "QR Kode Generator", caseTitle: "Tekst Converter",
+    logoTitle: "Logo Generator",
+    aboutTitle: "Om", about: "Denne side giver gratis værktøjer.",
+    privacyTitle: "Privatliv", privacy: "Vi indsamler ingen personlige data.",
+    guideTitle: "Guide", guide: "Brug værktøjerne til bedre indhold.",
+    yt: ["10 ting om {t}","Hvorfor {t} trender","Begynder guide til {t}"],
+    tt: ["{t} hack 🔥","Tester {t} trend 🚀","{t} ændrede alt 😳"],
+    word: "Ord: {w} | Tegn: {c}"
+  },
+  es: {
+    intro: "Herramientas gratis para creadores.",
+    hashtagTitle: "Generador de hashtags", hashtagButton: "Generar",
+    ytTitle: "Generador de títulos YouTube", ytButton: "Generar",
+    ttTitle: "Generador de captions TikTok", ttButton: "Generar",
+    emojiTitle: "Mejorador de emojis", emojiButton: "Mejorar",
+    wordTitle: "Contador de palabras", imageTitle: "Convertidor de imágenes",
+    passwordTitle: "Generador de contraseñas", colorTitle: "Generador de colores",
+    qrTitle: "Generador de código QR", caseTitle: "Convertidor de texto",
+    logoTitle: "Generador de logos",
+    aboutTitle: "Acerca de", about: "Este sitio ofrece herramientas gratis.",
+    privacyTitle: "Privacidad", privacy: "No recopilamos datos personales.",
+    guideTitle: "Guía", guide: "Usa las herramientas para contenido.",
+    yt: ["10 cosas sobre {t}","Por qué {t} es tendencia","Guía para {t}"],
+    tt: ["{t} hack 🔥","Probando {t} trend 🚀","{t} cambió todo 😳"],
+    word: "Palabras: {w} | Caracteres: {c}"
+  },
+  de: {
+    intro: "Kostenlose Tools für Creator.",
+    hashtagTitle: "Hashtag Generator", hashtagButton: "Generieren",
+    ytTitle: "YouTube Titel Generator", ytButton: "Generieren",
+    ttTitle: "TikTok Caption Generator", ttButton: "Generieren",
+    emojiTitle: "Emoji Verstärker", emojiButton: "Verbessern",
+    wordTitle: "Wortzähler", imageTitle: "Bild Konverter",
+    passwordTitle: "Passwort Generator", colorTitle: "Farb Generator",
+    qrTitle: "QR Code Generator", caseTitle: "Text Converter",
+    logoTitle: "Logo Generator",
+    aboutTitle: "Über", about: "Diese Seite bietet kostenlose Tools.",
+    privacyTitle: "Datenschutz", privacy: "Wir sammeln keine persönlichen Daten.",
+    guideTitle: "Anleitung", guide: "Nutze die Tools für besseren Content.",
+    yt: ["10 Dinge über {t}","Warum {t} im Trend ist","Guide zu {t}"],
+    tt: ["{t} hack 🔥","Teste {t} Trend 🚀","{t} verändert alles 😳"],
+    word: "Wörter: {w} | Zeichen: {c}"
+  },
+  fr: {
+    intro: "Outils gratuits pour créateurs.",
+    hashtagTitle: "Générateur de hashtags", hashtagButton: "Générer",
+    ytTitle: "Générateur de titres YouTube", ytButton: "Générer",
+    ttTitle: "Générateur de captions TikTok", ttButton: "Générer",
+    emojiTitle: "Améliorateur d'emojis", emojiButton: "Améliorer",
+    wordTitle: "Compteur de mots", imageTitle: "Convertisseur d'images",
+    passwordTitle: "Générateur de mots de passe", colorTitle: "Générateur de couleurs",
+    qrTitle: "Générateur de QR Code", caseTitle: "Convertisseur de texte",
+    logoTitle: "Générateur de logo",
+    aboutTitle: "À propos", about: "Ce site offre des outils gratuits.",
+    privacyTitle: "Confidentialité", privacy: "Nous ne collectons pas de données.",
+    guideTitle: "Guide", guide: "Utilisez les outils pour créer.",
+    yt: ["10 choses sur {t}","Pourquoi {t} est tendance","Guide sur {t}"],
+    tt: ["{t} hack 🔥","Test {t} trend 🚀","{t} change tout 😳"],
+    word: "Mots: {w} | Caractères: {c}"
+  }
+};
+
+// --- Update language ---
+function updateLanguage() {
+    let l = document.getElementById("language").value;
+    let t = langTexts[l];
+    document.getElementById("introText").innerText = t.intro;
+    document.getElementById("hashtagTitle").innerText = t.hashtagTitle;
+    document.getElementById("hashtagButton").innerText = t.hashtagButton;
+    document.getElementById("ytTitle").innerText = t.ytTitle;
+    document.getElementById("ytButton").innerText = t.ytButton;
+    document.getElementById("ttTitle").innerText = t.ttTitle;
+    document.getElementById("ttButton").innerText = t.ttButton;
+    document.getElementById("emojiTitle").innerText = t.emojiTitle;
+    document.getElementById("emojiButton").innerText = t.emojiButton;
+    document.getElementById("wordTitle").innerText = t.wordTitle;
+    document.getElementById("imageTitle").innerText = t.imageTitle;
+    document.getElementById("passwordTitle").innerText = t.passwordTitle;
+    document.getElementById("colorTitle").innerText = t.colorTitle;
+    document.getElementById("qrTitle").innerText = t.qrTitle;
+    document.getElementById("caseTitle").innerText = t.caseTitle;
+    document.getElementById("logoTitle").innerText = t.logoTitle;
+    document.getElementById("aboutTitle").innerText = t.aboutTitle;
+    document.getElementById("aboutText").innerText = t.about;
+    document.getElementById("privacyTitle").innerText = t.privacyTitle;
+    document.getElementById("privacyText").innerText = t.privacy;
+    document.getElementById("guideTitle").innerText = t.guideTitle;
+    document.getElementById("guideText").innerText = t.guide;
+}
+updateLanguage();
+
+// --- Section navigation ---
+function showSection(id) {
+    document.querySelectorAll("section").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// --- Copy / Download ---
+function copyResult(id){ navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>alert("Copied"));}
+function downloadTXT(id){ let blob=new Blob([document.getElementById(id).innerText],{type:"text/plain"}); let a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="ai-result.txt"; a.click();}
+function downloadPDF(id){ const { jsPDF }=window.jspdf; let pdf=new jsPDF(); pdf.text(document.getElementById(id).innerText,10,10); pdf.save("ai-result.pdf");}
+function downloadCSV(id){ let csv=document.getElementById(id).innerText.replace(/ /g,"\n"); let blob=new Blob([csv],{type:"text/csv"}); let a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="hashtags.csv"; a.click();}
+
+// --- Tools ---
+function generateHashtags(){ let w=document.getElementById("hashtagInput").value; if(!w) return; let tags=[], extras=["tips","viral","creator","content","trend","video","daily","growth","pro","idea"]; for(let i=0;i<100;i++){tags.push("#"+w+extras[Math.floor(Math.random()*extras.length)]+i);} document.getElementById("hashtagResult").innerText=tags.join(" ");}
+function generateYT(){ let l=document.getElementById("language").value, t=document.getElementById("ytInput").value; document.getElementById("ytResult").innerText=langTexts[l].yt.map(x=>x.replace("{t}",t)).join("\n");}
+function generateTT(){ let l=document.getElementById("language").value, t=document.getElementById("ttInput").value; document.getElementById("ttResult").innerText=langTexts[l].tt.map(x=>x.replace("{t}",t)).join("\n");}
+function addEmoji(){ let e=["🔥","🚀","😎","✨"]; document.getElementById("emojiResult").innerText=document.getElementById("emojiInput").value+" "+e[Math.floor(Math.random()*e.length)];}
+function countWords(){ let l=document.getElementById("language").value, t=document.getElementById("wordInput").value, w=t.trim().split(/\s+/).length, c=t.length; document.getElementById("wordResult").innerText=langTexts[l].word.replace("{w}",w).replace("{c}",c);}
+function convertImage(){ let file=document.getElementById("imageInput").files[0]; if(!file) return; let reader=new FileReader(); reader.onload=e=>{ let img=new Image(); img.onload=function(){ let canvas=document.createElement("canvas"); canvas.width=img.width; canvas.height=img.height; let ctx=canvas.getContext("2d"); ctx.drawImage(img,0,0); let url=canvas.toDataURL("image/png"); let dl=document.getElementById("downloadImage"); dl.href=url; dl.download="converted.png"; dl.innerText="Download PNG"; }; img.src=e.target.result;}; reader.readAsDataURL(file);}
+function convertImagePDF(){ let file=document.getElementById("imageInput").files[0]; if(!file) return; let reader=new FileReader(); reader.onload=e=>{ let img=new Image(); img.onload=function(){ const { jsPDF }=window.jspdf; let pdf=new jsPDF(); pdf.addImage(img,"PNG",10,10,180,0); pdf.save("image.pdf"); }; img.src=e.target.result;}; reader.readAsDataURL(file);}
+function generatePassword(){ let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", pass=""; for(let i=0;i<16;i++){pass+=chars[Math.floor(Math.random()*chars.length)];} document.getElementById("passwordResult").innerText=pass;}
+function generateColor(){ let color="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0"); document.getElementById("colorResult").innerHTML=color+"<br><div style='width:100%;height:40px;background:"+color+"'></div>";}
+function generateQR(){ QRCode.toCanvas(document.getElementById("qrCanvas"), document.getElementById("qrInput").value,{width:200});}
+function downloadQR(){ let c=document.getElementById("qrCanvas"), a=document.createElement("a"); a.href=c.toDataURL(); a.download="qr-code.png"; a.click();}
+function convertCase(type){ let t=document.getElementById("caseInput").value; if(type=="upper") document.getElementById("caseResult").innerText=t.toUpperCase(); if(type=="lower") document.getElementById("caseResult").innerText=t.toLowerCase(); if(type=="title") document.getElementById("caseResult").innerText=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());}
+
+// --- Logo Generator ---
+function generateLogo(){ 
+let text=document.getElementById("logoTextInput").value;
+let file=document.getElementById("logoImageInput").files[0];
+if(!text||!file) return alert("Enter text and select image!");
+let reader=new FileReader();
+reader.onload=e=>{
+let img=new Image();
+img.onload=function(){
+let canvas=document.getElementById("logoCanvas");
+canvas.width=img.width; canvas.height=img.height;
+let ctx=canvas.getContext("2d");
+ctx.drawImage(img,0,0);
+ctx.font='40px Arial'; ctx.fillStyle='#fff'; ctx.textAlign='center'; ctx.textBaseline='middle';
+ctx.fillText(text, canvas.width/2, canvas.height/2);
+document.getElementById("logoResult").innerHTML=`<img src="${canvas.toDataURL()}" alt="Generated Logo">`;
+};
+img.src=e.target.result;
+};
+reader.readAsDataURL(file);
+}
+function downloadLogo(){ let canvas=document.getElementById("logoCanvas"); let link=document.createElement('a'); link.href=canvas.toDataURL(); link.download="logo.png"; link.click();}
+</script>
+
+</body>
+</html>
