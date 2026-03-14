@@ -431,4 +431,104 @@ updateLanguage()
 </script>
 
 </body>
-</html>
+</html><!-- Logo Generator -->
+<div class="tool">
+    <h2>Logo Generator</h2>
+    <input id="logoTextInput" placeholder="Indtast tekst til logo">
+    <input type="file" id="logoImageInput" accept="image/*">
+    <button onclick="generateLogo()">Generer Logo</button>
+    <canvas id="logoCanvas" style="display:none;"></canvas>
+    <div id="logoResult" class="result">
+        <!-- Det genererede logo vises her -->
+    </div>
+    <button onclick="downloadLogo()">Download Logo som PNG</button>
+</div>
+
+<script>
+    // JavaScript til Logo Generator
+    function generateLogo() {
+        let text = document.getElementById("logoTextInput").value;
+        let fileInput = document.getElementById("logoImageInput");
+        let canvas = document.getElementById("logoCanvas");
+        let ctx = canvas.getContext("2d");
+
+        if (!text) return alert("Indtast venligst noget tekst til logoet!");
+        if (fileInput.files.length === 0) return alert("Vælg venligst et billede!");
+
+        let image = new Image();
+        image.onload = function () {
+            // Sæt canvas størrelse baseret på billedets dimensioner
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            // Tegn billedet på canvas
+            ctx.drawImage(image, 0, 0);
+
+            // Tilføj tekst til logoet
+            ctx.font = '40px Arial';
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            // Vis canvas som billede på hjemmesiden
+            let dataUrl = canvas.toDataURL("image/png");
+            document.getElementById("logoResult").innerHTML = `<img src="${dataUrl}" alt="Generated Logo">`;
+        };
+
+        // Læs billedet fra input
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            image.src = e.target.result;
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+
+    // Funktion til at downloade logoet som en PNG-fil
+    function downloadLogo() {
+        let canvas = document.getElementById("logoCanvas");
+        let dataUrl = canvas.toDataURL("image/png");
+
+        let link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'logo.png';
+        link.click();
+    }
+</script>
+
+<style>
+    /* CSS til Logo Generator */
+    .tool input {
+        padding: 10px;
+        width: 80%;
+        margin-top: 10px;
+        background-color: #0f172a;
+        border: none;
+        color: white;
+        border-radius: 6px;
+    }
+
+    .tool button {
+        background-color: #06b6d4;
+        padding: 10px;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .tool button:hover {
+        background-color: #0891b2;
+    }
+
+    .tool #logoResult {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .tool canvas {
+        display: none;
+    }
+</style>
