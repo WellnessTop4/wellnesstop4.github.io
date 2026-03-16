@@ -5,42 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RawBeats Studio</title>
 
-<!-- AdSense script -->
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
      crossorigin="anonymous"></script>
 
 <style>
-body { font-family: Arial, sans-serif; background-color: #0f172a; color: white; margin: 0; padding: 20px; }
-header { background-color: #1e293b; padding: 20px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); margin-bottom: 20px; text-align: center; }
-header a { color:#06b6d4; text-decoration:none; margin:0 10px; }
-header a:hover { text-decoration:underline; }
-h1 { margin-bottom: 10px; font-size: 2em; }
-p { margin-bottom: 10px; }
-.beats-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-.beat-card { background-color: #1e293b; width: 280px; border-radius: 8px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); text-align: center; padding: 15px; }
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+a { color: #fff; text-decoration: none; }
+a:hover { color: #06b6d4; text-decoration: underline; }
+
+/* STICKY NAVIGATION */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.85);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: url('https://images.unsplash.com/photo-1549921296-3e9a80b9fbb1?auto=format&fit=crop&w=1200&q=80') no-repeat center;
+  background-size: cover;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+header h1 { font-size: 3em; margin-bottom: 15px; }
+header p { font-size: 1.2em; max-width: 700px; margin: 0 auto 10px; }
+
+/* BEATS GALLERY */
+.beats-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  background: #111;
+}
+.beat-card {
+  background: #1a1a1a;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+.beat-card:hover { transform: scale(1.03); }
 .beat-card img { width: 100%; border-radius: 5px; margin-bottom: 10px; }
-.paypal-button { background-color: #06b6d4; padding: 10px 20px; border-radius: 6px; color: white; text-decoration: none; display: inline-block; margin-top: 10px; }
+.paypal-button { background-color: #06b6d4; padding: 10px 20px; border-radius: 6px; color: white; display: inline-block; margin-top: 10px; }
 .paypal-button:hover { background-color: #0891b2; }
+
+/* ADSENSE */
 .adsense-card { margin-top:10px; }
-footer { margin-top:40px; text-align:center; font-size:1em; }
-footer a { color:#06b6d4; text-decoration:none; margin:0 5px; }
-footer a:hover { text-decoration:underline; }
+
+/* SECTIONS (OM / FAQ) */
+section {
+  padding: 60px 20px;
+  background: url('https://images.unsplash.com/photo-1611078483989-f640ff0bb70b?auto=format&fit=crop&w=1200&q=80') no-repeat center;
+  background-size: cover;
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
+}
+section:nth-of-type(even) { background: url('https://images.unsplash.com/photo-1603787408514-f2a38e2d6b8b?auto=format&fit=crop&w=1200&q=80') no-repeat center; background-size: cover; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #111;
+  font-size: 0.9em;
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>Free RawBeats Studio</h1>
-<p>Original beats created by RawBeats Studio for background music, games, and other projects.</p>
+<!-- NAVIGATION -->
 <nav>
-<a href="#om">Om</a> |
-<a href="#kontakt">Kontakt</a> |
-<a href="#faq">FAQ</a> |
-<a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank">Se alle beats på YouTube</a>
+<a href="#header">Home</a>
+<a href="#beats">Beats</a>
+<a href="#om">Om</a>
+<a href="#faq">FAQ</a>
 </nav>
+
+<!-- HEADER -->
+<header id="header">
+<h1>RawBeats Studio</h1>
+<p>Original beats til baggrundsmusik, spil og kreative projekter. Support $1 via PayPal for fulde rettigheder. Kontakt os via YouTube-kanalen.</p>
+<a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank">Se alle beats på YouTube</a>
 </header>
 
-<div class="beats-gallery">
+<!-- BEATS -->
+<div id="beats" class="beats-gallery">
 <!-- Beat 1 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/vUmDUakqkCA/hqdefault.jpg" alt="Beat 1">
@@ -235,23 +304,21 @@ footer a:hover { text-decoration:underline; }
 
 </div>
 
-<!-- Om, Kontakt og FAQ sektioner -->
+<!-- OM -->
 <section id="om">
 <h2>Om RawBeats Studio</h2>
-<p>RawBeats Studio skaber originale beats til brug i baggrundsmusik, spil og kreative projekter. Vores beats kan downloades via PayPal-support.</p>
+<p>RawBeats Studio skaber originale beats til brug i baggrundsmusik, spil og kreative projekter.  
+Kontakt os via vores <a href="https://www.youtube.com/@RawBeatsStudio1" target="_blank">YouTube-kanal</a>.</p>
 </section>
 
-<section id="kontakt">
-<h2>Kontakt</h2>
-<p>Har du spørgsmål eller samarbejdsideer? Send os en mail på <a href="mailto:kontakt@rawbeatsstudio.com">kontakt@rawbeatsstudio.com</a>.</p>
-</section>
-
+<!-- FAQ -->
 <section id="faq">
 <h2>FAQ</h2>
-<p><strong>Q:</strong> Kan jeg bruge beats gratis? <br><strong>A:</strong> Ja, men vi anbefaler $1 PayPal-support for fulde rettigheder.</p>
-<p><strong>Q:</strong> Må jeg bruge beats i YouTube-videoer? <br><strong>A:</strong> Ja, husk at kreditere RawBeats Studio.</p>
+<p><strong>Q:</strong> Kan jeg bruge beats gratis?<br><strong>A:</strong> Ja, men vi anbefaler $1 PayPal-support for fulde rettigheder.</p>
+<p><strong>Q:</strong> Må jeg bruge beats i YouTube-videoer?<br><strong>A:</strong> Ja, husk at kreditere RawBeats Studio.</p>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Support RawBeats Studio</a></p>
 </footer>
