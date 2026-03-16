@@ -21,7 +21,7 @@ body {
 a { color: #fff; text-decoration: none; }
 a:hover { color: #06b6d4; text-decoration: underline; }
 
-/* STICKY NAVIGATION */
+/* Sticky Navigation */
 nav {
   position: sticky;
   top: 0;
@@ -34,11 +34,11 @@ nav {
   border-bottom: 1px solid #333;
 }
 
-/* HEADER */
+/* Header */
 header {
   text-align: center;
   padding: 60px 20px 40px;
-  background: url('https://images.unsplash.com/photo-1549921296-3e9a80b9fbb1?auto=format&fit=crop&w=1200&q=80') no-repeat center;
+  background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80') no-repeat center;
   background-size: cover;
   color: #fff;
   text-shadow: 2px 2px 4px #000;
@@ -46,7 +46,7 @@ header {
 header h1 { font-size: 3em; margin-bottom: 15px; }
 header p { font-size: 1.2em; max-width: 700px; margin: 0 auto 10px; }
 
-/* BEATS GALLERY */
+/* Beats Gallery */
 .beats-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -56,33 +56,38 @@ header p { font-size: 1.2em; max-width: 700px; margin: 0 auto 10px; }
   background: #111;
 }
 .beat-card {
-  background: #1a1a1a;
+  background: rgba(26,26,26,0.95);
   width: 280px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   text-align: center;
   padding: 15px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(2px);
 }
-.beat-card:hover { transform: scale(1.03); }
+.beat-card:hover { 
+  transform: scale(1.05); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+}
 .beat-card img { width: 100%; border-radius: 5px; margin-bottom: 10px; }
 .paypal-button { background-color: #06b6d4; padding: 10px 20px; border-radius: 6px; color: white; display: inline-block; margin-top: 10px; }
 .paypal-button:hover { background-color: #0891b2; }
 
-/* ADSENSE */
+/* AdSense */
 .adsense-card { margin-top:10px; }
 
-/* SECTIONS (OM / FAQ) */
+/* Sections (Om / FAQ) */
 section {
   padding: 60px 20px;
-  background: url('https://images.unsplash.com/photo-1611078483989-f640ff0bb70b?auto=format&fit=crop&w=1200&q=80') no-repeat center;
   background-size: cover;
+  background-position: center;
   color: #fff;
   text-shadow: 1px 1px 3px #000;
 }
-section:nth-of-type(even) { background: url('https://images.unsplash.com/photo-1603787408514-f2a38e2d6b8b?auto=format&fit=crop&w=1200&q=80') no-repeat center; background-size: cover; }
+section#om { background: url('https://images.unsplash.com/photo-1581090700227-81f5f4d1b6b1?auto=format&fit=crop&w=1200&q=80') no-repeat center; }
+section#faq { background: url('https://images.unsplash.com/photo-1611078483989-f640ff0bb70b?auto=format&fit=crop&w=1200&q=80') no-repeat center; }
 
-/* FOOTER */
+/* Footer */
 footer {
   text-align: center;
   padding: 40px 20px;
@@ -93,7 +98,7 @@ footer {
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- Navigation -->
 <nav>
 <a href="#header">Home</a>
 <a href="#beats">Beats</a>
@@ -101,15 +106,16 @@ footer {
 <a href="#faq">FAQ</a>
 </nav>
 
-<!-- HEADER -->
+<!-- Header -->
 <header id="header">
 <h1>RawBeats Studio</h1>
 <p>Original beats til baggrundsmusik, spil og kreative projekter. Support $1 via PayPal for fulde rettigheder. Kontakt os via YouTube-kanalen.</p>
 <a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank">Se alle beats på YouTube</a>
 </header>
 
-<!-- BEATS -->
+<!-- Beats -->
 <div id="beats" class="beats-gallery">
+
 <!-- Beat 1 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/vUmDUakqkCA/hqdefault.jpg" alt="Beat 1">
@@ -119,7 +125,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="1111111111"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -135,7 +141,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="2222222222"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -151,7 +157,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="3333333333"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -167,7 +173,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="4444444444"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -183,7 +189,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="5555555555"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -199,7 +205,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="6666666666"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -215,7 +221,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="7777777777"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -231,7 +237,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="8888888888"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -247,7 +253,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="9999999999"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -263,7 +269,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="1010101010"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -279,7 +285,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="1111111112"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -295,7 +301,7 @@ footer {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YYYYYYYYYY"
+     data-ad-slot="1212121212"
      data-ad-format="auto"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -304,21 +310,20 @@ footer {
 
 </div>
 
-<!-- OM -->
+<!-- Om Section -->
 <section id="om">
 <h2>Om RawBeats Studio</h2>
-<p>RawBeats Studio skaber originale beats til brug i baggrundsmusik, spil og kreative projekter.  
-Kontakt os via vores <a href="https://www.youtube.com/@RawBeatsStudio1" target="_blank">YouTube-kanal</a>.</p>
+<p>RawBeats Studio skaber originale beats til baggrundsmusik, spil og kreative projekter. Kontakt os via vores <a href="https://www.youtube.com/@RawBeatsStudio1" target="_blank">YouTube-kanal</a>.</p>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ Section -->
 <section id="faq">
 <h2>FAQ</h2>
 <p><strong>Q:</strong> Kan jeg bruge beats gratis?<br><strong>A:</strong> Ja, men vi anbefaler $1 PayPal-support for fulde rettigheder.</p>
 <p><strong>Q:</strong> Må jeg bruge beats i YouTube-videoer?<br><strong>A:</strong> Ja, husk at kreditere RawBeats Studio.</p>
 </section>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
 <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Support RawBeats Studio</a></p>
 </footer>
