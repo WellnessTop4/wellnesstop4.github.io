@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RawBeats Studio</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background-color:#0f0f0f; color:white; }
+body { font-family: Arial, sans-serif; margin:0; padding:0; background-color:#0f0f0f; color:white; scroll-behavior:smooth;}
 header { background-color:#1e1e1e; text-align:center; padding:25px; }
 header h1 { font-size:2em; margin-bottom:10px; }
 header p { margin:5px 0; }
@@ -13,15 +13,16 @@ nav { position:sticky; top:0; background:#111; display:flex; justify-content:cen
 nav a { color:#06b6d4; text-decoration:none; margin:0 15px; font-weight:bold; }
 nav a:hover { text-decoration:underline; }
 .beats-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
-.beat-card { width:280px; height:340px; border-radius:8px; position:relative; overflow:hidden; color:white; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 5px 15px rgba(0,0,0,0.5); transition:transform 0.3s, box-shadow 0.3s; }
+.beat-card { width:280px; height:260px; border-radius:8px; position:relative; overflow:hidden; color:white; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 5px 15px rgba(0,0,0,0.5); transition:transform 0.3s, box-shadow 0.3s; }
 .beat-card:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.6); }
 .beat-card img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter:brightness(40%); }
-.beat-card h3, .beat-card iframe, .beat-card a { position:relative; z-index:1; margin:5px auto; text-align:center; }
-.beat-card iframe { width:90%; height:140px; border:0; border-radius:5px; }
+.beat-card h3, .beat-card a { position:relative; z-index:1; margin:5px auto; text-align:center; }
 .paypal-button { background-color:#06b6d4; padding:10px 20px; border-radius:6px; color:white; text-decoration:none; display:inline-block; margin-top:10px; }
 .paypal-button:hover { background-color:#0891b2; }
 section { padding:40px 20px; background-color:#111; }
-#about { text-align:center; }
+section:nth-child(even) { background-color:#1a1a1a; }
+section h2 { text-align:center; margin-bottom:20px; }
+section p { max-width:800px; margin:10px auto; text-align:center; }
 footer { background:#1e1e1e; text-align:center; padding:20px; font-size:1em; }
 footer a { color:#06b6d4; text-decoration:none; }
 footer a:hover { text-decoration:underline; }
@@ -32,6 +33,9 @@ footer a:hover { text-decoration:underline; }
 <nav>
 <a href="#beats">Beats</a>
 <a href="#about">Om</a>
+<a href="#contact">Kontakt</a>
+<a href="#download">Download</a>
+<a href="#faq">FAQ</a>
 </nav>
 
 <header>
@@ -39,172 +43,29 @@ footer a:hover { text-decoration:underline; }
 <p>Original beats created in Reason 11. Each beat is 100% unique, crafted from scratch with creative hours of work.</p>
 <p>Perfect for cartoons, games, films and inspired by rap/hiphop vibes.</p>
 <p>Support $1 via PayPal for full rights. Credit RawBeats Studio if used.</p>
-<p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" style="color:#06b6d4;">See all beats on YouTube</a></p>
 </header>
 
 <section id="beats" class="beats-gallery">
-
-<!-- Repeatable Beat Cards -->
-<!-- Beat 1 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,studio" alt="Beat 1">
-<h3>Beat 1</h3>
-<iframe src="https://www.youtube.com/embed/yHhTT3VxOlI" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 2 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,keyboard" alt="Beat 2">
-<h3>Beat 2</h3>
-<iframe src="https://www.youtube.com/embed/daOTdlyu48Q" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 3 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?studio,producer" alt="Beat 3">
-<h3>Beat 3</h3>
-<iframe src="https://www.youtube.com/embed/gKi7o0e5AWs" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 4 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,mixer" alt="Beat 4">
-<h3>Beat 4</h3>
-<iframe src="https://www.youtube.com/embed/A4EsG2JbZkA" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 5 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?keyboard,piano" alt="Beat 5">
-<h3>Beat 5</h3>
-<iframe src="https://www.youtube.com/embed/a6BZ5QG3O2I" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 6 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,computer" alt="Beat 6">
-<h3>Beat 6</h3>
-<iframe src="https://www.youtube.com/embed/WYOI0frSbP0" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 7 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,beat" alt="Beat 7">
-<h3>Beat 7</h3>
-<iframe src="https://www.youtube.com/embed/xoPynmgTyfY" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 8 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?dj,studio" alt="Beat 8">
-<h3>Beat 8</h3>
-<iframe src="https://www.youtube.com/embed/kAHkvUpQlIA" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 9 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,mixer" alt="Beat 9">
-<h3>Beat 9</h3>
-<iframe src="https://www.youtube.com/embed/K-U0Z4hU9FM" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 10 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,notes" alt="Beat 10">
-<h3>Beat 10</h3>
-<iframe src="https://www.youtube.com/embed/7nSLvF9xkFA" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 11 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?recording,studio" alt="Beat 11">
-<h3>Beat 11</h3>
-<iframe src="https://www.youtube.com/embed/PmwZAun1viA" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 12 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,producer" alt="Beat 12">
-<h3>Beat 12</h3>
-<iframe src="https://www.youtube.com/embed/lk2n07AA8YA" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 13 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?keyboard,studio" alt="Beat 13">
-<h3>Beat 13</h3>
-<iframe src="https://www.youtube.com/embed/-MHrDwNYA8k" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 14 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,gaming" alt="Beat 14">
-<h3>Beat 14</h3>
-<iframe src="https://www.youtube.com/embed/qutd77fsu20" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 15 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?mixing,desk" alt="Beat 15">
-<h3>Beat 15</h3>
-<iframe src="https://www.youtube.com/embed/FyUhLUKW4b0" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 16 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?synth,keyboard" alt="Beat 16">
-<h3>Beat 16</h3>
-<iframe src="https://www.youtube.com/embed/1IL_pwM382M" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 17 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,beats" alt="Beat 17">
-<h3>Beat 17</h3>
-<iframe src="https://www.youtube.com/embed/g_WJIOmnb1E" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 18 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,studio" alt="Beat 18">
-<h3>Beat 18</h3>
-<iframe src="https://www.youtube.com/embed/J906gPXAIaE" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 19 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?gaming,music" alt="Beat 19">
-<h3>Beat 19</h3>
-<iframe src="https://www.youtube.com/embed/BHt19CyUNJw" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
-<!-- Beat 20 -->
-<div class="beat-card">
-<img src="https://source.unsplash.com/280x340/?music,keyboard" alt="Beat 20">
-<h3>Beat 20</h3>
-<iframe src="https://www.youtube.com/embed/xIGqO-0gr9s" allowfullscreen></iframe>
-<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
-</div>
-
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,studio" alt="Beat 1"><h3>Beat 1</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,keyboard" alt="Beat 2"><h3>Beat 2</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?studio,producer" alt="Beat 3"><h3>Beat 3</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,mixer" alt="Beat 4"><h3>Beat 4</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?keyboard,piano" alt="Beat 5"><h3>Beat 5</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,computer" alt="Beat 6"><h3>Beat 6</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,beat" alt="Beat 7"><h3>Beat 7</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?dj,studio" alt="Beat 8"><h3>Beat 8</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,mixer" alt="Beat 9"><h3>Beat 9</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,notes" alt="Beat 10"><h3>Beat 10</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?recording,studio" alt="Beat 11"><h3>Beat 11</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,producer" alt="Beat 12"><h3>Beat 12</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?keyboard,studio" alt="Beat 13"><h3>Beat 13</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,gaming" alt="Beat 14"><h3>Beat 14</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?mixing,desk" alt="Beat 15"><h3>Beat 15</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?synth,keyboard" alt="Beat 16"><h3>Beat 16</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,beats" alt="Beat 17"><h3>Beat 17</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,studio" alt="Beat 18"><h3>Beat 18</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?gaming,music" alt="Beat 19"><h3>Beat 19</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://source.unsplash.com/280x260/?music,keyboard" alt="Beat 20"><h3>Beat 20</h3><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
 </section>
 
 <section id="about">
@@ -214,13 +75,30 @@ footer a:hover { text-decoration:underline; }
 <p>Kontakt os via vores YouTube-kanal: <a href="https://www.youtube.com/@RawBeatsStudio1" target="_blank" style="color:#06b6d4;">YouTube</a></p>
 </section>
 
+<section id="contact">
+<h2>Kontakt</h2>
+<p>Har du spørgsmål eller vil du bestille beats? Kontakt os via YouTube-kanalen.</p>
+</section>
+
+<section id="download">
+<h2>Download</h2>
+<p>For at få beats fuldt ud: klik på PayPal-knappen for at betale $1. Herefter vil du modtage downloadlink til dine beats.</p>
+</section>
+
+<section id="faq">
+<h2>FAQ</h2>
+<p><strong>Q:</strong> Kan jeg bruge beats til kommerciel brug?<br>
+<strong>A:</strong> Ja, efter du har støttet med $1 via PayPal, kan du bruge beats med kredit til RawBeats Studio.</p>
+<p><strong>Q:</strong> Er beats originale?<br>
+<strong>A:</strong> Alle beats er lavet fra bunden i Reason 11 og er unikke.</p>
+</section>
+
 <footer>
 <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Support RawBeats Studio</a></p>
 </footer>
 
-<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
-     crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 
 </body>
 </html>
