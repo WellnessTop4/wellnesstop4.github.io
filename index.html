@@ -1,294 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RawBeats Studio</title>
-  <style>
-    /* Baggrund med Reason 11/12 billedet i sort/hvid */
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: url('https://i.imgur.com/7qP5JfM.jpg') no-repeat center center fixed;
-      background-size: cover;
-      filter: grayscale(100%) contrast(1.1) brightness(0.4);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RawBeats Studio</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: url('https://i.imgur.com/7qP5JfM.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: grayscale(100%) contrast(1.1) brightness(0.4);
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    pointer-events: none;
+    z-index: 0;
+  }
+  #main-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  header {
+    background-color: rgba(30, 41, 59, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+    text-align: center;
+  }
+  header h1 { margin: 0 0 10px; font-size: 2.5rem; }
+  header p, header a { font-size: 1.1rem; color: #06b6d4; margin:0 0 10px; text-decoration:none;}
+  header a:hover { text-decoration:underline; }
+  nav { margin:25px 0; text-align:center; }
+  nav a {
+    color: #06b6d4;
+    margin: 0 15px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: rgba(30,41,59,0.7);
+    transition: background-color 0.3s;
+  }
+  nav a:hover { background-color:#06b6d4; color:#0f172a;}
+  .beats-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; }
+  .beat-card {
+    background-color: rgba(30, 41, 59, 0.85);
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+  .beat-card img { width:100%; border-radius:6px; margin-bottom:12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7)); }
+  .beat-card iframe { width:100%; height:160px; border:none; border-radius:6px; }
+  .paypal-button {
+    background-color: #06b6d4;
+    color: white;
+    padding:10px 20px;
+    border-radius:8px;
+    display:inline-block;
+    margin-top:12px;
+    font-weight:600;
+    text-decoration:none;
+    transition:background-color 0.3s;
+  }
+  .paypal-button:hover { background-color:#0891b2; }
+  .beat-note { font-size:0.9rem; color:#a0aec0; margin-top:8px; }
+  section {
+    margin-top:60px;
+    background: rgba(30, 41, 59, 0.85);
+    padding:20px;
+    border-radius:12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  }
+  section h2 { margin-top:0; color:#06b6d4; font-size:2rem; text-align:center; }
+  section p { font-size:1.1rem; line-height:1.5; color:#cbd5e1; max-width:900px; margin:0 auto; text-align:center; }
+  .adsense-container { margin-top:40px; padding:15px; background-color: rgba(30,41,59,0.85); border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.7); text-align:center; }
+  footer { margin-top:50px; text-align:center; font-size:1rem; color:#94a3b8; }
+  footer a { color:#06b6d4; text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
 
-    /* Overlay for bedre tekstkontrast */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.65);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Container til alt indhold, så overlay er under */
-    #main-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    header {
-      background-color: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.7);
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.5rem;
-    }
-
-    header p, header a {
-      font-size: 1.1rem;
-      color: #06b6d4;
-      margin: 0 0 10px;
-      text-decoration: none;
-    }
-
-    header a:hover {
-      text-decoration: underline;
-    }
-
-    nav {
-      margin: 25px 0;
-      text-align: center;
-    }
-
-    nav a {
-      color: #06b6d4;
-      margin: 0 15px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.1rem;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background-color: rgba(30,41,59,0.7);
-      transition: background-color 0.3s;
-    }
-
-    nav a:hover {
-      background-color: #06b6d4;
-      color: #0f172a;
-    }
-
-    .beats-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .beat-card {
-      background-color: rgba(30, 41, 59, 0.85);
-      width: 100%;
-      max-width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.8);
-      padding: 15px;
-      box-sizing: border-box;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-
-    .beat-card img {
-      width: 100%;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
-    }
-
-    .beat-card iframe {
-      width: 100%;
-      height: 160px;
-      border: none;
-      border-radius: 6px;
-    }
-
-    .paypal-button {
-      background-color: #06b6d4;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      display: inline-block;
-      margin-top: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-
-    .paypal-button:hover {
-      background-color: #0891b2;
-    }
-
-    .beat-note {
-      font-size: 0.9rem;
-      color: #a0aec0;
-      margin-top: 8px;
-    }
-
-    section {
-      margin-top: 60px;
-      background: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-    }
-
-    section h2 {
-      margin-top: 0;
-      color: #06b6d4;
-      font-size: 2rem;
-      text-align: center;
-    }
-
-    section p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      color: #cbd5e1;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .adsense-container {
-      margin-top: 40px;
-      padding: 15px;
-      background-color: rgba(30,41,59,0.85);
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-      text-align: center;
-    }
-
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 1rem;
-      color: #94a3b8;
-    }
-
-    footer a {
-      color: #06b6d4;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 6px 10px;
-        padding: 8px 15px;
-        font-size: 1rem;
-      }
-
-      .beat-card iframe {
-        height: 140px;
-      }
-    }
-  </style>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
-
+  @media(max-width:600px){
+    header h1 { font-size:1.8rem; }
+    nav a { display:inline-block; margin:6px 10px; padding:8px 15px; font-size:1rem; }
+    .beat-card iframe { height:140px; }
+  }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <div id="main-content">
+<header>
+  <h1>RawBeats Studio</h1>
+  <p>Original beats for background music, games, cartoons, films, rap, and hiphop. Listen below and support to download.</p>
+  <p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" rel="noopener">Visit our YouTube Channel</a></p>
+</header>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#beats">Beats</a>
+  <a href="#about">About</a>
+  <a href="#support">Support</a>
+</nav>
 
-  <header>
-    <h1>RawBeats Studio</h1>
-    <p>Original beats created by RawBeats Studio for background music, games, cartoons, films, rap, and hiphop. Listen below and support to download.</p>
-    <p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" rel="noopener">Visit our YouTube Channel</a></p>
-  </header>
+<section id="home" style="text-align:center; margin-bottom:40px;">
+<h2>Welcome to RawBeats Studio</h2>
+<p>High-quality beats for your projects. Stream from YouTube and support to download WAV files.</p>
+</section>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#beats">Beats</a>
-    <a href="#about">About</a>
-    <a href="#support">Support</a>
-  </nav>
-
-  <section id="home" style="text-align:center; margin-bottom: 40px;">
-    <h2>Welcome to RawBeats Studio</h2>
-    <p>High quality beats for your projects. Stream from YouTube and support us to download the WAV files.</p>
-  </section>
-
-  <section id="beats">
-    <h2>Beats Gallery</h2>
-    <div class="beats-gallery">
-      
-      <!-- All 20 beats sections here -->
-      
-      <!-- Beat 1 -->
-      <div class="beat-card">
-        <img src="https://img.youtube.com/vi/yHhTT3VxOlI/hqdefault.jpg" alt="Beat 1" />
-        <h3>Beat 1</h3>
-        <iframe src="https://www.youtube.com/embed/yHhTT3VxOlI" allowfullscreen></iframe>
-        <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 1')">
-          Pay $1 to Download Beat 1
+<section id="beats">
+<h2>Beats Gallery</h2>
+<div class="beats-gallery">
+  <!-- 20 beats cards -->
+  <script>
+    const beats = [
+      {id:'yHhTT3VxOlI', name:'Beat 1'},
+      {id:'daOTdlyu48Q', name:'Beat 2'},
+      {id:'gKi7o0e5AWs', name:'Beat 3'},
+      {id:'A4EsG2JbZkA', name:'Beat 4'},
+      {id:'a6BZ5QG3O2I', name:'Beat 5'},
+      {id:'WYOI0frSbP0', name:'Beat 6'},
+      {id:'xoPynmgTyfY', name:'Beat 7'},
+      {id:'kAHkvUpQlIA', name:'Beat 8'},
+      {id:'K-U0Z4hU9FM', name:'Beat 9'},
+      {id:'7nSLvF9xkFA', name:'Beat 10'},
+      {id:'PmwZAun1viA', name:'Beat 11'},
+      {id:'lk2n07AA8YA', name:'Beat 12'},
+      {id:'-MHrDwNYA8k', name:'Beat 13'},
+      {id:'qutd77fsu20', name:'Beat 14'},
+      {id:'FyUhLUKW4b0', name:'Beat 15'},
+      {id:'1IL_pwM382M', name:'Beat 16'},
+      {id:'g_WJIOmnb1E', name:'Beat 17'},
+      {id:'J906gPXAIaE', name:'Beat 18'},
+      {id:'BHt19CyUNJw', name:'Beat 19'},
+      {id:'xIGqO-0gr9s', name:'Beat 20'}
+    ];
+    const gallery = document.querySelector('.beats-gallery');
+    beats.forEach(beat=>{
+      const div = document.createElement('div');
+      div.className = 'beat-card';
+      div.innerHTML = `
+        <img src="https://img.youtube.com/vi/${beat.id}/hqdefault.jpg" alt="${beat.name}">
+        <h3>${beat.name}</h3>
+        <iframe src="https://www.youtube.com/embed/${beat.id}" allowfullscreen></iframe>
+        <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('${beat.name}')">
+          Pay $1 to Download ${beat.name}
         </a>
-        <p class="beat-note">Write “Beat 1” in the PayPal note before sending.</p>
-      </div>
+        <p class="beat-note">Write "${beat.name}" in the PayPal note before sending.</p>
+      `;
+      gallery.appendChild(div);
+    });
+  </script>
+</div>
+</section>
 
-      <!-- Repeat for all other beats from 2 to 20, similar to Beat 1 -->
+<section id="about">
+<h2>About RawBeats Studio</h2>
+<p>
+RawBeats Studio creates high-quality beats for producers, games, cartoons, films, rap, and hiphop projects. Stream online, support to download. Your support keeps new beats coming!
+</p>
+</section>
 
-    </div>
-  </section>
+<section id="support" style="text-align:center;">
+<h2>Support & Download</h2>
+<p>To download any beat as WAV, support with $1 via PayPal. Write the beat number in the note. After payment, we’ll send the file promptly.</p>
+<a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" style="font-size:1.2rem;">Support Now via PayPal</a>
+</section>
 
-  <section id="about">
-    <h2>About RawBeats Studio</h2>
-    <p>
-      RawBeats Studio creates high-quality beats perfect for music producers, game developers, cartoons, films, rap, and hiphop projects.
-      Our beats are original and available for streaming and download after support.
-      Your support helps us keep producing new sounds and improving the quality.
-    </p>
-  </section>
+<div class="adsense-container">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8036688230923764" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
-  <section id="support" style="text-align:center;">
-    <h2>Support & Download</h2>
-    <p>
-      To download any beat as a WAV file, please support with $1 via PayPal.
-      Write the beat number in the PayPal note to let us know which beat you want.
-      After payment, contact us and we'll send the WAV file promptly.
-    </p>
-    <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" style="font-size:1.2rem;">
-      Support Now via PayPal
-    </a>
-  </section>
-
-  <div class="adsense-container">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8036688230923764" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <footer>
-    <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" rel="noopener">Support RawBeats Studio</a></p>
-  </footer>
-
+<footer>
+<p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" rel="noopener">Support RawBeats Studio</a></p>
+</footer>
 </div>
 
 <script>
-  // Valgfrit: popup reminder om at skrive beat nummer i PayPal note
-  function notifyBeat(beat) {
-    alert(`Reminder: Please write "${beat}" in the PayPal note when sending your payment.`);
-  }
+function notifyBeat(beat) {
+  alert(`Reminder: Please write "${beat}" in the PayPal note when sending your payment.`);
+}
 </script>
-
 </body>
 </html>
