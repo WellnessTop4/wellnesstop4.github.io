@@ -97,21 +97,6 @@
     footer a { color: #06b6d4; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* Improved readability */
-    .beat-card, section, footer {
-      background-color: rgba(30, 41, 59, 0.95);
-      color: #f1f5f9;
-    }
-
-    .paypal-button {
-      background-color: #34d399; /* More contrast */
-      color: #0f172a;
-    }
-
-    .paypal-button:hover {
-      background-color: #059669;
-    }
-
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
       nav a { display: inline-block; margin: 6px 10px; padding: 8px 15px; font-size: 1rem; }
@@ -178,6 +163,7 @@
               Pay $1 to Download ${beat.name}
             </a>
             <p class="beat-note">Write "${beat.name}" in the PayPal note before sending your payment.</p>
+            <p class="beat-note">After payment, the download link will be available for your chosen beat.</p>
           `;
           gallery.appendChild(div);
         });
@@ -192,7 +178,7 @@
 
   <section id="support" style="text-align:center;">
     <h2>Support & Download</h2>
-    <p>To download any beat as WAV, support with $1 via PayPal. Write the beat number in the PayPal note to let us know which beat you want. After payment, we’ll send the file promptly.</p>
+    <p>To download any beat as WAV, support with $1 via PayPal. Write the beat number in the PayPal note to let us know which beat you want. After payment, the download link will be provided.</p>
     <a href="https://www.paypal.com/paypalme/SynSkript" target="_blank" class="paypal-button" style="font-size:1.2rem;">
       Support Now via PayPal
     </a>
