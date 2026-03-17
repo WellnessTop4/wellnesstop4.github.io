@@ -1,231 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>RawBeats Studio | Rap, Hip Hop & Background Beats</title>
-
-<meta name="description" content="Download rap, hip hop and background beats for games, cartoons, YouTube and films.">
-<meta name="keywords" content="rap beats, hip hop beats, background music, game music, cartoon music, youtube beats">
-<meta name="robots" content="index, follow">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RawBeats Studio</title>
 <style>
-body {
-    margin:0;
+  /* Baggrund med uploadet Reason 11/12 billedet i sort/hvid */
+  body {
+    margin: 0;
+    padding: 20px;
     font-family: Arial, sans-serif;
-    color:white;
+    color: white;
+    background: url('https://i.imgur.com/fzVxc7U.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: grayscale(100%) contrast(1.1) brightness(0.4);
+  }
 
-    /* 🔥 NY PRODUCER BAGGRUND */
-    background:url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4') center/cover no-repeat fixed;
-}
+  /* Overlay for bedre tekstkontrast */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* mørk overlay for pro look */
-body::before {
-    content:"";
-    position:fixed;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.85);
-    z-index:-1;
-}
+  /* Container til alt indhold, så overlay er under */
+  #main-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-header {
-    position:sticky;
-    top:0;
-    background:rgba(0,0,0,0.95);
-    padding:15px;
-    text-align:center;
-    border-bottom:1px solid #333;
-}
+  header {
+    background-color: rgba(30, 41, 59, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+    text-align: center;
+  }
 
-nav {
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
+  header h1 {
+    margin: 0 0 10px;
+    font-size: 2.5rem;
+  }
 
-nav a {
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    letter-spacing:1px;
-}
+  header p, header a {
+    font-size: 1.1rem;
+    color: #06b6d4;
+    margin: 0 0 10px;
+    text-decoration: none;
+  }
 
-section {
-    padding:40px 20px;
-    max-width:1200px;
-    margin:auto;
-}
+  header a:hover {
+    text-decoration: underline;
+  }
 
-h1,h2 {
-    text-align:center;
-    letter-spacing:2px;
-}
+  nav {
+    margin: 25px 0;
+    text-align: center;
+  }
 
-/* BEATS */
-.beats-gallery {
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    justify-content:center;
-}
+  nav a {
+    color: #06b6d4;
+    margin: 0 15px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: rgba(30,41,59,0.7);
+    transition: background-color 0.3s;
+  }
 
-.beat-card {
-    background:rgba(0,0,0,0.7);
-    width:300px;
-    padding:15px;
-    text-align:center;
-    border:1px solid #222;
-}
+  nav a:hover {
+    background-color: #06b6d4;
+    color: #0f172a;
+  }
 
-.beat-card img {
-    width:100%;
-    filter:grayscale(100%);
-}
+  .beats-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
 
-.beat-card iframe {
-    width:100%;
-    height:160px;
-}
+  .beat-card {
+    background-color: rgba(30, 41, 59, 0.85);
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
 
-/* BUTTON */
-.paypal-button {
-    display:inline-block;
-    margin-top:10px;
-    padding:10px;
-    background:white;
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-}
+  .beat-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
+  }
 
-/* FOOTER */
-footer {
-    text-align:center;
-    padding:20px;
-    background:black;
-    border-top:1px solid #222;
-}
+  .beat-card iframe {
+    width: 100%;
+    height: 160px;
+    border: none;
+    border-radius: 6px;
+  }
 
-@media(max-width:600px){
-    .beat-card { width:100%; }
-}
+  .paypal-button {
+    background-color: #06b6d4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .paypal-button:hover {
+    background-color: #0891b2;
+  }
+
+  .beat-note {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    margin-top: 8px;
+  }
+
+  section {
+    margin-top: 60px;
+    background: rgba(30, 41, 59, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  }
+
+  section h2 {
+    margin-top: 0;
+    color: #06b6d4;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  section p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .adsense-container {
+    margin-top: 40px;
+    padding: 15px;
+    background-color: rgba(30,41,59,0.85);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    text-align: center;
+  }
+
+  footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1rem;
+    color: #94a3b8;
+  }
+
+  footer a {
+    color: #06b6d4;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 6px 10px;
+      padding: 8px 15px;
+      font-size: 1rem;
+    }
+
+    .beat-card iframe {
+      height: 140px;
+    }
+  }
 </style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
 
 </head>
-
 <body>
 
+<div id="main-content">
+
 <header>
-<h1>RawBeats Studio</h1>
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-<a href="#privacy">Privacy</a>
-</nav>
+  <h1>RawBeats Studio</h1>
+  <p>Original beats created by RawBeats Studio for background music, games, cartoons, films, rap, and hiphop. Listen below and support to download.</p>
+  <p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" rel="noopener">Visit our YouTube Channel</a></p>
 </header>
 
-<section id="home">
+<nav>
+  <a href="#home">Home</a>
+  <a href="#beats">Beats</a>
+  <a href="#about">About</a>
+  <a href="#support">Support</a>
+</nav>
 
-<h2>Rap, Hip Hop & Background Music</h2>
+<section id="home" style="text-align:center; margin-bottom: 40px;">
+  <h2>Welcome to RawBeats Studio</h2>
+  <p>High quality beats for your projects. Stream from YouTube and support us to download the WAV files.</p>
+</section>
 
-<p style="text-align:center;">
-Perfect beats for games, cartoons, YouTube videos and films.
-</p>
+<section id="beats">
+  <h2>Beats Gallery</h2>
+  <div class="beats-gallery">
 
-<button onclick="playAll()" style="display:block;margin:20px auto;padding:12px;font-weight:bold;">
-▶ Play All Beats
-</button>
+    <!-- Beat 1 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/yHhTT3VxOlI/hqdefault.jpg" alt="Beat 1" />
+      <h3>Beat 1</h3>
+      <iframe src="https://www.youtube.com/embed/yHhTT3VxOlI" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 1')">
+        Pay $1 to Download Beat 1
+      </a>
+      <p class="beat-note">Write “Beat 1” in the PayPal note before sending.</p>
+    </div>
 
-<div style="margin:30px auto; text-align:center;">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="YOUR_AD_SLOT_HERE"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+    <!-- Beat 2 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/daOTdlyu48Q/hqdefault.jpg" alt="Beat 2" />
+      <h3>Beat 2</h3>
+      <iframe src="https://www.youtube.com/embed/daOTdlyu48Q" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 2')">
+        Pay $1 to Download Beat 2
+      </a>
+      <p class="beat-note">Write “Beat 2” in the PayPal note before sending.</p>
+    </div>
 
-<div class="beats-gallery">
+    <!-- Beat 3 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/gKi7o0e5AWs/hqdefault.jpg" alt="Beat 3" />
+      <h3>Beat 3</h3>
+      <iframe src="https://www.youtube.com/embed/gKi7o0e5AWs" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 3')">
+        Pay $1 to Download Beat 3
+      </a>
+      <p class="beat-note">Write “Beat 3” in the PayPal note before sending.</p>
+    </div>
 
-<!-- 20 BEATS (URENDRRET) -->
-<div class="beat-card"><img src="https://img.youtube.com/vi/yHhTT3VxOlI/hqdefault.jpg"><h3>Beat 1</h3><iframe src="https://www.youtube.com/embed/yHhTT3VxOlI"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/daOTdlyu48Q/hqdefault.jpg"><h3>Beat 2</h3><iframe src="https://www.youtube.com/embed/daOTdlyu48Q"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/gKi7o0e5AWs/hqdefault.jpg"><h3>Beat 3</h3><iframe src="https://www.youtube.com/embed/gKi7o0e5AWs"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/A4EsG2JbZkA/hqdefault.jpg"><h3>Beat 4</h3><iframe src="https://www.youtube.com/embed/A4EsG2JbZkA"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/a6BZ5QG3O2I/hqdefault.jpg"><h3>Beat 5</h3><iframe src="https://www.youtube.com/embed/a6BZ5QG3O2I"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/WYOI0frSbP0/hqdefault.jpg"><h3>Beat 6</h3><iframe src="https://www.youtube.com/embed/WYOI0frSbP0"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/xoPynmgTyfY/hqdefault.jpg"><h3>Beat 7</h3><iframe src="https://www.youtube.com/embed/xoPynmgTyfY"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/kAHkvUpQlIA/hqdefault.jpg"><h3>Beat 8</h3><iframe src="https://www.youtube.com/embed/kAHkvUpQlIA"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/K-U0Z4hU9FM/hqdefault.jpg"><h3>Beat 9</h3><iframe src="https://www.youtube.com/embed/K-U0Z4hU9FM"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/7nSLvF9xkFA/hqdefault.jpg"><h3>Beat 10</h3><iframe src="https://www.youtube.com/embed/7nSLvF9xkFA"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/PmwZAun1viA/hqdefault.jpg"><h3>Beat 11</h3><iframe src="https://www.youtube.com/embed/PmwZAun1viA"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/lk2n07AA8YA/hqdefault.jpg"><h3>Beat 12</h3><iframe src="https://www.youtube.com/embed/lk2n07AA8YA"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/-MHrDwNYA8k/hqdefault.jpg"><h3>Beat 13</h3><iframe src="https://www.youtube.com/embed/-MHrDwNYA8k"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/qutd77fsu20/hqdefault.jpg"><h3>Beat 14</h3><iframe src="https://www.youtube.com/embed/qutd77fsu20"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/FyUhLUKW4b0/hqdefault.jpg"><h3>Beat 15</h3><iframe src="https://www.youtube.com/embed/FyUhLUKW4b0"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/1IL_pwM382M/hqdefault.jpg"><h3>Beat 16</h3><iframe src="https://www.youtube.com/embed/1IL_pwM382M"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/g_WJIOmnb1E/hqdefault.jpg"><h3>Beat 17</h3><iframe src="https://www.youtube.com/embed/g_WJIOmnb1E"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/J906gPXAIaE/hqdefault.jpg"><h3>Beat 18</h3><iframe src="https://www.youtube.com/embed/J906gPXAIaE"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/BHt19CyUNJw/hqdefault.jpg"><h3>Beat 19</h3><iframe src="https://www.youtube.com/embed/BHt19CyUNJw"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
-<div class="beat-card"><img src="https://img.youtube.com/vi/xIGqO-0gr9s/hqdefault.jpg"><h3>Beat 20</h3><iframe src="https://www.youtube.com/embed/xIGqO-0gr9s"></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Download</a></div>
+    <!-- Beat 4 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/A4EsG2JbZkA/hqdefault.jpg" alt="Beat 4" />
+      <h3>Beat 4</h3>
+      <iframe src="https://www.youtube.com/embed/A4EsG2JbZkA" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 4')">
+        Pay $1 to Download Beat 4
+      </a>
+      <p class="beat-note">Write “Beat 4” in the PayPal note before sending.</p>
+    </div>
 
-</div>
+    <!-- Beat 5 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/a6BZ5QG3O2I/hqdefault.jpg" alt="Beat 5" />
+      <h3>Beat 5</h3>
+      <iframe src="https://www.youtube.com/embed/a6BZ5QG3O2I" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 5')">
+        Pay $1 to Download Beat 5
+      </a>
+      <p class="beat-note">Write “Beat 5” in the PayPal note before sending.</p>
+    </div>
 
-<p style="text-align:center; max-width:800px; margin:40px auto;">
-These beats are perfect for rap artists, YouTubers, game developers, and filmmakers.
-Use them as background music for games, cartoons, films, and videos.
-</p>
+    <!-- Beat 6 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/WYOI0frSbP0/hqdefault.jpg" alt="Beat 6" />
+      <h3>Beat 6</h3>
+      <iframe src="https://www.youtube.com/embed/WYOI0frSbP0" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 6')">
+        Pay $1 to Download Beat 6
+      </a>
+      <p class="beat-note">Write “Beat 6” in the PayPal note before sending.</p>
+    </div>
 
+    <!-- Beat 7 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/xoPynmgTyfY/hqdefault.jpg" alt="Beat 7" />
+      <h3>Beat 7</h3>
+      <iframe src="https://www.youtube.com/embed/xoPynmgTyfY" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 7')">
+        Pay $1 to Download Beat 7
+      </a>
+      <p class="beat-note">Write “Beat 7” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 8 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/kAHkvUpQlIA/hqdefault.jpg" alt="Beat 8" />
+      <h3>Beat 8</h3>
+      <iframe src="https://www.youtube.com/embed/kAHkvUpQlIA" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 8')">
+        Pay $1 to Download Beat 8
+      </a>
+      <p class="beat-note">Write “Beat 8” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 9 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/K-U0Z4hU9FM/hqdefault.jpg" alt="Beat 9" />
+      <h3>Beat 9</h3>
+      <iframe src="https://www.youtube.com/embed/K-U0Z4hU9FM" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 9')">
+        Pay $1 to Download Beat 9
+      </a>
+      <p class="beat-note">Write “Beat 9” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 10 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/7nSLvF9xkFA/hqdefault.jpg" alt="Beat 10" />
+      <h3>Beat 10</h3>
+      <iframe src="https://www.youtube.com/embed/7nSLvF9xkFA" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 10')">
+        Pay $1 to Download Beat 10
+      </a>
+      <p class="beat-note">Write “Beat 10” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 11 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/PmwZAun1viA/hqdefault.jpg" alt="Beat 11" />
+      <h3>Beat 11</h3>
+      <iframe src="https://www.youtube.com/embed/PmwZAun1viA" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 11')">
+        Pay $1 to Download Beat 11
+      </a>
+      <p class="beat-note">Write “Beat 11” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 12 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/lk2n07AA8YA/hqdefault.jpg" alt="Beat 12" />
+      <h3>Beat 12</h3>
+      <iframe src="https://www.youtube.com/embed/lk2n07AA8YA" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 12')">
+        Pay $1 to Download Beat 12
+      </a>
+      <p class="beat-note">Write “Beat 12” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 13 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/-MHrDwNYA8k/hqdefault.jpg" alt="Beat 13" />
+      <h3>Beat 13</h3>
+      <iframe src="https://www.youtube.com/embed/-MHrDwNYA8k" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 13')">
+        Pay $1 to Download Beat 13
+      </a>
+      <p class="beat-note">Write “Beat 13” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 14 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/qutd77fsu20/hqdefault.jpg" alt="Beat 14" />
+      <h3>Beat 14</h3>
+      <iframe src="https://www.youtube.com/embed/qutd77fsu20" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 14')">
+        Pay $1 to Download Beat 14
+      </a>
+      <p class="beat-note">Write “Beat 14” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 15 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/FyUhLUKW4b0/hqdefault.jpg" alt="Beat 15" />
+      <h3>Beat 15</h3>
+      <iframe src="https://www.youtube.com/embed/FyUhLUKW4b0" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 15')">
+        Pay $1 to Download Beat 15
+      </a>
+      <p class="beat-note">Write “Beat 15” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 16 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/1IL_pwM382M/hqdefault.jpg" alt="Beat 16" />
+      <h3>Beat 16</h3>
+      <iframe src="https://www.youtube.com/embed/1IL_pwM382M" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 16')">
+        Pay $1 to Download Beat 16
+      </a>
+      <p class="beat-note">Write “Beat 16” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 17 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/g_WJIOmnb1E/hqdefault.jpg" alt="Beat 17" />
+      <h3>Beat 17</h3>
+      <iframe src="https://www.youtube.com/embed/g_WJIOmnb1E" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 17')">
+        Pay $1 to Download Beat 17
+      </a>
+      <p class="beat-note">Write “Beat 17” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 18 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/J906gPXAIaE/hqdefault.jpg" alt="Beat 18" />
+      <h3>Beat 18</h3>
+      <iframe src="https://www.youtube.com/embed/J906gPXAIaE" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 18')">
+        Pay $1 to Download Beat 18
+      </a>
+      <p class="beat-note">Write “Beat 18” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 19 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/BHt19CyUNJw/hqdefault.jpg" alt="Beat 19" />
+      <h3>Beat 19</h3>
+      <iframe src="https://www.youtube.com/embed/BHt19CyUNJw" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 19')">
+        Pay $1 to Download Beat 19
+      </a>
+      <p class="beat-note">Write “Beat 19” in the PayPal note before sending.</p>
+    </div>
+
+    <!-- Beat 20 -->
+    <div class="beat-card">
+      <img src="https://img.youtube.com/vi/xIGqO-0gr9s/hqdefault.jpg" alt="Beat 20" />
+      <h3>Beat 20</h3>
+      <iframe src="https://www.youtube.com/embed/xIGqO-0gr9s" allowfullscreen></iframe>
+      <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('Beat 20')">
+        Pay $1 to Download Beat 20
+      </a>
+      <p class="beat-note">Write “Beat 20” in the PayPal note before sending.</p>
+    </div>
+
+  </div>
 </section>
 
 <section id="about">
-<h2>About</h2>
-<p style="text-align:center;">RawBeats Studio creates original rap and hip hop beats for creative projects.</p>
+  <h2>About RawBeats Studio</h2>
+  <p>
+    RawBeats Studio creates high-quality beats perfect for music producers, game developers, cartoons, films, rap, and hiphop projects.
+    Our beats are original and available for streaming and download after support.
+    Your support helps us keep producing new sounds and improving the quality.
+  </p>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<p style="text-align:center;">
-<a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Support via PayPal</a>
-</p>
+<section id="support" style="text-align:center;">
+  <h2>Support & Download</h2>
+  <p>
+    To download any beat as a WAV file, please support with $1 via PayPal.
+    Write the beat number in the PayPal note to let us know which beat you want.
+    After payment, contact us and we'll send the WAV file promptly.
+  </p>
+  <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" style="font-size:1.2rem;">
+    Support Now via PayPal
+  </a>
 </section>
 
-<section id="privacy">
-<h2>Privacy Policy</h2>
-<p>This site may use cookies and Google AdSense.</p>
-</section>
-
-<footer>
-<p>© 2026 RawBeats Studio</p>
-</footer>
-
-<!-- STICKY BUTTON -->
-<div style="position:fixed;bottom:15px;right:15px;">
-<a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank"
-style="background:white;color:black;padding:15px;font-weight:bold;text-decoration:none;">
-Download Beats
-</a>
+<div class="adsense-container">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8036688230923764" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<!-- PLAY ALL -->
+<footer>
+  <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" rel="noopener">Support RawBeats Studio</a></p>
+</footer>
+
+</div>
+
 <script>
-function playAll(){
-let iframes=document.querySelectorAll("iframe");
-let i=0;
-function playNext(){
-if(i>=iframes.length)return;
-iframes[i].src += "?autoplay=1";
-i++;
-setTimeout(playNext,30000);
-}
-playNext();
-}
+  // Valgfrit: popup reminder om at skrive beat nummer i PayPal note
+  function notifyBeat(beat) {
+    alert(`Reminder: Please write "${beat}" in the PayPal note when sending your payment.`);
+  }
 </script>
 
 </body>
