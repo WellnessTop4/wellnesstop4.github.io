@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>RawBeats Studio</title>
 <style>
+  /* Baggrund med Reason 11/12 billedet i sort/hvid */
   body {
     margin: 0;
     padding: 20px;
     font-family: Arial, sans-serif;
     color: white;
-    background: url('https://i.imgur.com/7qP5JfM.jpg') no-repeat center center fixed;
+    background: url('https://i.imgur.com/WIkquVR.jpg') no-repeat center center fixed;
     background-size: cover;
     filter: grayscale(100%) contrast(1.1) brightness(0.4);
   }
@@ -100,99 +101,102 @@
   }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div id="main-content">
-<header>
-  <h1>RawBeats Studio</h1>
-  <p>Original beats for background music, games, cartoons, films, rap, and hiphop. Listen below and support to download.</p>
-  <p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" rel="noopener">Visit our YouTube Channel</a></p>
-</header>
-<nav>
-  <a href="#home">Home</a>
-  <a href="#beats">Beats</a>
-  <a href="#about">About</a>
-  <a href="#support">Support</a>
-</nav>
+  <header>
+    <h1>RawBeats Studio</h1>
+    <p>Original beats for background music, games, cartoons, films, rap, and hiphop. Listen below and support to download.</p>
+    <p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" rel="noopener">Visit our YouTube Channel</a></p>
+  </header>
 
-<section id="home" style="text-align:center; margin-bottom:40px;">
-<h2>Welcome to RawBeats Studio</h2>
-<p>High-quality beats for your projects. Stream from YouTube and support to download WAV files.</p>
-</section>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#beats">Beats</a>
+    <a href="#about">About</a>
+    <a href="#support">Support</a>
+  </nav>
 
-<section id="beats">
-<h2>Beats Gallery</h2>
-<div class="beats-gallery">
-  <!-- 20 beats cards -->
-  <script>
-    const beats = [
-      {id:'yHhTT3VxOlI', name:'Beat 1'},
-      {id:'daOTdlyu48Q', name:'Beat 2'},
-      {id:'gKi7o0e5AWs', name:'Beat 3'},
-      {id:'A4EsG2JbZkA', name:'Beat 4'},
-      {id:'a6BZ5QG3O2I', name:'Beat 5'},
-      {id:'WYOI0frSbP0', name:'Beat 6'},
-      {id:'xoPynmgTyfY', name:'Beat 7'},
-      {id:'kAHkvUpQlIA', name:'Beat 8'},
-      {id:'K-U0Z4hU9FM', name:'Beat 9'},
-      {id:'7nSLvF9xkFA', name:'Beat 10'},
-      {id:'PmwZAun1viA', name:'Beat 11'},
-      {id:'lk2n07AA8YA', name:'Beat 12'},
-      {id:'-MHrDwNYA8k', name:'Beat 13'},
-      {id:'qutd77fsu20', name:'Beat 14'},
-      {id:'FyUhLUKW4b0', name:'Beat 15'},
-      {id:'1IL_pwM382M', name:'Beat 16'},
-      {id:'g_WJIOmnb1E', name:'Beat 17'},
-      {id:'J906gPXAIaE', name:'Beat 18'},
-      {id:'BHt19CyUNJw', name:'Beat 19'},
-      {id:'xIGqO-0gr9s', name:'Beat 20'}
-    ];
-    const gallery = document.querySelector('.beats-gallery');
-    beats.forEach(beat=>{
-      const div = document.createElement('div');
-      div.className = 'beat-card';
-      div.innerHTML = `
-        <img src="https://img.youtube.com/vi/${beat.id}/hqdefault.jpg" alt="${beat.name}">
-        <h3>${beat.name}</h3>
-        <iframe src="https://www.youtube.com/embed/${beat.id}" allowfullscreen></iframe>
-        <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('${beat.name}')">
-          Pay $1 to Download ${beat.name}
-        </a>
-        <p class="beat-note">Write "${beat.name}" in the PayPal note before sending.</p>
-      `;
-      gallery.appendChild(div);
-    });
-  </script>
-</div>
-</section>
+  <section id="home" style="text-align:center; margin-bottom:40px;">
+    <h2>Welcome to RawBeats Studio</h2>
+    <p>High-quality beats for your projects. Stream from YouTube and support to download WAV files.</p>
+  </section>
 
-<section id="about">
-<h2>About RawBeats Studio</h2>
-<p>
-RawBeats Studio creates high-quality beats for producers, games, cartoons, films, rap, and hiphop projects. Stream online, support to download. Your support keeps new beats coming!
-</p>
-</section>
+  <section id="beats">
+    <h2>Beats Gallery</h2>
+    <div class="beats-gallery">
+      <script>
+        const beats = [
+          {id:'yHhTT3VxOlI', name:'Beat 1'},
+          {id:'daOTdlyu48Q', name:'Beat 2'},
+          {id:'gKi7o0e5AWs', name:'Beat 3'},
+          {id:'A4EsG2JbZkA', name:'Beat 4'},
+          {id:'a6BZ5QG3O2I', name:'Beat 5'},
+          {id:'WYOI0frSbP0', name:'Beat 6'},
+          {id:'xoPynmgTyfY', name:'Beat 7'},
+          {id:'kAHkvUpQlIA', name:'Beat 8'},
+          {id:'K-U0Z4hU9FM', name:'Beat 9'},
+          {id:'7nSLvF9xkFA', name:'Beat 10'},
+          {id:'PmwZAun1viA', name:'Beat 11'},
+          {id:'lk2n07AA8YA', name:'Beat 12'},
+          {id:'-MHrDwNYA8k', name:'Beat 13'},
+          {id:'qutd77fsu20', name:'Beat 14'},
+          {id:'FyUhLUKW4b0', name:'Beat 15'},
+          {id:'1IL_pwM382M', name:'Beat 16'},
+          {id:'g_WJIOmnb1E', name:'Beat 17'},
+          {id:'J906gPXAIaE', name:'Beat 18'},
+          {id:'BHt19CyUNJw', name:'Beat 19'},
+          {id:'xIGqO-0gr9s', name:'Beat 20'}
+        ];
+        const gallery = document.querySelector('.beats-gallery');
+        beats.forEach(beat=>{
+          const div = document.createElement('div');
+          div.className = 'beat-card';
+          div.innerHTML = `
+            <img src="https://img.youtube.com/vi/${beat.id}/hqdefault.jpg" alt="${beat.name}">
+            <h3>${beat.name}</h3>
+            <iframe src="https://www.youtube.com/embed/${beat.id}" allowfullscreen></iframe>
+            <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" onclick="notifyBeat('${beat.name}')">
+              Pay $1 to Download ${beat.name}
+            </a>
+            <p class="beat-note">Write "${beat.name}" in the PayPal note before sending.</p>
+          `;
+          gallery.appendChild(div);
+        });
+      </script>
+    </div>
+  </section>
 
-<section id="support" style="text-align:center;">
-<h2>Support & Download</h2>
-<p>To download any beat as WAV, support with $1 via PayPal. Write the beat number in the note. After payment, we’ll send the file promptly.</p>
-<a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" class="paypal-button" style="font-size:1.2rem;">Support Now via PayPal</a>
-</section>
+  <section id="about">
+    <h2>About RawBeats Studio</h2>
+    <p>RawBeats Studio creates high-quality beats for music producers, game developers, cartoons, films, rap, and hiphop projects. Our beats are original and available for streaming and download after support. Your support helps us keep producing new sounds and improving the quality.</p>
+  </section>
 
-<div class="adsense-container">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8036688230923764" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+  <section id="support" style="text-align:center;">
+    <h2>Support & Download</h2>
+    <p>To download any beat as WAV, support with $1 via PayPal. Write the beat number in the PayPal note to let us know which beat you want. After payment, we’ll send the file promptly.</p>
+    <a href="https://www.paypal.com/paypalme/SynSkript" target="_blank" class="paypal-button" style="font-size:1.2rem;">
+      Support Now via PayPal
+    </a>
+  </section>
 
-<footer>
-<p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank" rel="noopener">Support RawBeats Studio</a></p>
-</footer>
+  <div class="adsense-container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8036688230923764" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer>
+    <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkript" target="_blank" rel="noopener">Support RawBeats Studio</a></p>
+  </footer>
+
 </div>
 
 <script>
-function notifyBeat(beat) {
-  alert(`Reminder: Please write "${beat}" in the PayPal note when sending your payment.`);
-}
+  function notifyBeat(beat) {
+    alert(`Reminder: Please write "${beat}" in the PayPal note when sending your payment.`);
+  }
 </script>
+
 </body>
 </html>
