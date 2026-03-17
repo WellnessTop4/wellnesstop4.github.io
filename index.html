@@ -4,329 +4,226 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RawBeats Studio</title>
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
-     crossorigin="anonymous"></script>
-
 <style>
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #000;
-  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #0f0f0f;
+  color: #ffffff;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
-a { color: #fff; text-decoration: none; }
-a:hover { color: #06b6d4; text-decoration: underline; }
-
-/* Sticky Navigation */
-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(0,0,0,0.85);
-  padding: 15px 20px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  z-index: 1000;
-  border-bottom: 1px solid #333;
-}
-
-/* Header */
 header {
+  background-color: #1e1e1e;
+  padding: 20px;
   text-align: center;
-  padding: 60px 20px 40px;
-  background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80') no-repeat center;
-  background-size: cover;
-  color: #fff;
-  text-shadow: 2px 2px 4px #000;
 }
-header h1 { font-size: 3em; margin-bottom: 15px; }
-header p { font-size: 1.2em; max-width: 700px; margin: 0 auto 10px; }
-
-/* Beats Gallery */
-.beats-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 20px;
-  background: #111;
-}
+header h1 { font-size: 2em; margin-bottom: 10px; }
+header p { margin: 5px 0; }
+nav { background-color: #111; display:flex; justify-content:center; padding:10px; position:sticky; top:0; z-index:10; }
+nav a { color:#06b6d4; margin:0 15px; text-decoration:none; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+.beats-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:20px; }
 .beat-card {
-  background: rgba(26,26,26,0.95);
-  width: 280px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-  text-align: center;
-  padding: 15px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  backdrop-filter: blur(2px);
+  background-color:#1e1e1e;
+  width:280px;
+  border-radius:8px;
+  text-align:center;
+  padding:15px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.4);
 }
-.beat-card:hover { 
-  transform: scale(1.05); 
-  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+.beat-card img { width:100%; border-radius:5px; margin-bottom:10px; }
+.paypal-button {
+  background-color:#06b6d4;
+  padding:10px 20px;
+  border-radius:6px;
+  color:white;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:10px;
 }
-.beat-card img { width: 100%; border-radius: 5px; margin-bottom: 10px; }
-.paypal-button { background-color: #06b6d4; padding: 10px 20px; border-radius: 6px; color: white; display: inline-block; margin-top: 10px; }
-.paypal-button:hover { background-color: #0891b2; }
-
-/* AdSense */
-.adsense-card { margin-top:10px; }
-
-/* Sections (Om / FAQ) */
-section {
-  padding: 60px 20px;
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 1px 1px 3px #000;
-}
-section#om { background: url('https://images.unsplash.com/photo-1581090700227-81f5f4d1b6b1?auto=format&fit=crop&w=1200&q=80') no-repeat center; }
-section#faq { background: url('https://images.unsplash.com/photo-1611078483989-f640ff0bb70b?auto=format&fit=crop&w=1200&q=80') no-repeat center; }
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  background: #111;
-  font-size: 0.9em;
-}
+.paypal-button:hover { background-color:#0891b2; }
+.adsense-card { margin:10px 0; }
+section { padding:40px 20px; background-color:#111; }
+footer { text-align:center; padding:20px; background-color:#1e1e1e; font-size:1em; }
+footer a { color:#06b6d4; text-decoration:none; }
+footer a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
-<a href="#header">Home</a>
 <a href="#beats">Beats</a>
-<a href="#om">Om</a>
-<a href="#faq">FAQ</a>
+<a href="#about">Om</a>
 </nav>
 
-<!-- Header -->
-<header id="header">
-<h1>RawBeats Studio</h1>
-<p>Original beats til baggrundsmusik, spil og kreative projekter. Support $1 via PayPal for fulde rettigheder. Kontakt os via YouTube-kanalen.</p>
-<a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank">Se alle beats på YouTube</a>
+<header>
+<h1>Free RawBeats Studio</h1>
+<p>Original beats created by RawBeats Studio using Reason 11. All beats are 100% unique, made from scratch, with creative hours of work as an independent producer.</p>
+<p>Perfect for cartoons, games, films, and more. Many of the beats are inspired by rap and hip-hop vibes.</p>
+<p>Support $1 via PayPal to get full rights. Credit RawBeats Studio if you use the beats.</p>
+<p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" style="color:#06b6d4;">See all beats on YouTube</a></p>
 </header>
 
-<!-- Beats -->
-<div id="beats" class="beats-gallery">
+<section id="beats" class="beats-gallery">
 
-<!-- Beat 1 -->
+<!-- Beat 1-20 -->
+
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/vUmDUakqkCA/hqdefault.jpg" alt="Beat 1">
 <h3>Beat 1</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/vUmDUakqkCA" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1111111111"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 2 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/nGn4DyIEqj4/hqdefault.jpg" alt="Beat 2">
 <h3>Beat 2</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/nGn4DyIEqj4" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="2222222222"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 3 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/m6XNnmwW8yo/hqdefault.jpg" alt="Beat 3">
 <h3>Beat 3</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/m6XNnmwW8yo" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="3333333333"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 4 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/yHhTT3VxOlI/hqdefault.jpg" alt="Beat 4">
 <h3>Beat 4</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/yHhTT3VxOlI" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="4444444444"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 5 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/8Oi14DVCfy4/hqdefault.jpg" alt="Beat 5">
 <h3>Beat 5</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/8Oi14DVCfy4" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="5555555555"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 6 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/JImaOmpc8Bw/hqdefault.jpg" alt="Beat 6">
 <h3>Beat 6</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/JImaOmpc8Bw" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="6666666666"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 7 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/PlnQWr0JBIM/hqdefault.jpg" alt="Beat 7">
 <h3>Beat 7</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/PlnQWr0JBIM" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="7777777777"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 8 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/daOTdlyu48Q/hqdefault.jpg" alt="Beat 8">
 <h3>Beat 8</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/daOTdlyu48Q" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="8888888888"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 9 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/gKi7o0e5AWs/hqdefault.jpg" alt="Beat 9">
 <h3>Beat 9</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/gKi7o0e5AWs" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="9999999999"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 10 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/c0y7GM7qods/hqdefault.jpg" alt="Beat 10">
 <h3>Beat 10</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/c0y7GM7qods" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1010101010"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 11 -->
 <div class="beat-card">
-<img src="https://img.youtube.com/vi/1IL_pwM382M/hqdefault.jpg" alt="Beat 11">
+<img src="https://img.youtube.com/vi/PmwZAun1viA/hqdefault.jpg" alt="Beat 11">
 <h3>Beat 11</h3>
-<iframe width="250" height="140" src="https://www.youtube.com/embed/1IL_pwM382M" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1111111112"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/PmwZAun1viA" frameborder="0" allowfullscreen></iframe>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Beat 12 -->
 <div class="beat-card">
 <img src="https://img.youtube.com/vi/lk2n07AA8YA/hqdefault.jpg" alt="Beat 12">
 <h3>Beat 12</h3>
 <iframe width="250" height="140" src="https://www.youtube.com/embed/lk2n07AA8YA" frameborder="0" allowfullscreen></iframe>
-<div class="adsense-card">
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8036688230923764"
-     data-ad-slot="1212121212"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/-MHrDwNYA8k/hqdefault.jpg" alt="Beat 13">
+<h3>Beat 13</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/-MHrDwNYA8k" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
 </div>
 
-<!-- Om Section -->
-<section id="om">
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/qutd77fsu20/hqdefault.jpg" alt="Beat 14">
+<h3>Beat 14</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/qutd77fsu20" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/FyUhLUKW4b0/hqdefault.jpg" alt="Beat 15">
+<h3>Beat 15</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/FyUhLUKW4b0" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/1IL_pwM382M/hqdefault.jpg" alt="Beat 16">
+<h3>Beat 16</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/1IL_pwM382M" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/g_WJIOmnb1E/hqdefault.jpg" alt="Beat 17">
+<h3>Beat 17</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/g_WJIOmnb1E" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/J906gPXAIaE/hqdefault.jpg" alt="Beat 18">
+<h3>Beat 18</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/J906gPXAIaE" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/BHt19CyUNJw/hqdefault.jpg" alt="Beat 19">
+<h3>Beat 19</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/BHt19CyUNJw" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+<div class="beat-card">
+<img src="https://img.youtube.com/vi/xIGqO-0gr9s/hqdefault.jpg" alt="Beat 20">
+<h3>Beat 20</h3>
+<iframe width="250" height="140" src="https://www.youtube.com/embed/xIGqO-0gr9s" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a>
+</div>
+
+</section>
+
+<section id="about">
 <h2>Om RawBeats Studio</h2>
-<p>RawBeats Studio skaber originale beats til baggrundsmusik, spil og kreative projekter. Kontakt os via vores <a href="https://www.youtube.com/@RawBeatsStudio1" target="_blank">YouTube-kanal</a>.</p>
+<p>Alle beats på denne side er lavet fra bunden i <strong>Reason 11</strong>. Kreativt timer af arbejde som selvstændig producer går ind i hvert beat.</p>
+<p>Disse beats er perfekte til <strong>cartoon, games, film</strong> og mange har inspiration fra <strong>rap/hiphop</strong>.</p>
+<p>Kontakt os via vores YouTube-kanal: <a href="https://www.youtube.com/@RawBeatsStudio1" target="_blank" style="color:#06b6d4;">YouTube</a></p>
 </section>
 
-<!-- FAQ Section -->
-<section id="faq">
-<h2>FAQ</h2>
-<p><strong>Q:</strong> Kan jeg bruge beats gratis?<br><strong>A:</strong> Ja, men vi anbefaler $1 PayPal-support for fulde rettigheder.</p>
-<p><strong>Q:</strong> Må jeg bruge beats i YouTube-videoer?<br><strong>A:</strong> Ja, husk at kreditere RawBeats Studio.</p>
-</section>
-
-<!-- Footer -->
 <footer>
 <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Support RawBeats Studio</a></p>
 </footer>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764"
+     crossorigin="anonymous"></script>
 
 </body>
 </html>
