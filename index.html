@@ -39,6 +39,7 @@
     header h1 { margin: 0 0 10px; font-size: 2.5rem; }
     header p, header a { font-size: 1.1rem; color: #06b6d4; margin: 0 0 10px; text-decoration: none; }
     header a:hover { text-decoration: underline; }
+
     nav { margin: 25px 0; text-align: center; }
     nav a {
       color: #06b6d4;
@@ -52,6 +53,7 @@
       transition: background-color 0.3s;
     }
     nav a:hover { background-color: #06b6d4; color: #0f172a; }
+
     .beats-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
     .beat-card {
       background-color: rgba(30, 41, 59, 0.85);
@@ -80,6 +82,7 @@
     }
     .paypal-button:hover { background-color: #0891b2; }
     .beat-note { font-size: 0.9rem; color: #a0aec0; margin-top: 8px; }
+
     section {
       margin-top: 60px;
       background: rgba(30, 41, 59, 0.85);
@@ -89,14 +92,8 @@
     }
     section h2 { margin-top: 0; color: #06b6d4; font-size: 2rem; text-align: center; }
     section p { font-size: 1.1rem; line-height: 1.5; color: #cbd5e1; max-width: 900px; margin: 0 auto; text-align: center; }
-    .adsense-container {
-      margin-top: 40px;
-      padding: 15px;
-      background-color: rgba(30, 41, 59, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-      text-align: center;
-    }
+
+    .adsense-container { margin-top: 40px; padding: 15px; background-color: rgba(30, 41, 59, 0.85); border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); text-align: center; }
     footer { margin-top: 50px; text-align: center; font-size: 1rem; color: #94a3b8; }
     footer a { color: #06b6d4; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
@@ -163,7 +160,7 @@
             <img src="https://img.youtube.com/vi/${beat.id}/hqdefault.jpg" alt="${beat.name}">
             <h3>${beat.name}</h3>
             <iframe src="https://www.youtube.com/embed/${beat.id}" allowfullscreen></iframe>
-            <a href="https://www.paypal.com/paypalme/SynSkript" target="_blank" class="paypal-button" onclick="notifyBeat('${beat.name}')">
+            <a href="https://www.paypal.com/paypalme/SynSkript?amount=1" target="_blank" class="paypal-button" onclick="notifyBeat('${beat.name}')">
               Pay $1 to Download ${beat.name}
             </a>
             <p class="beat-note">Write "${beat.name}" in the PayPal note before sending.</p>
