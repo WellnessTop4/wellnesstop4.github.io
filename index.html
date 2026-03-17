@@ -10,33 +10,22 @@ body {
     background-color: #0f172a;
     color: white;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 header {
     background-color: #1e293b;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
     text-align: center;
-    border-bottom: 2px solid #06b6d4;
 }
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
+h1 {
+    margin-bottom: 10px;
+    font-size: 2em;
 }
-nav a {
-    color: #06b6d4;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-nav a.active, nav a:hover {
-    background-color: #06b6d4;
-    color: #0f172a;
-}
-.container {
-    padding: 20px;
+p {
+    margin-bottom: 10px;
 }
 .beats-gallery {
     display: flex;
@@ -88,36 +77,28 @@ footer {
     margin-top:40px;
     text-align:center;
     font-size:1em;
-    padding: 20px;
-    background-color: #1e293b;
 }
-footer a { color:#06b6d4; text-decoration:none; }
-footer a:hover { text-decoration:underline; }
-
+footer a {
+    color:#06b6d4;
+    text-decoration:none;
+}
+footer a:hover {
+    text-decoration:underline;
+}
 @media (max-width: 480px) {
+    h1 { font-size: 1.5em; }
     .beat-card iframe { height: 140px; }
-    .container { padding: 10px; }
+    body { padding: 10px; }
 }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8036688230923764" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <header>
 <h1>RawBeats Studio</h1>
-<nav>
-    <a href="#home" class="active" onclick="showPage('home')">Home</a>
-    <a href="#about" onclick="showPage('about')">About</a>
-    <a href="#contact" onclick="showPage('contact')">Contact</a>
-</nav>
-</header>
-
-<div class="container">
-
-<!-- Home Page -->
-<div id="home">
 <p>Original beats created by RawBeats Studio for background music, games, cartoons, and films. Listen to beats below, download after support.</p>
 <p><a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank" style="color:#06b6d4;">Visit our YouTube Channel</a></p>
+</header>
 
 <div class="adsense-container">
 <ins class="adsbygoogle"
@@ -130,54 +111,31 @@ footer a:hover { text-decoration:underline; }
 </div>
 
 <div class="beats-gallery">
-<!-- Beat cards same as before -->
+<!-- Beat 1-20 -->
 <div class="beat-card"><img src="https://img.youtube.com/vi/yHhTT3VxOlI/hqdefault.jpg" alt="Beat 1"><h3>Beat 1</h3><iframe src="https://www.youtube.com/embed/yHhTT3VxOlI" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
 <div class="beat-card"><img src="https://img.youtube.com/vi/daOTdlyu48Q/hqdefault.jpg" alt="Beat 2"><h3>Beat 2</h3><iframe src="https://www.youtube.com/embed/daOTdlyu48Q" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
-<!-- … Add Beat 3-20 similarly … -->
-</div>
-</div>
-
-<!-- About Page -->
-<div id="about" style="display:none;">
-<h2>About RawBeats Studio</h2>
-<p>RawBeats Studio creates original beats for YouTube, games, and films. We aim to provide high-quality music for content creators, independent artists, and filmmakers.</p>
-<p>Our beats are easy to download after supporting us via PayPal. Every beat is unique, royalty-free for supported projects.</p>
-</div>
-
-<!-- Contact Page -->
-<div id="contact" style="display:none;">
-<h2>Contact Us</h2>
-<p>For inquiries, collaborations, or custom beats, please contact us:</p>
-<ul>
-<li>Email: <a href="mailto:contact@rawbeatsstudio.com">contact@rawbeatsstudio.com</a></li>
-<li>PayPal Support: <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Donate $1</a></li>
-<li>YouTube: <a href="https://www.youtube.com/@RawBeatsStudio1/videos" target="_blank">RawBeats Studio Channel</a></li>
-</ul>
-</div>
-
+<div class="beat-card"><img src="https://img.youtube.com/vi/gKi7o0e5AWs/hqdefault.jpg" alt="Beat 3"><h3>Beat 3</h3><iframe src="https://www.youtube.com/embed/gKi7o0e5AWs" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/A4EsG2JbZkA/hqdefault.jpg" alt="Beat 4"><h3>Beat 4</h3><iframe src="https://www.youtube.com/embed/A4EsG2JbZkA" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/a6BZ5QG3O2I/hqdefault.jpg" alt="Beat 5"><h3>Beat 5</h3><iframe src="https://www.youtube.com/embed/a6BZ5QG3O2I" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/WYOI0frSbP0/hqdefault.jpg" alt="Beat 6"><h3>Beat 6</h3><iframe src="https://www.youtube.com/embed/WYOI0frSbP0" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/xoPynmgTyfY/hqdefault.jpg" alt="Beat 7"><h3>Beat 7</h3><iframe src="https://www.youtube.com/embed/xoPynmgTyfY" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/kAHkvUpQlIA/hqdefault.jpg" alt="Beat 8"><h3>Beat 8</h3><iframe src="https://www.youtube.com/embed/kAHkvUpQlIA" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/K-U0Z4hU9FM/hqdefault.jpg" alt="Beat 9"><h3>Beat 9</h3><iframe src="https://www.youtube.com/embed/K-U0Z4hU9FM" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/7nSLvF9xkFA/hqdefault.jpg" alt="Beat 10"><h3>Beat 10</h3><iframe src="https://www.youtube.com/embed/7nSLvF9xkFA" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/PmwZAun1viA/hqdefault.jpg" alt="Beat 11"><h3>Beat 11</h3><iframe src="https://www.youtube.com/embed/PmwZAun1viA" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/lk2n07AA8YA/hqdefault.jpg" alt="Beat 12"><h3>Beat 12</h3><iframe src="https://www.youtube.com/embed/lk2n07AA8YA" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/-MHrDwNYA8k/hqdefault.jpg" alt="Beat 13"><h3>Beat 13</h3><iframe src="https://www.youtube.com/embed/-MHrDwNYA8k" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/qutd77fsu20/hqdefault.jpg" alt="Beat 14"><h3>Beat 14</h3><iframe src="https://www.youtube.com/embed/qutd77fsu20" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/FyUhLUKW4b0/hqdefault.jpg" alt="Beat 15"><h3>Beat 15</h3><iframe src="https://www.youtube.com/embed/FyUhLUKW4b0" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/1IL_pwM382M/hqdefault.jpg" alt="Beat 16"><h3>Beat 16</h3><iframe src="https://www.youtube.com/embed/1IL_pwM382M" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/g_WJIOmnb1E/hqdefault.jpg" alt="Beat 17"><h3>Beat 17</h3><iframe src="https://www.youtube.com/embed/g_WJIOmnb1E" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/J906gPXAIaE/hqdefault.jpg" alt="Beat 18"><h3>Beat 18</h3><iframe src="https://www.youtube.com/embed/J906gPXAIaE" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/BHt19CyUNJw/hqdefault.jpg" alt="Beat 19"><h3>Beat 19</h3><iframe src="https://www.youtube.com/embed/BHt19CyUNJw" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
+<div class="beat-card"><img src="https://img.youtube.com/vi/xIGqO-0gr9s/hqdefault.jpg" alt="Beat 20"><h3>Beat 20</h3><iframe src="https://www.youtube.com/embed/xIGqO-0gr9s" allowfullscreen></iframe><a href="https://www.paypal.com/paypalme/SynSkrift" class="paypal-button" target="_blank">Support $1 to Download</a></div>
 </div>
 
 <footer>
 <p>RawBeats Studio © 2026. <a href="https://www.paypal.com/paypalme/SynSkrift" target="_blank">Support RawBeats Studio</a></p>
 </footer>
-
-<script>
-function showPage(page) {
-    // Hide all pages
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('about').style.display = 'none';
-    document.getElementById('contact').style.display = 'none';
-    
-    // Remove active class from all nav links
-    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-    
-    // Show selected page
-    document.getElementById(page).style.display = 'block';
-    
-    // Set active class on clicked nav
-    document.querySelector('nav a[href="#'+page+'"]').classList.add('active');
-}
-</script>
-
 </body>
 </html>
